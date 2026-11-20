@@ -28,7 +28,10 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Echte Räume (Onyxwand, MIRRO
 4. Übergabe an Bruder / Live-Domain nach OK
 
 ## 7. Befehle
-(folgt beim Bau)
+- Vorschau: `python3 tools/serve.py 4381` → http://localhost:4381
+- Motive → WebP: `python3 tools/assets.py`
+- Prüfen: `python3 tools/check.py http://localhost:4381/ /tmp/drs-check 390x844 "hero:0,abend:.7"`
+- Veröffentlichen: `git subtree split --prefix site -b gh-pages && git push -f origin gh-pages`
 
 ## 8. Offene Fragen
 - Höher aufgelöste Originalfotos vom Bruder? (alte Seite nur ca. 760–1350 px)
@@ -37,6 +40,8 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Echte Räume (Onyxwand, MIRRO
 ## 9. Entschieden
 - 20.11.2026: Projekt angelegt, Inhalte übernommen, 3 Storyboards DSSB-1 „Eine Nacht“, DSSB-2 „Die Tafel“, DSSB-3 „Goldene Nacht“ gestartet.
 - 20.11.2026: Storyboards fertig und gezeigt, Wahl offen (Empfehlung 1 „Eine Nacht“).
+- 20.11.2026: Eugen wählt 3 „Goldene Nacht“. „Kong Garten“-Name unverständlich → Umbenennung offen (Empfehlung „Garten & Terrasse“).
+- 20.11.2026: Demo auf GitHub Pages: engelstraenen.github.io/drschiwago/ (noindex).
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO

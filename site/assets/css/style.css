@@ -257,6 +257,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .sticky-cta { display: flex; position: fixed; left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 40; min-height: 52px; font-size: 15px; transform: translateY(150%); transition: transform .5s var(--ease); }
   .sticky-cta.is-on { transform: none; }
 }
+@media (max-aspect-ratio: 4/5) {
+  .hero__img { top: 64px; height: calc(100% - 64px); }
+  .karaoke__img { object-position: 63% 50%; }
+  .ly { font-size: 36px; opacity: .42; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
