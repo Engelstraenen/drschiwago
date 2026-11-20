@@ -1,0 +1,7 @@
+.env*
+node_modules/
+.DS_Store
+konzepte/refs/
+konzepte/*.png
+*.mov
+*.mp4.part

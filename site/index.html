@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dr. Schiwago Duisburg · Buffet, Bars und Karaoke jeden Samstag</title>
+<meta name="description" content="Jeden Samstag ab 18 Uhr in Duisburg: Buffet mit über 50 Gerichten, drei Bars, beheizte Terrasse, ab 22 Uhr DJ und Karaoke.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#060504">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Prata&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/img.js"></script>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav__mark" href="#top" aria-label="Dr. Schiwago, nach oben"><span class="gold">DR. SCHIWAGO</span></a>
+  <nav class="nav__links" aria-label="Hauptmenü">
+    <a href="#location">Location</a>
+    <a href="#abend">Der Abend</a>
+    <a href="#bars">Bars</a>
+    <a href="#karaoke">Karaoke</a>
+    <a href="#mehr">Feiern</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <a class="btn btn--ghost nav__cta" href="#reservieren">Reservieren</a>
+  <button class="nav__burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<main id="top">
+
+  <!-- 1 · HERO -->
+  <section class="hero" id="hero" data-need="hero">
+    <img class="hero__img" data-img="hero" alt="Kristallkronleuchter im dunklen Saal, gespiegelt im schwarzen Boden">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <canvas class="sparks" data-sparks="hero" aria-hidden="true"></canvas>
+    <div class="hero__text">
+      <h1 class="hero__title gold">DR. SCHIWAGO</h1>
+      <p class="hero__sub">Jeden Samstag ab 18 Uhr</p>
+      <a class="btn btn--ghost" href="#reservieren">Tisch reservieren</a>
+    </div>
+    <div class="scrollhint" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- 2 · SPOTLIGHT -->
+  <section class="spot" id="location" data-need="saal-abend">
+    <div class="spot__stage">
+      <img class="spot__img" data-img="saal-abend" alt="Der eingedeckte Saal mit beleuchteter Onyxwand">
+      <div class="spot__dark" aria-hidden="true"></div>
+      <div class="spot__ring" aria-hidden="true"></div>
+      <div class="spot__text">
+        <h2 class="h2 gold">Die Location entdecken</h2>
+        <p class="spot__hint"><span class="hint-mouse">Mit der Maus durch den Saal leuchten</span><span class="hint-touch">Mit dem Finger durch den Saal leuchten</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · ABEND / NACHT -->
+  <section class="split" id="abend" data-need="saal-nacht">
+    <div class="split__stage">
+      <img class="split__img split__img--night" data-img="saal-nacht" alt="Der Saal in der Nacht mit violettem Partylicht">
+      <div class="split__day"><img class="split__img" data-img="saal-abend" alt="Der Saal am Abend im warmen Licht"></div>
+      <div class="split__line" aria-hidden="true"></div>
+      <button class="split__knob" aria-label="Abend und Nacht vergleichen, ziehen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" /></svg></button>
+      <div class="split__label split__label--l"><span class="h2 gold">Abend</span><small>Buffet ab 18 Uhr</small></div>
+      <div class="split__label split__label--r"><span class="h2 gold">Nacht</span><small>DJ und Karaoke ab 22 Uhr</small></div>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section class="flow" aria-label="So läuft der Abend">
+    <p class="eyebrow">So läuft der Samstag</p>
+    <ol class="flow__list">
+      <li class="reveal"><b class="flow__time gold">18:00</b><h3>Das Buffet ist eröffnet</h3><p>Über 50 Gerichte aus osteuropäischer, kaukasischer und internationaler Küche. Wöchentlich wechselnd, im Buffetpreis enthalten.</p></li>
+      <li class="reveal"><b class="flow__time gold">20:00</b><h3>Bars und Terrasse</h3><p>Die Terrasse ist überdacht und beheizt, an drei Bars wird eingeschenkt, im Garten warten die Fotozonen.</p></li>
+      <li class="reveal"><b class="flow__time gold">22:00</b><h3>Licht runter</h3><p>Der DJ übernimmt den Saal, im MIRRORS greift der Erste zum Mikrofon.</p></li>
+      <li class="reveal"><b class="flow__time gold">02:00</b><h3>Der Ausklang</h3><p>Letzte Runde an den Bars. Und nächsten Samstag wieder.</p></li>
+    </ol>
+  </section>
+
+  <!-- 4 · GARTEN (Titel folgt Eugens Wahl) -->
+  <section class="garden" id="garten" data-need="garten">
+    <img class="garden__img" data-img="garten" alt="Die goldene Gorilla-Statue im Blumengarten bei Nacht">
+    <canvas class="sparks sparks--dust" data-sparks="dust" aria-hidden="true"></canvas>
+    <div class="garden__text">
+      <h2 class="h2 gold" data-garden-title>Garten &amp; Terrasse</h2>
+      <p>Überdachte, beheizte Terrasse mit Shisha, daneben der Garten mit Fotozonen. Bei warmen Temperaturen läuft dort der Live Grill.</p>
+    </div>
+  </section>
+
+  <!-- 5 · DREI BARS -->
+  <section class="bars" id="bars">
+    <h2 class="h2 gold bars__title">Drei Bars</h2>
+    <div class="bars__row">
+      <figure class="bar" data-need="bar-terrasse"><div class="bar__frame"><img data-img="bar-terrasse" alt="Die Terrassenbar unter dem Glasdach mit Blumenlüster"></div><figcaption><b>Terrassenbar</b>Longdrinks, Wein und Shots</figcaption></figure>
+      <figure class="bar is-active" data-need="bar-saal"><div class="bar__frame"><img data-img="bar-saal" alt="Die große Saalbar mit beleuchteter Onyxfront"></div><figcaption><b>Saalbar</b>Longdrinks, Wein und Shots</figcaption></figure>
+      <figure class="bar" data-need="bar-karaoke"><div class="bar__frame"><img data-img="bar-karaoke" alt="Die Karaoke Bar direkt am MIRRORS"></div><figcaption><b>Karaoke Bar</b>Cocktails, direkt am MIRRORS</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 6 · KARAOKE -->
+  <section class="karaoke" id="karaoke" data-need="mikro">
+    <img class="karaoke__img" data-img="mikro" alt="Mikrofon vor bunten Lichtern im Karaoke Raum">
+    <svg class="lyrics" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <path id="ly1" d="M-200,560 C200,430 520,420 860,500 S1400,640 1800,470"/>
+        <path id="ly2" d="M-200,640 C240,520 560,520 900,590 S1420,720 1800,560"/>
+        <path id="ly3" d="M-200,720 C260,610 600,610 940,680 S1440,800 1800,650"/>
+        <path id="ly4" d="M-200,480 C180,350 500,340 830,420 S1380,560 1800,390"/>
+      </defs>
+      <text class="ly"><textPath href="#ly4" startOffset="0%">noch ein Lied · der ganze Saal singt mit · noch ein Lied · der ganze Saal singt mit · noch ein Lied ·</textPath></text>
+      <text class="ly"><textPath href="#ly1" startOffset="0%">Licht runter · Mikro an · MIRRORS · ab 22 Uhr · Licht runter · Mikro an · MIRRORS · ab 22 Uhr ·</textPath></text>
+      <text class="ly"><textPath href="#ly2" startOffset="0%">der DJ im Saal · Cocktails an der Karaoke Bar · der DJ im Saal · Cocktails an der Karaoke Bar ·</textPath></text>
+      <text class="ly"><textPath href="#ly3" startOffset="0%">bis zwei Uhr nachts · jeden Samstag · bis zwei Uhr nachts · jeden Samstag · bis zwei Uhr nachts ·</textPath></text>
+    </svg>
+    <div class="karaoke__text">
+      <h2 class="h2 gold">Ab 22 Uhr Karaoke</h2>
+      <p>Im MIRRORS mit Kronleuchter und Lounge-Sofas, die Karaoke Bar direkt daneben. Im Saal legt parallel der DJ auf.</p>
+    </div>
+  </section>
+
+  <!-- 7 · STIMMEN -->
+  <section class="voices" id="stimmen">
+    <img class="voices__tex" data-img="textur" alt="" aria-hidden="true">
+    <div class="voices__inner">
+      <div class="stars" aria-label="5 von 5 Sternen">
+        <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.3l-5.8 3.1 1.2-6.5L2.6 9.4l6.5-.8z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.3l-5.8 3.1 1.2-6.5L2.6 9.4l6.5-.8z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.3l-5.8 3.1 1.2-6.5L2.6 9.4l6.5-.8z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.3l-5.8 3.1 1.2-6.5L2.6 9.4l6.5-.8z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 6 6.5.8-4.8 4.5 1.2 6.5L12 17.3l-5.8 3.1 1.2-6.5L2.6 9.4l6.5-.8z"/></svg>
+      </div>
+      <blockquote class="quote gold" aria-live="polite">
+        <p data-quote>»Setzt neue Maßstäbe.«</p>
+      </blockquote>
+      <span class="quote__rule" aria-hidden="true"></span>
+      <a class="quote__src" href="https://www.google.com/search?q=Dr.+Schiwago+-+Duisburg+Rezensionen" target="_blank" rel="noopener"><span data-quote-by>Lala S.</span> · 5,0 bei Google</a>
+    </div>
+  </section>
+
+  <!-- 8 · ABENDGARDEROBE + RESERVIERUNG -->
+  <section class="dress" id="reservieren">
+    <div class="dress__grid">
+      <figure class="dress__a" data-need="dress-manschette"><img data-img="dress-manschette" alt="Manschettenknopf am Hemd unter dem dunklen Anzug"></figure>
+      <figure class="dress__b" data-need="dress-schuhe"><img data-img="dress-schuhe" alt="Polierte schwarze Lederschuhe"></figure>
+      <figure class="dress__c" data-need="dress-glaeser"><img data-img="dress-glaeser" alt="Zwei Gläser mit Sekt an der Bar"></figure>
+      <div class="dress__head">
+        <h2 class="h2 gold">Abendgarderobe.</h2>
+        <p>Unser Dresscode. Sportkleidung, Caps, Mützen und Freizeit-Outfits passen nicht zum Abend.</p>
+      </div>
+      <form class="resv" id="resv" novalidate>
+        <h3 class="resv__title gold">Reservierung</h3>
+        <label>Datum
+          <select name="datum" id="resv-datum" required></select>
+        </label>
+        <label>Personen
+          <select name="personen" id="resv-personen" required></select>
+        </label>
+        <button class="btn btn--gold" type="submit">Tisch reservieren</button>
+        <p class="resv__alt">Geöffnet nur samstags, 18 bis 02 Uhr.<br>
+          <a href="https://www.google.com/maps/reserve/v/dine/c/9M2H60nafEE?source=pa&amp;hl=de-DE" target="_blank" rel="noopener">Direkt über Google reservieren</a> · <a href="tel:+4920393577235">0203 93577235</a></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- MEHR: Geburtstag, Catering, Angerhof -->
+  <section class="more" id="mehr">
+    <p class="eyebrow">Feiern bei uns</p>
+    <div class="more__grid">
+      <article class="card reveal">
+        <h3 class="gold">Sie haben Geburtstag?</h3>
+        <p>Fällt Ihr Geburtstag in die Woche vom Samstag, geht ein Teil des Abends aufs Haus.</p>
+        <ul class="tiers">
+          <li><b>ab 10</b><span>Personen</span><em>1 Flasche Prosecco</em></li>
+          <li><b>ab 15</b><span>Personen</span><em>1 Flasche Vodka 0,5 l</em></li>
+          <li><b>ab 20</b><span>Personen</span><em>2 Flaschen Prosecco</em></li>
+        </ul>
+        <p class="fine">Nur mit Buffetbuchung bis 22 Uhr, für registrierte Nutzer der Dr. Schiwago App. Bitte an der Kasse mit Ausweis melden. Keine Auszahlung.</p>
+      </article>
+      <article class="card reveal">
+        <h3 class="gold">Catering</h3>
+        <p>Die Küche des Samstagabends kommt zu Ihnen: das Festliche Buffet mit 61 Gerichten in fünf Gängen. Vom Schaschlik vom Holzkohlengrill bis zur Napoleon-Torte, für Geburtstage, Hochzeiten und Firmenfeiern.</p>
+        <div class="card__btns"><a class="btn btn--ghost" href="https://drschiwago.de/catering" target="_blank" rel="noopener">Menü ansehen</a><a class="btn btn--ghost" href="tel:+4920393577235">Anrufen</a></div>
+      </article>
+      <article class="card reveal">
+        <h3 class="gold">Private Feiern</h3>
+        <p>Bis zu 200 Gäste im Saal. An allen anderen Tagen ist dieselbe Location als Angerhof exklusiv für Hochzeiten, Jubiläen und Firmenfeiern buchbar.</p>
+        <div class="card__btns"><a class="btn btn--ghost" href="https://www.angerhof-duisburg.de/" target="_blank" rel="noopener">Zum Angerhof</a><a class="btn btn--ghost" href="mailto:info@drschiwago.de">E-Mail</a></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <h2 class="h2 gold">Gut zu wissen</h2>
+    <div class="faq__list">
+      <details><summary>Wann hat Dr. Schiwago geöffnet?</summary><p>Jeden Samstag von 18 bis 02 Uhr. Düsseldorfer Landstraße 431, 47259 Duisburg, direkt an der Grenze zu Düsseldorf-Kaiserswerth.</p></details>
+      <details><summary>Was kostet das Buffet?</summary><p>Die aktuellen Preise nennen wir Ihnen gern telefonisch unter 0203 93577235 oder bei der Reservierung. Getränke werden separat abgerechnet.</p></details>
+      <details><summary>Muss ich reservieren?</summary><p>Wir empfehlen es dringend, samstags sind die Plätze schnell vergeben. Telefonisch, per E-Mail oder online über Google.</p></details>
+      <details><summary>Was steht auf dem Buffet?</summary><p>Über 50 Gerichte: Schaschlik, Plov, Fisch- und Fleischgerichte, kalte Vorspeisen, Salate, hausgemachte Torten und Desserts. Die Auswahl wechselt wöchentlich, nachgelegt wird bis 22 Uhr.</p></details>
+      <details><summary>Kann ich das Essen auch am Tisch haben?</summary><p>Ja. Gegen einen kleinen Aufpreis pro Person servieren wir die Vorspeisen an den Tisch, auf Wunsch auch die Hauptgänge.</p></details>
+      <details><summary>Gibt es einen Dresscode?</summary><p>Ja, Abendgarderobe. Sportkleidung, Caps, Mützen und Freizeit-Outfits entsprechen nicht dem Dresscode.</p></details>
+      <details><summary>Kann man draußen sitzen und Shisha rauchen?</summary><p>Die Terrasse ist überdacht und beheizt. In der warmen Jahreszeit gibt es dort den ganzen Abend Shisha, ab Mitte Herbst pausiert sie.</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot" id="kontakt">
+  <div class="foot__mark gold">DR. SCHIWAGO</div>
+  <div class="foot__cols">
+    <div><h4>Adresse</h4><p>Düsseldorfer Landstraße 431<br>47259 Duisburg</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Dr.+Schiwago+D%C3%BCsseldorfer+Landstra%C3%9Fe+431+Duisburg" target="_blank" rel="noopener">Route planen</a></div>
+    <div><h4>Öffnungszeiten</h4><p>Jeden Samstag<br>18 bis 02 Uhr</p></div>
+    <div><h4>Kontakt</h4><p><a href="tel:+4920393577235">0203 93577235</a><br><a href="mailto:info@drschiwago.de">info@drschiwago.de</a></p></div>
+    <div><h4>Seit 1990</h4><p>Ihre Gastgeber in Duisburg.<br>35.000+ Gäste bewirtet.</p></div>
+  </div>
+  <div class="foot__legal"><a href="https://drschiwago.de/impressum" target="_blank" rel="noopener">Impressum</a><a href="https://drschiwago.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a></div>
+</footer>
+
+<a class="sticky-cta btn btn--gold" href="#reservieren">Tisch reservieren</a>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
