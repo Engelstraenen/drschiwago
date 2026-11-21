@@ -49,6 +49,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Echte Räume (Onyxwand, MIRRO
 - 20.11.2026: Kapitel 4 = „Die Terrasse“ (Eugen wählt Option 2, kein Gorilla, kein „Kong“). Motiv DSM-04 = echte Terrasse (Ref terrasse-1).
 - 20.11.2026 (Eugen, harte Kritik V1): Essen ist das Kerngeschäft → V2: Hero = Buffet (DSM-10), Buffet-Scrollytelling mit 6 Gerichten (DSM-11a–f), horizontale Fahrt mit echten Buffet-Fotos, Zähler. Spotlight-Kapitel gestrichen („kompletter Scheiß“). Split = links TAG (DSM-02T), rechts NACHT (DSM-03). Neues Kapitel Eventlocation (Hochzeiten etc., Angebot über angerhof-duisburg.de/angebot, Samstag = Dr. Schiwago). Catering als eigene Seite `catering.html` mit allen 61 Gerichten und Buffet-Baukasten (Auswahl → mailto). Dresscode jung: „Schick. Nicht sportlich.“ (DSM-08d/e/f), keine Manschetten/Lackschuhe. Echtes Logo (gold eingefärbt, `site/assets/img/logo-gold.svg`).
 - 21.11.2026: Küche = russisch, georgisch, armenisch (Eugen). Echte Fotos haben Vorrang: alle Essens-/Cocktailfotos der alten Seite + Instagram-Kapitel (@dr.schiwago_restaurant, 6 neueste Reels; Auto-Feed über Behold vorbereitet, `DRS_IG_FEED`).
+- 21.11.2026: V2 gesichert (Tag v2-2026-11-21 + ZIP in versionen/). Eugen will V3 „edler, hochwertiger“: Landing Page ohne Essensfoto/nicht überladen mit Essen („wirkt billig“); Essen nur als einzelne edle Teller. Storyboards DSSB-4/5/6 gestartet.
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO
