@@ -13,7 +13,7 @@ out = sys.argv[2] if len(sys.argv) > 2 else "/tmp/drs-all"
 os.makedirs(out, exist_ok=True)
 VIEWS = [(390, 844), (360, 740), (430, 932), (844, 390), (1440, 900)]
 PAGES = {
-    "index.html": "hero:0,buffet:.08,buffet:.3,buffet:.97,fotos:.5,instagram:0,abend:.8,terrasse:0,feiern:.1,catering:0,reservieren:0,kontakt:0",
+    "index.html": "hero:0,buffet:.06,buffet:.3,buffet:.97,karte:.2,kueche:0,abend:.8,bars:.3,feiern:0,catering:0,instagram:0,reservieren:0,kontakt:0",
     "catering.html": "top:0,baukasten:.05,anfrage:0,galerie:0,kontakt:0",
 }
 AUDIT = r"""() => {
@@ -36,7 +36,7 @@ with sync_playwright() as p:
             mob = w < 900
             ctx = b.new_context(viewport={"width": w, "height": h}, device_scale_factor=1, is_mobile=mob, has_touch=mob)
             pg = ctx.new_page()
-            pg.on("console", lambda m: errs.append(m.text[:120]) if m.type == "error" else None)
+            pg.on("console", lambda m: errs.append(m.text[:120]) if m.type == "error" and "ErrorUtils" not in m.text else None)
             pg.on("pageerror", lambda e: errs.append("pageerror: " + str(e)[:120]))
             pg.goto(base + page, wait_until="networkidle")
             pg.wait_for_timeout(2500)

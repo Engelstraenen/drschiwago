@@ -26,6 +26,9 @@ MOTIVE = {
     "DSM-11a": "gericht-schaschlik", "DSM-11b": "gericht-piroschki", "DSM-11c": "gericht-canapes",
     "DSM-11d": "gericht-hering", "DSM-11e": "gericht-plov", "DSM-11f": "gericht-napoleon",
     "DSM-12": "catering",
+    "DSM-20": "saal-kronleuchter", "DSM-20m": "saal-kronleuchter-m",
+    "DSM-21a": "teller-schaschlik", "DSM-21b": "teller-hering", "DSM-21c": "teller-napoleon",
+    "DSM-22": "hochzeit", "DSM-23": "veranda",
 }
 FOTOS = {f"buffet-{i}": f"foto-buffet-{i}" for i in range(1, 8)}
 FOTOS.update({"karussell_buffet-01": "foto-salat", "karussell_buffet-03": "foto-canapes", "karussell_cocktail-1": "foto-cocktail-1", "karussell_cocktail-3": "foto-cocktail-3"})
@@ -54,7 +57,7 @@ for sid, name in MOTIVE.items():
     src = next((os.path.join(BASE, "motive", sid + e) for e in (".jpg", ".png") if os.path.exists(os.path.join(BASE, "motive", sid + e))), None)
     if src:
         w, h = Image.open(src).size
-        build(src, name, 3840 if w >= h else 1800, 1800 if w >= h else 900)
+        build(src, name, (2400 if w == h else 3840) if w >= h else 1800, (1200 if w == h else 1800) if w >= h else 900)
 for sid, name in FOTOS.items():
     src = os.path.join(BASE, "original-fotos", sid + ".jpg")
     if os.path.exists(src):

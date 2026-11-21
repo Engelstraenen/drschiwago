@@ -1,10 +1,11 @@
-/* DR. SCHIWAGO · Goldene Nacht · V2 (Essen zuerst) */
+/* DR. SCHIWAGO · V3 „Schwarzer Samt“ */
 (() => {
   const IMG = window.IMG || {};
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const ease = t => 1 - Math.pow(1 - t, 3);
+  const smooth = t => t * t * (3 - 2 * t);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const touch = matchMedia('(hover: none)').matches;
   const phone = matchMedia('(max-width: 720px)').matches;
@@ -19,7 +20,7 @@
     if (!m) { img.classList.add('is-missing'); return; }
     img.src = m.s;
     img.srcset = `${m.s} ${m.sw}w, ${m.l} ${m.lw}w`;
-    img.sizes = img.closest('.bar, .dress__grid figure, .reel__card, .gal__item, .course__img') ? '(max-width: 720px) 90vw, 50vw' : '100vw';
+    img.sizes = img.closest('.bar, .frame, .plate, .gal__item, .course__img') ? '(max-width: 720px) 90vw, 40vw' : '100vw';
     img.decoding = 'async';
     if (!img.closest('.hero, .chero')) img.loading = 'lazy';
     img.width = m.w; img.height = m.h;
@@ -31,7 +32,7 @@
   burger.addEventListener('click', () => { const o = nav.classList.toggle('is-open'); burger.setAttribute('aria-expanded', o); });
   $$('.nav__links a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', false); }));
 
-  /* Hero: Licht geht an */
+  /* Hero: Licht geht langsam an */
   const hero = $('.hero, .chero');
   const heroImg = hero && $('img[data-img]', hero);
   const lightUp = () => requestAnimationFrame(() => hero && hero.classList.add('is-lit'));
@@ -41,73 +42,30 @@
   } else lightUp();
   if (hero && !touch && !reduce) hero.addEventListener('pointermove', e => {
     const r = hero.getBoundingClientRect();
-    hero.style.setProperty('--mx', (((e.clientX - r.left) / r.width - .5) * -1.6).toFixed(2) + '%');
-    hero.style.setProperty('--my', (((e.clientY - r.top) / r.height - .5) * -1.2).toFixed(2) + '%');
+    hero.style.setProperty('--mx', (((e.clientX - r.left) / r.width - .5) * -1).toFixed(2) + '%');
+    hero.style.setProperty('--my', (((e.clientY - r.top) / r.height - .5) * -.8).toFixed(2) + '%');
   });
 
-  /* Glut (Hero, steigt vom Buffet auf) und Goldstaub (Terrasse) */
-  function sparks(canvas, mode) {
-    const ctx = canvas.getContext('2d');
-    let w, h, dpr, parts = [], on = false, raf;
-    const N = mode === 'hero' ? (phone ? 40 : 70) : (phone ? 60 : 110);
-    const size = () => { dpr = Math.min(2, devicePixelRatio || 1); w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
-    const spawn = (p, init) => {
-      if (mode === 'hero') {
-        p.x = Math.random() * w; p.y = init ? h * (.3 + Math.random() * .7) : h * (.75 + Math.random() * .3);
-        p.vx = (Math.random() - .5) * .25; p.vy = -(.25 + Math.random() * .6);
-      } else {
-        p.x = Math.random() * w; p.y = init ? Math.random() * h : -10;
-        p.vx = .1 + Math.random() * .25; p.vy = .15 + Math.random() * .35;
-      }
-      p.r = Math.random() * 1.5 + .3;
-      p.life = 0; p.max = 160 + Math.random() * 260; p.ph = Math.random() * 6.28;
-      return p;
-    };
-    const tick = () => {
-      ctx.clearRect(0, 0, w, h);
-      ctx.globalCompositeOperation = 'lighter';
-      for (const p of parts) {
-        p.life++; p.x += p.vx + Math.sin((p.life + p.ph * 40) / 60) * .18; p.y += p.vy;
-        const a = Math.sin(Math.PI * p.life / p.max) * (.55 + .45 * Math.sin(p.life / 7 + p.ph));
-        if (p.life > p.max || p.y > h + 10 || p.y < -10 || p.x > w + 10) spawn(p);
-        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
-        g.addColorStop(0, `rgba(255,226,160,${a})`); g.addColorStop(.35, `rgba(245,170,80,${a * .45})`); g.addColorStop(1, 'rgba(200,120,40,0)');
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 5, 0, 6.283); ctx.fill();
-      }
-      if (on) raf = requestAnimationFrame(tick);
-    };
-    size(); addEventListener('resize', size);
-    for (let i = 0; i < N; i++) { const p = spawn({}, true); p.life = Math.random() * p.max; parts.push(p); }
-    new IntersectionObserver(([e]) => { on = e.isIntersecting && !reduce; cancelAnimationFrame(raf); if (on) tick(); }).observe(canvas);
-  }
-  $$('canvas[data-sparks]').forEach(c => { if (!c.closest('.is-missing')) sparks(c, c.dataset.sparks); });
-
-  /* Fortschritt einer Sticky-Strecke: 0 = Bühne oben angekommen, 1 = Ende */
+  /* Fortschritt */
   const prog = sec => { const r = sec.getBoundingClientRect(); const run = r.height - innerHeight; return run > 0 ? clamp(-r.top / run) : clamp(1 - r.bottom / (innerHeight + r.height)); };
   const pass = sec => { const r = sec.getBoundingClientRect(); return clamp(1 - (r.top + r.height) / (innerHeight + r.height)); };
   const visible = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
   const scrollToFrac = (sec, f) => { const top = sec.getBoundingClientRect().top + scrollY; scrollTo({ top: top + (sec.offsetHeight - innerHeight) * f, behavior: reduce ? 'auto' : 'smooth' }); };
 
-  /* BUFFET: Szenen */
+  /* 2 · Buffet: weiche Überblendung von Gericht zu Gericht */
   const feast = $('#buffet');
   let F = null;
   if (feast) {
     const scenes = $$('.feast__scene', feast), texts = $$('.feast__text', feast), btns = $$('.feast__nav button', feast);
     const keep = scenes.map(s => !s.classList.contains('is-missing'));
-    const S = scenes.filter((_, i) => keep[i]), T = texts.filter((_, i) => keep[i]), B = btns.filter((_, i) => keep[i]);
     texts.forEach((t, i) => { if (!keep[i]) t.remove(); }); btns.forEach((b, i) => { if (!keep[i]) b.remove(); });
+    const S = scenes.filter((_, i) => keep[i]), T = texts.filter((_, i) => keep[i]), B = btns.filter((_, i) => keep[i]);
     if (S.length) {
-      $('.feast__nav', feast).style.gridTemplateColumns = `repeat(${S.length}, 1fr)`;
       const INTRO = .7, U = INTRO + S.length;
       F = { S, T, B, U, INTRO, count: $('[data-count]', feast), k: -2 };
-      B.forEach((b, i) => b.addEventListener('click', () => scrollToFrac(feast, (INTRO + i + .12) / U)));
+      B.forEach((b, i) => b.addEventListener('click', () => scrollToFrac(feast, (INTRO + i + .15) / U)));
     } else feast.classList.add('is-missing');
   }
-
-  /* ECHTE FOTOS: horizontale Fahrt */
-  const reel = $('#fotos');
-  const track = reel && $('.reel__track', reel);
-  if (reel && !$$('.reel__card:not(.is-missing)', reel).length) reel.classList.add('is-missing');
 
   /* Tag / Nacht */
   const split = $('#abend');
@@ -116,102 +74,85 @@
   if (splitStage && !split.classList.contains('is-missing')) {
     const knob = $('.split__knob', split);
     let drag = false;
-    const set = x => { const r = splitStage.getBoundingClientRect(); manual = clamp((x - r.left) / r.width, .03, .97); };
+    const set = x => { const r = splitStage.getBoundingClientRect(); manual = clamp((x - r.left) / r.width, .04, .96); };
     knob.addEventListener('pointerdown', e => { drag = true; knob.setPointerCapture(e.pointerId); set(e.clientX); });
     knob.addEventListener('pointermove', e => { if (drag) set(e.clientX); });
     knob.addEventListener('pointerup', () => { drag = false; });
     splitStage.addEventListener('click', e => { if (e.target !== knob) set(e.clientX); });
-    knob.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { manual = clamp((manual ?? .5) + (e.key === 'ArrowLeft' ? -.05 : .05), .03, .97); e.preventDefault(); } });
+    knob.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { manual = clamp((manual ?? .5) + (e.key === 'ArrowLeft' ? -.05 : .05), .04, .96); e.preventDefault(); } });
   }
 
-  const garden = $('#terrasse');
-  const kara = $('#karaoke');
-  const lyPaths = $$('.lyrics textPath');
+  const wides = $$('.wide');
   const cater = $('#catering');
-  const fin = $('.final');
+  const plates = $('#kueche');
+  const plateImgs = plates ? $$('.plate img', plates) : [];
+  const menuR = $('.menu__pic--r');
+  const menuSec = $('#karte');
   const cta = $('.sticky-cta');
   const resvSec = $('#reservieren');
   const heroText = $('.hero__text, .chero__text');
 
-  const t0 = performance.now();
-  function frame(now) {
+  function frame() {
     const y = scrollY;
     nav.classList.toggle('is-solid', y > 40);
 
     if (hero && heroText) {
       const hp = clamp(y / innerHeight);
-      heroText.style.opacity = 1 - hp * 1.5; heroText.style.translate = `0 ${-hp * 70}px`;
+      heroText.style.opacity = 1 - hp * 1.6; heroText.style.translate = `0 ${-hp * 50}px`;
     }
 
-    // Buffet-Szenen
     if (F && visible(feast)) {
       const x = prog(feast) * F.U;
       const ix = clamp(x / F.INTRO);
-      feast.style.setProperty('--io', (.72 * (1 - ease(clamp((ix - .55) / .45)))).toFixed(3));
-      feast.style.setProperty('--iv', (1 - ease(clamp((ix - .7) / .3))).toFixed(3));
-      feast.style.setProperty('--ic', (1 + ix * .18).toFixed(3));
-      if (F.count) F.count.textContent = Math.round(50 * ease(clamp(ix / .75)));
-      feast.style.setProperty('--nv', ease(clamp((x - .55) / .3)).toFixed(3));
-      let k = x >= .55 ? 0 : -1;
+      feast.style.setProperty('--io', (.82 * (1 - smooth(clamp((ix - .5) / .5)))).toFixed(3));
+      feast.style.setProperty('--iv', (1 - smooth(clamp((ix - .62) / .38))).toFixed(3));
+      if (F.count) F.count.textContent = Math.round(50 * ease(clamp(ix / .6)));
+      feast.style.setProperty('--nv', smooth(clamp((x - .6) / .3)).toFixed(3));
+      let k = x >= .62 ? 0 : -1;
       F.S.forEach((s, i) => {
         const st = F.INTRO + i;
         if (i > 0) {
-          const t = clamp((x - st + .42) / .42), r = t * t * (3 - 2 * t); // langsam rein, langsam raus
-          s.style.setProperty('--r', (r * 100).toFixed(2) + '%');
-          if (r >= .45) k = i; // Text wechselt, wenn das neue Gericht das Bild zur Hälfte füllt
+          const o = smooth(clamp((x - st + .4) / .4));
+          s.style.setProperty('--o', o.toFixed(3));
+          if (o >= .5) k = i;
         }
-        s.style.setProperty('--s', (1.16 - .14 * clamp((x - st + .42) / 1.42)).toFixed(4));
-        F.B[i].querySelector('i').style.setProperty('--f', clamp(x - st + .2).toFixed(3));
+        s.style.setProperty('--s', (1.12 - .1 * clamp((x - st + .4) / 1.4)).toFixed(4));
       });
       if (k !== F.k) { F.k = k; F.T.forEach((t, i) => t.classList.toggle('is-on', i === k)); F.B.forEach((b, i) => b.classList.toggle('is-on', i === k)); }
     }
 
-    // Fotos: horizontal
-    if (track && visible(reel)) {
-      const p = prog(reel);
-      const max = Math.max(0, track.scrollWidth - innerWidth);
-      track.style.setProperty('--tx', (-max * p).toFixed(1) + 'px');
-    }
+    if (menuR && visible(menuSec)) menuR.style.setProperty('--my2', ((pass(menuSec) - .5) * -60).toFixed(1) + 'px');
+    if (plates && visible(plates)) { const g = pass(plates) - .5; plateImgs.forEach((im, i) => im.style.setProperty('--rot', (g * (i % 2 ? -36 : 36)).toFixed(2) + 'deg')); }
 
-    // Tag / Nacht
     if (splitStage && visible(split) && !split.classList.contains('is-missing')) {
       const q = prog(split);
       if (q <= 0.001) manual = null;
-      const auto = 1 - .5 * ease(clamp(q / .55));
-      const v = manual ?? auto;
+      const v = manual ?? (1 - .5 * smooth(clamp(q / .55)));
       splitStage.style.setProperty('--p', (v * 100).toFixed(2) + '%');
-      $('.split__label--r', split).style.opacity = clamp((1 - v) * 4);
-      $('.split__label--l', split).style.opacity = clamp(v * 4);
-      $('.split__hint', split).style.opacity = manual === null && q > .45 ? 1 : 0;
+      $('.split__label--r', split).style.opacity = clamp((1 - v) * 5);
+      $('.split__label--l', split).style.opacity = clamp(v * 5);
     }
 
-    if (garden && visible(garden) && !garden.classList.contains('is-missing')) {
-      const g = pass(garden);
-      garden.style.setProperty('--py', ((g - .5) * -6) + '%');
-      garden.style.setProperty('--gs', (1.14 - g * .1).toFixed(3));
-    }
-
-    if (kara && visible(kara) && !kara.classList.contains('is-missing')) {
-      const k = pass(kara);
-      kara.style.setProperty('--ks', (1.1 - k * .08).toFixed(3));
-      const tt = reduce ? 0 : (now - t0) / 1000;
-      lyPaths.forEach((tp, i) => {
-        const dir = i % 2 ? 1 : -1;
-        const off = ((tt * (1.1 + i * .25) + k * 30) * dir) % 50;
-        tp.setAttribute('startOffset', (off - (dir > 0 ? 50 : 0)) + '%');
-      });
-    }
-
-    if (cater && visible(cater)) cater.style.setProperty('--cy', ((pass(cater) - .5) * -8).toFixed(2) + '%');
-    if (fin && visible(fin)) fin.style.setProperty('--fs', (1.14 - pass(fin) * .12).toFixed(3));
+    wides.forEach(w => { if (visible(w) && !w.classList.contains('is-missing')) w.style.setProperty('--py', ((pass(w) - .5) * -7).toFixed(2) + '%'); });
+    if (cater && visible(cater)) cater.style.setProperty('--cy', ((pass(cater) - .5) * -7).toFixed(2) + '%');
 
     if (cta && resvSec) {
       const rr = resvSec.getBoundingClientRect();
-      cta.classList.toggle('is-on', y > innerHeight * .8 && !(rr.top < innerHeight && rr.bottom > 0));
+      cta.classList.toggle('is-on', y > innerHeight * .9 && !(rr.top < innerHeight && rr.bottom > 0));
     }
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+
+  /* 3 · Karte: Kategorie wählt das Bild links */
+  const cats = $$('.menu__list li');
+  if (cats.length) {
+    const pics = $$('.menu__pic--l img');
+    const pick = i => { cats.forEach(c => c.classList.toggle('is-on', +c.dataset.cat === i)); pics.forEach(p => p.classList.toggle('is-on', +p.dataset.cat === i)); };
+    cats.forEach(c => { const i = +c.dataset.cat; c.addEventListener('mouseenter', () => pick(i)); c.addEventListener('click', () => pick(i)); });
+    pick(0);
+    if (touch && !reduce) { let n = 0; setInterval(() => { if (visible($('#karte'))) { n = (n + 1) % cats.length; pick(n); } }, 3800); }
+  }
 
   /* Bars */
   const bars = $$('.bar:not(.is-missing)');
@@ -232,14 +173,14 @@
     }, 80); }, { passive: true });
   }
 
-  /* Feiern: Anlass wählen */
+  /* 6 · Feiern: Anlass wählen */
   const evs = $$('.ev');
   if (evs.length) {
     const D = [
-      ['Hochzeiten', 'Vom Sektempfang in der Lounge bis zur Tanzfläche im großen Saal, mit bis zu 200 Gästen und unserer Küche.', 'Hochzeit'],
-      ['Geburtstage & Jubiläen', 'Runde Geburtstage und Jubiläen im großen Kreis oder mit der Familie. Raum, Buffet und Musik stimmen wir auf Ihre Feier ab.', 'Geburtstag'],
-      ['Firmen- & Weihnachtsfeiern', 'Weihnachtsfeiern, Firmenjubiläen und Sommerfeste mit vollem Service, gut erreichbar aus Duisburg und Düsseldorf.', 'Firmenveranstaltung'],
-      ['Taufe, Verlobung, Familienfest', 'Verlobungen, Taufen und Abschlussfeiern im kleineren Rahmen, mit persönlicher Betreuung.', 'Familienfest'],
+      ['Hochzeiten', 'Vom Sektempfang in der Lounge bis zur Tanzfläche im großen Saal, mit bis zu 200 Gästen.', 'Hochzeit'],
+      ['Geburtstage', 'Runde Geburtstage und Jubiläen, im großen Kreis oder mit der Familie. Raum, Buffet und Musik stimmen wir auf Ihre Feier ab.', 'Geburtstag'],
+      ['Firmenfeiern', 'Weihnachtsfeiern, Firmenjubiläen und Sommerfeste mit vollem Service, gut erreichbar aus Duisburg und Düsseldorf.', 'Firmenveranstaltung'],
+      ['Familienfeste', 'Verlobungen, Taufen und Abschlussfeiern im kleineren Rahmen, mit persönlicher Betreuung.', 'Familienfest'],
     ];
     const pics = $$('.evp');
     const title = $('[data-ev-title]'), text = $('[data-ev-text]'), link = $('[data-ev-link]');
@@ -247,19 +188,19 @@
     const show = i => {
       cur = i;
       evs.forEach((b, j) => { b.classList.toggle('is-on', j === i); b.setAttribute('aria-selected', j === i); });
-      const okPics = pics.filter(p => !p.classList.contains('is-missing'));
-      const pic = pics[i] && !pics[i].classList.contains('is-missing') ? pics[i] : okPics[i % Math.max(1, okPics.length)];
+      const ok = pics.filter(p => !p.classList.contains('is-missing'));
+      const pic = pics[i] && !pics[i].classList.contains('is-missing') ? pics[i] : ok[i % Math.max(1, ok.length)];
       pics.forEach(p => p.classList.toggle('is-on', p === pic));
       title.textContent = D[i][0]; text.textContent = D[i][1];
       link.href = 'https://www.angerhof-duisburg.de/angebot?anlass=' + encodeURIComponent(D[i][2]);
     };
-    evs.forEach((b, i) => { b.addEventListener('click', () => { touched = true; show(i); }); if (!touch) b.addEventListener('mouseenter', () => { touched = true; show(i); }); });
+    evs.forEach((b, i) => b.addEventListener('click', () => { touched = true; show(i); }));
     show(0);
     const stage = $('.events__stage');
-    if (!reduce) setInterval(() => { if (!touched && visible(stage)) show((cur + 1) % D.length); }, 4200);
+    if (!reduce) setInterval(() => { if (!touched && visible(stage)) show((cur + 1) % D.length); }, 5200);
   }
 
-  /* Instagram: neue Videos automatisch über Feed (Behold), sonst offizielle Einbettung der letzten Reels */
+  /* Instagram: neue Videos automatisch über Feed (Behold), sonst offizielle Einbettung der Reels */
   const igRow = $('[data-ig-row]');
   if (igRow) {
     const embed = () => {
@@ -287,10 +228,10 @@
     iio.observe(igRow);
   }
 
-  /* Zähler */
+  /* Zähler (Catering-Seite) */
   const fmtN = new Intl.NumberFormat('de-DE');
   const countUp = el => {
-    const to = +el.dataset.to, suf = el.dataset.suffix || '', t1 = performance.now(), dur = 1700;
+    const to = +el.dataset.to, suf = el.dataset.suffix || '', t1 = performance.now(), dur = 1800;
     const step = n => { const t = clamp((n - t1) / dur); el.textContent = fmtN.format(Math.round(to * ease(t))) + suf; if (t < 1) requestAnimationFrame(step); };
     reduce ? (el.textContent = fmtN.format(to) + suf) : requestAnimationFrame(step);
   };
@@ -299,14 +240,14 @@
 
   /* Einblenden */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { threshold: .2 });
-  $$('.reveal, .voices').forEach(el => io.observe(el));
+  $$('.reveal').forEach(el => io.observe(el));
 
-  /* Lightbox für echte Fotos */
+  /* Lightbox (Catering-Galerie) */
   const lb = $('#lightbox');
   if (lb) {
     const lbImg = $('img', lb), lbCap = $('.lightbox__cap', lb);
     const close = () => { lb.classList.remove('is-on'); setTimeout(() => { lb.hidden = true; }, 300); };
-    $$('.reel__card, .gal__item').forEach(c => c.addEventListener('click', () => {
+    $$('.gal__item').forEach(c => c.addEventListener('click', () => {
       const m = IMG[$('img', c).dataset.img]; if (!m) return;
       lbImg.src = m.l; lbImg.alt = $('img', c).alt; lbCap.textContent = ($('figcaption', c) || {}).textContent || '';
       lb.hidden = false; requestAnimationFrame(() => lb.classList.add('is-on'));
@@ -315,7 +256,7 @@
     addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) close(); });
   }
 
-  /* Stimmen (echte Google-Bewertungen, gekürzt) */
+  /* Stimmen */
   const qBox = $('.quote');
   if (qBox) {
     const quotes = [
@@ -329,8 +270,8 @@
     if (!reduce) setInterval(() => {
       if (!visible(qBox)) return;
       qBox.classList.add('is-swap');
-      setTimeout(() => { qi = (qi + 1) % quotes.length; qP.textContent = quotes[qi][0]; qBy.textContent = quotes[qi][1]; qBox.classList.remove('is-swap'); }, 800);
-    }, 5200);
+      setTimeout(() => { qi = (qi + 1) % quotes.length; qP.textContent = quotes[qi][0]; qBy.textContent = quotes[qi][1]; qBox.classList.remove('is-swap'); }, 900);
+    }, 6000);
   }
 
   /* Reservierung: nur Samstage */

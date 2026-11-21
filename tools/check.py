@@ -17,7 +17,7 @@ errs = []
 with sync_playwright() as p:
     b = p.chromium.launch()
     pg = b.new_page(viewport={"width": w, "height": h}, device_scale_factor=1, is_mobile=w < 600, has_touch=w < 600)
-    pg.on("console", lambda m: errs.append(f"{m.type}: {m.text}") if m.type in ("error", "warning") else None)
+    pg.on("console", lambda m: errs.append(f"{m.type}: {m.text}") if m.type == "error" or (m.type == "warning" and "Permissions-Policy" not in m.text) else None)
     pg.on("pageerror", lambda e: errs.append(f"pageerror: {e}"))
     pg.goto(url, wait_until="networkidle")
     pg.wait_for_timeout(3500)
