@@ -38,6 +38,8 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Echte Räume (Onyxwand, MIRRO
 ## 8. Offene Fragen
 - Höher aufgelöste Originalfotos vom Bruder? (alte Seite nur ca. 760–1350 px)
 - Russische Sprachversion gewünscht?
+- Instagram-Auto-Feed: Behold-Link vom Konto-Inhaber steht aus (Eugen 21.11.: „später“), Anleitung docs/instagram.md.
+- Vor Livegang drschiwago.de: Cookie-Einwilligung für Instagram-Einbettung.
 
 ## 9. Entschieden
 - 20.11.2026: Projekt angelegt, Inhalte übernommen, 3 Storyboards DSSB-1 „Eine Nacht“, DSSB-2 „Die Tafel“, DSSB-3 „Goldene Nacht“ gestartet.
