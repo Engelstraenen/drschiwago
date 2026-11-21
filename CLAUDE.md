@@ -5,7 +5,7 @@ Gilt zusätzlich zur globalen Masterfile (~/.claude/CLAUDE.md).
 Moderne neue Webseite für Dr. Schiwago (Restaurant/Samstagabend-Location in Duisburg, gehört Eugens Bruder). Inhalte von drschiwago.de übernehmen (`inhalte.md`). Ziel: Reservierungen + Geburtstage + Catering-Anfragen.
 
 ## 2. Qualitätsanspruch & Referenzen
-Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Echte Räume (Onyxwand, MIRRORS, Kong Garten, Veranda) müssen erkennbar bleiben. Referenz-Collage: `konzepte/referenz-echte-raeume.jpg`.
+Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schwarz, Elfenbein, Champagner-Haarlinien, Cormorant Garamond), Essen nur als einzelne Teller. Echte Räume (Onyxwand, MIRRORS, Kong Garten, Veranda) müssen erkennbar bleiben. Referenz-Collage: `konzepte/referenz-echte-raeume.jpg`.
 
 ## 3. Regeln
 - Konzepte nur als Storyboard-Bild (sjinn Nano Banana 2.1, 16:9, 2K, Unlimited, 0 Credits).
@@ -50,6 +50,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Echte Räume (Onyxwand, MIRRO
 - 20.11.2026 (Eugen, harte Kritik V1): Essen ist das Kerngeschäft → V2: Hero = Buffet (DSM-10), Buffet-Scrollytelling mit 6 Gerichten (DSM-11a–f), horizontale Fahrt mit echten Buffet-Fotos, Zähler. Spotlight-Kapitel gestrichen („kompletter Scheiß“). Split = links TAG (DSM-02T), rechts NACHT (DSM-03). Neues Kapitel Eventlocation (Hochzeiten etc., Angebot über angerhof-duisburg.de/angebot, Samstag = Dr. Schiwago). Catering als eigene Seite `catering.html` mit allen 61 Gerichten und Buffet-Baukasten (Auswahl → mailto). Dresscode jung: „Schick. Nicht sportlich.“ (DSM-08d/e/f), keine Manschetten/Lackschuhe. Echtes Logo (gold eingefärbt, `site/assets/img/logo-gold.svg`).
 - 21.11.2026: Küche = russisch, georgisch, armenisch (Eugen). Echte Fotos haben Vorrang: alle Essens-/Cocktailfotos der alten Seite + Instagram-Kapitel (@dr.schiwago_restaurant, 6 neueste Reels; Auto-Feed über Behold vorbereitet, `DRS_IG_FEED`).
 - 21.11.2026: V2 gesichert (Tag v2-2026-11-21 + ZIP in versionen/). Eugen will V3 „edler, hochwertiger“: Landing Page ohne Essensfoto/nicht überladen mit Essen („wirkt billig“); Essen nur als einzelne edle Teller. Storyboards DSSB-4/5/6 gestartet.
+- 21.11.2026: Eugen wählt V3 „Schwarzer Samt“ (Storyboard konzepte/5-schwarzer-samt.jpg). Gebaut und live (Tag v3-2026-11-21). V2 bleibt als Tag v2-2026-11-21 abrufbar.
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO
