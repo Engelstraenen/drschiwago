@@ -1,50 +1,71 @@
 #!/usr/bin/env python3
-"""4K-Motive -> WebP für die Seite + assets/js/img.js.
+"""Motive + echte Fotos -> WebP für die Seite + assets/js/img.js.
 
-Quelle: Dropbox /CLAUDE/Content/DRSCHIWAGO/motive/DSM-xx.(jpg|png)
-Ziel:   site/assets/img/<name>-l.webp (groß) und <name>-s.webp (Handy)
-Start:  python3 tools/assets.py
+Motive (4K, sjinn): Dropbox /CLAUDE/Content/DRSCHIWAGO/motive/DSM-xx.(jpg|png) -> <name>-l.webp (3840 / Hochformat 1800) + -s.webp (1800 / 900)
+Echte Fotos (alte Seite): Dropbox /CLAUDE/Content/DRSCHIWAGO/original-fotos -> nie hochskaliert, max. 1800 / 900
+Start: python3 tools/assets.py
 """
+import glob
 import json
 import os
 import time
 from PIL import Image
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.expanduser("~/Library/CloudStorage/Dropbox-FAVELAClothing/CLAUDE/Content/DRSCHIWAGO/motive")
+BASE = os.path.expanduser("~/Library/CloudStorage/Dropbox-FAVELAClothing/CLAUDE/Content/DRSCHIWAGO")
 OUT = os.path.join(HERE, "site", "assets", "img")
 JS = os.path.join(HERE, "site", "assets", "js", "img.js")
 
-MAP = {
-    "DSM-01": "hero", "DSM-01m": "hero-m", "DSM-02": "saal-abend", "DSM-03": "saal-nacht", "DSM-04": "garten",
+MOTIVE = {
+    "DSM-01": "kronleuchter", "DSM-01m": "kronleuchter-m",
+    "DSM-02": "saal-abend", "DSM-02T": "saal-tag", "DSM-03": "saal-nacht", "DSM-04": "terrasse",
     "DSM-05a": "bar-terrasse", "DSM-05b": "bar-saal", "DSM-05c": "bar-karaoke",
     "DSM-06": "mikro", "DSM-07": "textur",
-    "DSM-08a": "dress-manschette", "DSM-08b": "dress-schuhe", "DSM-08c": "dress-glaeser",
+    "DSM-08d": "dress-herr", "DSM-08e": "dress-dame", "DSM-08f": "dress-schuhe",
+    "DSM-10": "essen", "DSM-10m": "essen-m",
+    "DSM-11a": "gericht-schaschlik", "DSM-11b": "gericht-piroschki", "DSM-11c": "gericht-canapes",
+    "DSM-11d": "gericht-hering", "DSM-11e": "gericht-plov", "DSM-11f": "gericht-napoleon",
+    "DSM-12": "catering",
 }
+FOTOS = {f"buffet-{i}": f"foto-buffet-{i}" for i in range(1, 8)}
+FOTOS.update({"karussell_buffet-01": "foto-salat", "karussell_buffet-03": "foto-canapes", "karussell_cocktail-1": "foto-cocktail-1", "karussell_cocktail-3": "foto-cocktail-3"})
 
 os.makedirs(OUT, exist_ok=True)
 stamp = str(int(time.time()))
 data = {}
-for sid, name in MAP.items():
-    src = next((os.path.join(SRC, sid + e) for e in (".jpg", ".png") if os.path.exists(os.path.join(SRC, sid + e))), None)
-    if not src:
-        continue
+
+
+def build(src, name, big, small):
     im = Image.open(src).convert("RGB")
     w, h = im.size
-    landscape = w >= h
-    big = 3840 if landscape else 1800   # Breite
-    small = 1800 if landscape else 900
     entry = {"w": w, "h": h}
     for tag, tw in (("l", big), ("s", small)):
-        tw = min(tw, w)
+        tw = min(tw, w)  # nie hochskalieren
         th = round(h * tw / w)
         path = os.path.join(OUT, f"{name}-{tag}.webp")
         im.resize((tw, th), Image.LANCZOS).save(path, "WEBP", quality=80 if tag == "l" else 76, method=6)
         entry[tag] = f"assets/img/{name}-{tag}.webp?v={stamp}"
         entry[tag + "w"] = tw
-        print(f"{name}-{tag}.webp {tw}x{th} {os.path.getsize(path)//1024} KB")
+    print(f"{name}: {entry['lw']}/{entry['sw']} px")
     data[name] = entry
+
+
+for sid, name in MOTIVE.items():
+    src = next((os.path.join(BASE, "motive", sid + e) for e in (".jpg", ".png") if os.path.exists(os.path.join(BASE, "motive", sid + e))), None)
+    if src:
+        w, h = Image.open(src).size
+        build(src, name, 3840 if w >= h else 1800, 1800 if w >= h else 900)
+for sid, name in FOTOS.items():
+    src = os.path.join(BASE, "original-fotos", sid + ".jpg")
+    if os.path.exists(src):
+        build(src, name, 1800, 900)
+
+# alte, nicht mehr genutzte WebP entfernen (nur erzeugte Dateien)
+for f in glob.glob(os.path.join(OUT, "*-[ls].webp")):
+    if os.path.basename(f).rsplit("-", 1)[0] not in data:
+        os.remove(f)
+        print("entfernt:", os.path.basename(f))
 
 with open(JS, "w") as f:
     f.write("window.IMG = " + json.dumps(data, indent=1) + ";\n")
-print("img.js:", ", ".join(data))
+print("img.js:", len(data), "Bilder")

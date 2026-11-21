@@ -3,94 +3,176 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dr. Schiwago Duisburg · Buffet, Bars und Karaoke jeden Samstag</title>
-<meta name="description" content="Jeden Samstag ab 18 Uhr in Duisburg: Buffet mit über 50 Gerichten, drei Bars, beheizte Terrasse, ab 22 Uhr DJ und Karaoke.">
+<title>Dr. Schiwago Duisburg · Restaurant mit Buffet, Bars und Karaoke</title>
+<meta name="description" content="Russisches, georgisches und armenisches Restaurant in Duisburg: jeden Samstag ab 18 Uhr Buffet mit über 50 Gerichten, drei Bars, beheizte Terrasse, ab 22 Uhr DJ und Karaoke. Catering und private Feiern.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#060504">
+<link rel="icon" href="https://drschiwago.de/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Prata&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/img.js"></script>
+<script>window.DRS_IG_FEED = ""; /* Behold-JSON-Link eintragen = neue Instagram-Videos erscheinen automatisch */</script>
 </head>
 <body>
 
 <header class="nav" id="nav">
-  <a class="nav__mark" href="#top" aria-label="Dr. Schiwago, nach oben"><span class="gold">DR. SCHIWAGO</span></a>
+  <a class="nav__mark" href="#top" aria-label="Dr. Schiwago, nach oben"><img src="assets/img/logo-gold.svg" alt="Dr. Schiwago" width="96" height="58"></a>
   <nav class="nav__links" aria-label="Hauptmenü">
-    <a href="#location">Location</a>
+    <a href="#buffet">Buffet</a>
     <a href="#abend">Der Abend</a>
-    <a href="#bars">Bars</a>
-    <a href="#karaoke">Karaoke</a>
-    <a href="#mehr">Feiern</a>
+    <a href="#bars">Bars &amp; Terrasse</a>
+    <a href="#feiern">Feiern</a>
+    <a href="catering.html">Catering</a>
+    <a href="#instagram">Instagram</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
-  <a class="btn btn--ghost nav__cta" href="#reservieren">Reservieren</a>
+  <a class="btn btn--gold nav__cta" href="#reservieren">Tisch reservieren</a>
   <button class="nav__burger" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
 </header>
 
 <main id="top">
 
-  <!-- 1 · HERO -->
-  <section class="hero" id="hero" data-need="hero">
-    <img class="hero__img" data-img="hero" alt="Kristallkronleuchter im dunklen Saal, gespiegelt im schwarzen Boden">
-    <div class="hero__glow" aria-hidden="true"></div>
+  <!-- HERO: das Buffet -->
+  <section class="hero" id="hero" data-need="essen">
+    <img class="hero__img" data-img="essen" alt="Das Samstagsbuffet von Dr. Schiwago im warmen Licht">
+    <div class="hero__shade" aria-hidden="true"></div>
     <canvas class="sparks" data-sparks="hero" aria-hidden="true"></canvas>
     <div class="hero__text">
-      <h1 class="hero__title gold">DR. SCHIWAGO</h1>
-      <p class="hero__sub">Jeden Samstag ab 18 Uhr</p>
-      <a class="btn btn--ghost" href="#reservieren">Tisch reservieren</a>
+      <img class="hero__logo" src="assets/img/logo-gold.svg" alt="Dr. Schiwago · Restaurant, Bar, Lounge" width="300" height="182">
+      <h1 class="hero__title"><span class="gold">Über 50 Gerichte.</span><span class="gold">Jeden Samstag.</span></h1>
+      <p class="hero__sub">Russische, georgische und armenische Küche<br>Buffet ab 18 Uhr · DJ und Karaoke ab 22 Uhr</p>
+      <div class="hero__btns">
+        <a class="btn btn--gold" href="#reservieren">Tisch reservieren</a>
+        <a class="btn btn--ghost" href="#buffet">Zum Buffet</a>
+      </div>
     </div>
     <div class="scrollhint" aria-hidden="true"><span></span></div>
   </section>
 
-  <!-- 2 · SPOTLIGHT -->
-  <section class="spot" id="location" data-need="saal-abend">
-    <div class="spot__stage">
-      <img class="spot__img" data-img="saal-abend" alt="Der eingedeckte Saal mit beleuchteter Onyxwand">
-      <div class="spot__dark" aria-hidden="true"></div>
-      <div class="spot__ring" aria-hidden="true"></div>
-      <div class="spot__text">
-        <h2 class="h2 gold">Die Location entdecken</h2>
-        <p class="spot__hint"><span class="hint-mouse">Mit der Maus durch den Saal leuchten</span><span class="hint-touch">Mit dem Finger durch den Saal leuchten</span></p>
+  <!-- BUFFET: Scrollytelling -->
+  <section class="feast" id="buffet" aria-label="Das Buffet">
+    <div class="feast__stage">
+      <div class="feast__scenes">
+        <figure class="feast__scene" data-need="gericht-schaschlik"><img data-img="gericht-schaschlik" alt="Schaschlik am Spieß über glühender Holzkohle"></figure>
+        <figure class="feast__scene" data-need="gericht-piroschki"><img data-img="gericht-piroschki" alt="Ofenfrische Piroschki, eine aufgebrochen"></figure>
+        <figure class="feast__scene" data-need="gericht-canapes"><img data-img="gericht-canapes" alt="Canapés mit Garnelen, Oliven und rotem Kaviar"></figure>
+        <figure class="feast__scene" data-need="gericht-hering"><img data-img="gericht-hering" alt="Hering im Pelzmantel, angeschnitten"></figure>
+        <figure class="feast__scene" data-need="gericht-plov"><img data-img="gericht-plov" alt="Plov im gusseisernen Kasan"></figure>
+        <figure class="feast__scene" data-need="gericht-napoleon"><img data-img="gericht-napoleon" alt="Napoleon-Torte und Medovik"></figure>
+      </div>
+      <div class="feast__shade" aria-hidden="true"></div>
+      <div class="feast__intro" aria-hidden="true">
+        <span class="feast__count gold"><b data-count>0</b>+</span>
+        <span class="feast__word">Gerichte am Buffet. Russisch, georgisch, armenisch.</span>
+      </div>
+      <div class="feast__texts">
+        <article class="feast__text"><p class="eyebrow">01 · Georgisch &amp; armenisch · Holzkohlengrill</p><h2 class="h2 gold">Schaschlik</h2><p>Schwein, Hähnchen und Lule Kebab vom Lamm, nach kaukasischer Art über echter Glut gegrillt.</p></article>
+        <article class="feast__text"><p class="eyebrow">02 · Russisch · ofenfrisch</p><h2 class="h2 gold">Piroschki</h2><p>Mit Fleisch, Kartoffel und Pilzen, Weißkohl oder Ei und Frühlingszwiebeln. Warm aus dem Ofen.</p></article>
+        <article class="feast__text"><p class="eyebrow">03 · Kalte Vorspeisen</p><h2 class="h2 gold">Canapés</h2><p>Mit rotem Kaviar, Garnelen und Kräutern. Dazu Fleisch- und Fischplatten, Vitello Tonnato und Pastrami.</p></article>
+        <article class="feast__text"><p class="eyebrow">04 · Russischer Klassiker</p><h2 class="h2 gold">Hering im Pelzmantel</h2><p>Der Klassiker in Schichten aus Matjes, Kartoffeln und Roter Bete. Daneben Olivier, Granatapfelring und Mimosa.</p></article>
+        <article class="feast__text"><p class="eyebrow">05 · Aus dem Kasan</p><h2 class="h2 gold">Plov</h2><p>Zartes Fleisch, Möhren und aromatisch gewürzter Reis. Dazu Boeuf Stroganoff und Golubzi.</p></article>
+        <article class="feast__text"><p class="eyebrow">06 · Russisch · hausgemacht</p><h2 class="h2 gold">Napoleon-Torte</h2><p>Hauchdünne Blätterteigschichten mit Vanillecreme, daneben Medovik, der Honigkuchen.</p></article>
+      </div>
+      <nav class="feast__nav" aria-label="Gerichte">
+        <button><i></i><span>Schaschlik</span></button>
+        <button><i></i><span>Piroschki</span></button>
+        <button><i></i><span>Canapés</span></button>
+        <button><i></i><span>Hering</span></button>
+        <button><i></i><span>Plov</span></button>
+        <button><i></i><span>Napoleon</span></button>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ECHTE FOTOS: horizontale Fahrt -->
+  <section class="reel" id="fotos" aria-label="Fotos vom Buffet">
+    <div class="reel__stage">
+      <div class="reel__head">
+        <p class="eyebrow">Frisch vom Buffet</p>
+        <h2 class="h2 gold">So sieht der Samstag aus.</h2>
+        <p class="reel__hint">Echte Fotos aus unserer Küche und von der Bar. Antippen zum Vergrößern.</p>
+      </div>
+      <div class="reel__track">
+        <figure class="reel__card" data-need="foto-buffet-2"><img data-img="foto-buffet-2" alt="Das Buffet mit Platten, Salaten und Canapés"><figcaption>Das ganze Buffet</figcaption></figure>
+        <figure class="reel__card" data-need="foto-buffet-5"><img data-img="foto-buffet-5" alt="Gegrillter Fisch und Calamari"><figcaption>Fisch und Calamari</figcaption></figure>
+        <figure class="reel__card reel__card--tall" data-need="foto-canapes"><img data-img="foto-canapes" alt="Canapés mit Garnelen, Oliven und Kaviar"><figcaption>Canapés</figcaption></figure>
+        <figure class="reel__card" data-need="foto-buffet-3"><img data-img="foto-buffet-3" alt="Räucherlachs und Vorspeisen"><figcaption>Räucherlachs</figcaption></figure>
+        <figure class="reel__card" data-need="foto-buffet-4"><img data-img="foto-buffet-4" alt="Auberginenröllchen und Grillgerichte"><figcaption>Auberginenröllchen</figcaption></figure>
+        <figure class="reel__card reel__card--tall" data-need="foto-salat"><img data-img="foto-salat" alt="Geschichteter Festtagssalat"><figcaption>Festtagssalat</figcaption></figure>
+        <figure class="reel__card" data-need="foto-buffet-1"><img data-img="foto-buffet-1" alt="Hausgemachte Röllchen und Roulade"><figcaption>Hausgemachte Röllchen</figcaption></figure>
+        <figure class="reel__card" data-need="foto-buffet-7"><img data-img="foto-buffet-7" alt="Salate und Vorspeisen"><figcaption>Salate</figcaption></figure>
+        <figure class="reel__card" data-need="foto-buffet-6"><img data-img="foto-buffet-6" alt="Calamari und Canapés"><figcaption>Vorspeisen</figcaption></figure>
+        <figure class="reel__card reel__card--tall" data-need="foto-cocktail-1"><img data-img="foto-cocktail-1" alt="Cocktail an der Bar"><figcaption>Cocktails</figcaption></figure>
+        <figure class="reel__card reel__card--tall" data-need="foto-cocktail-3"><img data-img="foto-cocktail-3" alt="Cocktail an der Karaoke Bar"><figcaption>Karaoke Bar</figcaption></figure>
+        <a class="reel__more" href="catering.html"><span class="gold">61 Gerichte für Ihre Feier</span><em>Zum Catering-Menü</em></a>
       </div>
     </div>
   </section>
 
-  <!-- 3 · ABEND / NACHT -->
-  <section class="split" id="abend" data-need="saal-nacht">
-    <div class="split__stage">
-      <img class="split__img split__img--night" data-img="saal-nacht" alt="Der Saal in der Nacht mit violettem Partylicht">
-      <div class="split__day"><img class="split__img" data-img="saal-abend" alt="Der Saal am Abend im warmen Licht"></div>
-      <div class="split__line" aria-hidden="true"></div>
-      <button class="split__knob" aria-label="Abend und Nacht vergleichen, ziehen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" /></svg></button>
-      <div class="split__label split__label--l"><span class="h2 gold">Abend</span><small>Buffet ab 18 Uhr</small></div>
-      <div class="split__label split__label--r"><span class="h2 gold">Nacht</span><small>DJ und Karaoke ab 22 Uhr</small></div>
+  <!-- INSTAGRAM -->
+  <section class="insta" id="instagram">
+    <div class="insta__head">
+      <p class="eyebrow">Instagram · 17.500 Follower</p>
+      <h2 class="h2 gold">Frisch aus der Küche.</h2>
+      <p>Jede Woche neue Videos vom Buffet, vom Grill und von der Bar.</p>
+      <a class="btn btn--gold" href="https://www.instagram.com/dr.schiwago_restaurant/" target="_blank" rel="noopener">@dr.schiwago_restaurant folgen</a>
+    </div>
+    <div class="insta__row" data-ig-row>
+      <blockquote class="instagram-media insta__item" data-instgrm-permalink="https://www.instagram.com/reel/DbDM932o5vt/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DbDM932o5vt/" target="_blank" rel="noopener">Video auf Instagram ansehen</a></blockquote>
+      <blockquote class="instagram-media insta__item" data-instgrm-permalink="https://www.instagram.com/reel/DWoZy84CHjo/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DWoZy84CHjo/" target="_blank" rel="noopener">Video auf Instagram ansehen</a></blockquote>
+      <blockquote class="instagram-media insta__item" data-instgrm-permalink="https://www.instagram.com/reel/DZZbvXZoxPY/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DZZbvXZoxPY/" target="_blank" rel="noopener">Video auf Instagram ansehen</a></blockquote>
+      <blockquote class="instagram-media insta__item" data-instgrm-permalink="https://www.instagram.com/reel/DZE330GoI4Y/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DZE330GoI4Y/" target="_blank" rel="noopener">Video auf Instagram ansehen</a></blockquote>
+      <blockquote class="instagram-media insta__item" data-instgrm-permalink="https://www.instagram.com/reel/DUx4AXRCND5/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DUx4AXRCND5/" target="_blank" rel="noopener">Video auf Instagram ansehen</a></blockquote>
+      <blockquote class="instagram-media insta__item" data-instgrm-permalink="https://www.instagram.com/reel/DN6L8hNCDTe/" data-instgrm-version="14"><a href="https://www.instagram.com/reel/DN6L8hNCDTe/" target="_blank" rel="noopener">Video auf Instagram ansehen</a></blockquote>
     </div>
   </section>
 
-  <!-- Ablauf -->
+  <!-- ZAHLEN -->
+  <section class="stats" aria-label="Dr. Schiwago in Zahlen">
+    <div class="stat reveal"><b class="gold" data-to="50" data-suffix="+">0</b><span>Gerichte am Buffet</span></div>
+    <div class="stat reveal"><b class="gold" data-to="3">0</b><span>Bars im Haus</span></div>
+    <div class="stat reveal"><b class="gold" data-to="200">0</b><span>Gäste im Saal</span></div>
+    <div class="stat reveal"><b class="gold" data-to="50000" data-suffix="+">0</b><span>Gäste bewirtet</span></div>
+  </section>
+
+  <!-- TAG / NACHT -->
+  <section class="split" id="abend" data-need="saal-nacht">
+    <div class="split__stage">
+      <img class="split__img split__img--night" data-img="saal-nacht" alt="Der Saal in der Nacht mit violettem Partylicht">
+      <div class="split__day"><img class="split__img" data-img="saal-tag" alt="Der Saal bei Tag, hell und eingedeckt"></div>
+      <div class="split__line" aria-hidden="true"></div>
+      <button class="split__knob" aria-label="Tag und Nacht vergleichen, ziehen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" /></svg></button>
+      <div class="split__label split__label--l"><span class="h2 gold">Tag</span><small>Ab 18 Uhr Buffet im Saal</small></div>
+      <div class="split__label split__label--r"><span class="h2 gold">Nacht</span><small>Ab 22 Uhr DJ und Karaoke</small></div>
+      <p class="split__hint">Regler ziehen</p>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
   <section class="flow" aria-label="So läuft der Abend">
     <p class="eyebrow">So läuft der Samstag</p>
+    <h2 class="h2 gold">Ein Abend, der sich verwandelt.</h2>
     <ol class="flow__list">
-      <li class="reveal"><b class="flow__time gold">18:00</b><h3>Das Buffet ist eröffnet</h3><p>Über 50 Gerichte aus osteuropäischer, kaukasischer und internationaler Küche. Wöchentlich wechselnd, im Buffetpreis enthalten.</p></li>
-      <li class="reveal"><b class="flow__time gold">20:00</b><h3>Bars und Terrasse</h3><p>Die Terrasse ist überdacht und beheizt, an drei Bars wird eingeschenkt, im Garten warten die Fotozonen.</p></li>
+      <li class="reveal"><b class="flow__time gold">18:00</b><h3>Das Buffet ist eröffnet</h3><p>Russische, georgische und armenische Küche. Kalte Vorspeisen im Hauptsaal, warme Gerichte nebenan, nachgelegt bis 22 Uhr.</p></li>
+      <li class="reveal"><b class="flow__time gold">20:00</b><h3>Bars und Terrasse</h3><p>Drei Bars schenken ein, draußen wartet die überdachte, beheizte Terrasse.</p></li>
       <li class="reveal"><b class="flow__time gold">22:00</b><h3>Licht runter</h3><p>Der DJ übernimmt den Saal, im MIRRORS greift der Erste zum Mikrofon.</p></li>
       <li class="reveal"><b class="flow__time gold">02:00</b><h3>Der Ausklang</h3><p>Letzte Runde an den Bars. Und nächsten Samstag wieder.</p></li>
     </ol>
   </section>
 
-  <!-- 4 · GARTEN (Titel folgt Eugens Wahl) -->
-  <section class="garden" id="garten" data-need="garten">
-    <img class="garden__img" data-img="garten" alt="Die goldene Gorilla-Statue im Blumengarten bei Nacht">
+  <!-- TERRASSE -->
+  <section class="garden" id="terrasse" data-need="terrasse">
+    <img class="garden__img" data-img="terrasse" alt="Die überdachte Terrasse am Abend mit warmem Licht">
     <canvas class="sparks sparks--dust" data-sparks="dust" aria-hidden="true"></canvas>
     <div class="garden__text">
-      <h2 class="h2 gold" data-garden-title>Garten &amp; Terrasse</h2>
-      <p>Überdachte, beheizte Terrasse mit Shisha, daneben der Garten mit Fotozonen. Bei warmen Temperaturen läuft dort der Live Grill.</p>
+      <h2 class="h2 gold">Die Terrasse</h2>
+      <p>Überdacht und beheizt. In der warmen Jahreszeit mit Shisha, bei Wärme läuft dort der Live Grill.</p>
     </div>
   </section>
 
-  <!-- 5 · DREI BARS -->
+  <!-- DREI BARS -->
   <section class="bars" id="bars">
     <h2 class="h2 gold bars__title">Drei Bars</h2>
     <div class="bars__row">
@@ -100,7 +182,7 @@
     </div>
   </section>
 
-  <!-- 6 · KARAOKE -->
+  <!-- KARAOKE -->
   <section class="karaoke" id="karaoke" data-need="mikro">
     <img class="karaoke__img" data-img="mikro" alt="Mikrofon vor bunten Lichtern im Karaoke Raum">
     <svg class="lyrics" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -121,7 +203,66 @@
     </div>
   </section>
 
-  <!-- 7 · STIMMEN -->
+  <!-- FEIERN / EVENTLOCATION -->
+  <section class="events" id="feiern">
+    <div class="events__head">
+      <p class="eyebrow">Eventlocation mieten</p>
+      <h2 class="h2 gold">Ihr Fest. Unser Haus.</h2>
+      <p>Samstags gehört das Haus dem Schiwago Abend. An allen anderen Tagen mieten Sie Saal, Lounge und Terrasse exklusiv für Ihre Feier, mit unserer Küche.</p>
+    </div>
+    <div class="events__body">
+      <div class="events__list" role="tablist" aria-label="Anlass wählen">
+        <button class="ev is-on" role="tab" aria-selected="true" data-ev="0"><span>Hochzeiten</span><i aria-hidden="true">→</i></button>
+        <button class="ev" role="tab" aria-selected="false" data-ev="1"><span>Geburtstage &amp; Jubiläen</span><i aria-hidden="true">→</i></button>
+        <button class="ev" role="tab" aria-selected="false" data-ev="2"><span>Firmen- &amp; Weihnachtsfeiern</span><i aria-hidden="true">→</i></button>
+        <button class="ev" role="tab" aria-selected="false" data-ev="3"><span>Taufe, Verlobung, Familienfest</span><i aria-hidden="true">→</i></button>
+      </div>
+      <div class="events__stage">
+        <figure class="evp is-on" data-need="catering"><img data-img="catering" alt="Festlich gedecktes Hochzeitsbuffet"></figure>
+        <figure class="evp" data-need="saal-abend"><img data-img="saal-abend" alt="Der eingedeckte Saal mit Onyxwand"></figure>
+        <figure class="evp" data-need="bar-saal"><img data-img="bar-saal" alt="Die Saalbar"></figure>
+        <figure class="evp" data-need="saal-tag"><img data-img="saal-tag" alt="Der helle Saal bei Tag"></figure>
+        <div class="events__copy" aria-live="polite">
+          <h3 class="gold" data-ev-title>Hochzeiten</h3>
+          <p data-ev-text>Vom Sektempfang in der Lounge bis zur Tanzfläche im großen Saal, mit bis zu 200 Gästen.</p>
+          <a class="btn btn--gold" data-ev-link href="https://www.angerhof-duisburg.de/angebot?anlass=Hochzeit" target="_blank" rel="noopener">Angebot in 60 Sekunden</a>
+        </div>
+      </div>
+    </div>
+    <div class="events__facts">
+      <div class="reveal"><b class="gold">200</b><span>Gäste</span></div>
+      <div class="reveal"><b class="gold">2</b><span>Säle</span></div>
+      <div class="reveal"><b class="gold">1</b><span>Lounge mit Bar</span></div>
+      <div class="reveal"><b class="gold">150 m²</b><span>Terrasse</span></div>
+    </div>
+    <div class="bday reveal">
+      <div>
+        <p class="eyebrow">Geburtstagsspecial am Samstag</p>
+        <h3 class="gold">Sie haben Geburtstag?</h3>
+        <p>Fällt Ihr Geburtstag in die Woche vom Samstag, geht ein Teil des Abends aufs Haus.</p>
+      </div>
+      <ul class="tiers">
+        <li><b>ab 10</b><span>Personen</span><em>1 Flasche Prosecco</em></li>
+        <li><b>ab 15</b><span>Personen</span><em>1 Flasche Vodka 0,5 l</em></li>
+        <li><b>ab 20</b><span>Personen</span><em>2 Flaschen Prosecco</em></li>
+      </ul>
+      <p class="fine">Nur mit Buffetbuchung bis 22 Uhr, für registrierte Nutzer der Dr. Schiwago App. Bitte an der Kasse mit Ausweis melden. Keine Auszahlung.</p>
+    </div>
+  </section>
+
+  <!-- CATERING -->
+  <section class="cater" id="catering" data-need="catering">
+    <img class="cater__img" data-img="catering" alt="Festliches Buffet für eine Feier">
+    <div class="cater__text">
+      <p class="eyebrow">Catering von Dr. Schiwago</p>
+      <h2 class="h2 gold">Das Buffet kommt zu Ihnen.</h2>
+      <p>Das Festliche Buffet für Hochzeiten, Geburtstage und Jubiläen. Sie wählen Ihre Favoriten aus fünf Gängen, wir kochen.</p>
+      <div class="cater__nums"><span><b class="gold" data-to="61">0</b>Gerichte</span><span><b class="gold" data-to="5">0</b>Gänge</span><span><b class="gold" data-to="19">0</b>Favoriten</span></div>
+      <a class="btn btn--gold" href="catering.html">Buffet zusammenstellen</a>
+    </div>
+  </section>
+
+  <!-- STIMMEN -->
   <section class="voices" id="stimmen">
     <img class="voices__tex" data-img="textur" alt="" aria-hidden="true">
     <div class="voices__inner">
@@ -140,15 +281,16 @@
     </div>
   </section>
 
-  <!-- 8 · ABENDGARDEROBE + RESERVIERUNG -->
+  <!-- DRESSCODE + RESERVIERUNG -->
   <section class="dress" id="reservieren">
     <div class="dress__grid">
-      <figure class="dress__a" data-need="dress-manschette"><img data-img="dress-manschette" alt="Manschettenknopf am Hemd unter dem dunklen Anzug"></figure>
-      <figure class="dress__b" data-need="dress-schuhe"><img data-img="dress-schuhe" alt="Polierte schwarze Lederschuhe"></figure>
-      <figure class="dress__c" data-need="dress-glaeser"><img data-img="dress-glaeser" alt="Zwei Gläser mit Sekt an der Bar"></figure>
+      <figure class="dress__a" data-need="dress-dame"><img data-img="dress-dame" alt="Schwarzes Satinkleid mit Goldschmuck"></figure>
+      <figure class="dress__b" data-need="dress-herr"><img data-img="dress-herr" alt="Schwarzes Strickpolo mit Goldkette und Stoffhose"></figure>
+      <figure class="dress__c" data-need="dress-schuhe"><img data-img="dress-schuhe" alt="Chelsea Boots und Riemchen-Heels"></figure>
       <div class="dress__head">
-        <h2 class="h2 gold">Abendgarderobe.</h2>
-        <p>Unser Dresscode. Sportkleidung, Caps, Mützen und Freizeit-Outfits passen nicht zum Abend.</p>
+        <p class="eyebrow">Dresscode</p>
+        <h2 class="h2 gold">Schick. Nicht sportlich.</h2>
+        <p>Komm stylisch. Keine Sportkleidung, keine Caps und Mützen, keine Jogginghosen.</p>
       </div>
       <form class="resv" id="resv" novalidate>
         <h3 class="resv__title gold">Reservierung</h3>
@@ -165,61 +307,52 @@
     </div>
   </section>
 
-  <!-- MEHR: Geburtstag, Catering, Angerhof -->
-  <section class="more" id="mehr">
-    <p class="eyebrow">Feiern bei uns</p>
-    <div class="more__grid">
-      <article class="card reveal">
-        <h3 class="gold">Sie haben Geburtstag?</h3>
-        <p>Fällt Ihr Geburtstag in die Woche vom Samstag, geht ein Teil des Abends aufs Haus.</p>
-        <ul class="tiers">
-          <li><b>ab 10</b><span>Personen</span><em>1 Flasche Prosecco</em></li>
-          <li><b>ab 15</b><span>Personen</span><em>1 Flasche Vodka 0,5 l</em></li>
-          <li><b>ab 20</b><span>Personen</span><em>2 Flaschen Prosecco</em></li>
-        </ul>
-        <p class="fine">Nur mit Buffetbuchung bis 22 Uhr, für registrierte Nutzer der Dr. Schiwago App. Bitte an der Kasse mit Ausweis melden. Keine Auszahlung.</p>
-      </article>
-      <article class="card reveal">
-        <h3 class="gold">Catering</h3>
-        <p>Die Küche des Samstagabends kommt zu Ihnen: das Festliche Buffet mit 61 Gerichten in fünf Gängen. Vom Schaschlik vom Holzkohlengrill bis zur Napoleon-Torte, für Geburtstage, Hochzeiten und Firmenfeiern.</p>
-        <div class="card__btns"><a class="btn btn--ghost" href="https://drschiwago.de/catering" target="_blank" rel="noopener">Menü ansehen</a><a class="btn btn--ghost" href="tel:+4920393577235">Anrufen</a></div>
-      </article>
-      <article class="card reveal">
-        <h3 class="gold">Private Feiern</h3>
-        <p>Bis zu 200 Gäste im Saal. An allen anderen Tagen ist dieselbe Location als Angerhof exklusiv für Hochzeiten, Jubiläen und Firmenfeiern buchbar.</p>
-        <div class="card__btns"><a class="btn btn--ghost" href="https://www.angerhof-duisburg.de/" target="_blank" rel="noopener">Zum Angerhof</a><a class="btn btn--ghost" href="mailto:info@drschiwago.de">E-Mail</a></div>
-      </article>
-    </div>
-  </section>
-
   <!-- FAQ -->
   <section class="faq" id="faq">
     <h2 class="h2 gold">Gut zu wissen</h2>
     <div class="faq__list">
       <details><summary>Wann hat Dr. Schiwago geöffnet?</summary><p>Jeden Samstag von 18 bis 02 Uhr. Düsseldorfer Landstraße 431, 47259 Duisburg, direkt an der Grenze zu Düsseldorf-Kaiserswerth.</p></details>
       <details><summary>Was kostet das Buffet?</summary><p>Die aktuellen Preise nennen wir Ihnen gern telefonisch unter 0203 93577235 oder bei der Reservierung. Getränke werden separat abgerechnet.</p></details>
-      <details><summary>Muss ich reservieren?</summary><p>Wir empfehlen es dringend, samstags sind die Plätze schnell vergeben. Telefonisch, per E-Mail oder online über Google.</p></details>
-      <details><summary>Was steht auf dem Buffet?</summary><p>Über 50 Gerichte: Schaschlik, Plov, Fisch- und Fleischgerichte, kalte Vorspeisen, Salate, hausgemachte Torten und Desserts. Die Auswahl wechselt wöchentlich, nachgelegt wird bis 22 Uhr.</p></details>
+      <details><summary>Muss ich reservieren?</summary><p>Wir empfehlen es dringend, samstags ist der Saal regelmäßig voll. Telefonisch, per E-Mail oder online über Google.</p></details>
+      <details><summary>Was steht auf dem Buffet?</summary><p>Über 50 Gerichte der russischen, georgischen und armenischen Küche: Schaschlik und Lule Kebab vom Holzkohlengrill, Plov, Fisch- und Fleischgerichte, kalte Vorspeisen, Salate, hausgemachte Torten und Desserts. Die Auswahl wechselt wöchentlich, nachgelegt wird bis 22 Uhr.</p></details>
       <details><summary>Kann ich das Essen auch am Tisch haben?</summary><p>Ja. Gegen einen kleinen Aufpreis pro Person servieren wir die Vorspeisen an den Tisch, auf Wunsch auch die Hauptgänge.</p></details>
-      <details><summary>Gibt es einen Dresscode?</summary><p>Ja, Abendgarderobe. Sportkleidung, Caps, Mützen und Freizeit-Outfits entsprechen nicht dem Dresscode.</p></details>
-      <details><summary>Kann man draußen sitzen und Shisha rauchen?</summary><p>Die Terrasse ist überdacht und beheizt. In der warmen Jahreszeit gibt es dort den ganzen Abend Shisha, ab Mitte Herbst pausiert sie.</p></details>
+      <details><summary>Gibt es einen Dresscode?</summary><p>Ja: schick, aber nicht sportlich. Sportkleidung, Caps, Mützen und Jogginghosen passen nicht zum Abend.</p></details>
+      <details><summary>Gibt es Karaoke?</summary><p>Ja, ab 22 Uhr im MIRRORS, mit eigener Karaoke Bar direkt daneben. Im Saal legt parallel der DJ auf.</p></details>
+      <details><summary>Kann man draußen sitzen und Shisha rauchen?</summary><p>Die Terrasse ist überdacht und beheizt. In der warmen Jahreszeit gibt es dort den ganzen Abend Shisha.</p></details>
+      <details><summary>Kann ich eine private Feier ausrichten?</summary><p>Ja, an allen Tagen außer samstags mieten Sie unser Haus exklusiv, mit bis zu 200 Gästen. Samstags planen wir Geburtstage, JGA und große Runden gern mitten im Schiwago Abend.</p></details>
+    </div>
+  </section>
+
+  <!-- SCHLUSS -->
+  <section class="final" data-need="kronleuchter">
+    <img class="final__img" data-img="kronleuchter" alt="Kristallkronleuchter im dunklen Saal">
+    <div class="final__text">
+      <h2 class="h2 gold">Bis Samstag.</h2>
+      <p>Reservieren Sie rechtzeitig. Der Saal ist regelmäßig voll.</p>
+      <a class="btn btn--gold" href="#reservieren">Tisch reservieren</a>
     </div>
   </section>
 
 </main>
 
 <footer class="foot" id="kontakt">
-  <div class="foot__mark gold">DR. SCHIWAGO</div>
+  <img class="foot__logo" src="assets/img/logo-gold.svg" alt="Dr. Schiwago" width="180" height="109">
   <div class="foot__cols">
     <div><h4>Adresse</h4><p>Düsseldorfer Landstraße 431<br>47259 Duisburg</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Dr.+Schiwago+D%C3%BCsseldorfer+Landstra%C3%9Fe+431+Duisburg" target="_blank" rel="noopener">Route planen</a></div>
     <div><h4>Öffnungszeiten</h4><p>Jeden Samstag<br>18 bis 02 Uhr</p></div>
     <div><h4>Kontakt</h4><p><a href="tel:+4920393577235">0203 93577235</a><br><a href="mailto:info@drschiwago.de">info@drschiwago.de</a></p></div>
-    <div><h4>Seit 1990</h4><p>Ihre Gastgeber in Duisburg.<br>35.000+ Gäste bewirtet.</p></div>
+    <div><h4>Folgen</h4><p><a href="https://www.instagram.com/dr.schiwago_restaurant/" target="_blank" rel="noopener">Instagram</a><br><a href="https://www.tiktok.com/@dr.schiwago_restaurant" target="_blank" rel="noopener">TikTok</a><br><a href="https://www.facebook.com/drschiwagoduisburg/" target="_blank" rel="noopener">Facebook</a></p></div>
   </div>
   <div class="foot__legal"><a href="https://drschiwago.de/impressum" target="_blank" rel="noopener">Impressum</a><a href="https://drschiwago.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a></div>
 </footer>
 
 <a class="sticky-cta btn btn--gold" href="#reservieren">Tisch reservieren</a>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="lightbox__x" aria-label="Schließen">×</button>
+  <img alt="">
+  <p class="lightbox__cap"></p>
+</div>
 
 <script src="assets/js/app.js"></script>
 </body>

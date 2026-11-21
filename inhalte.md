@@ -1,6 +1,7 @@
 # DR. SCHIWAGO – Inhalte (von drschiwago.de, Stand 20.11.2026)
 
 ## Kern
+- Küche: russisch, georgisch, armenisch (Eugen 21.11.2026)
 - Restaurant & Samstagabend-Location, Duisburg. Jeden Samstag 18–02 Uhr.
 - Düsseldorfer Landstraße 431, 47259 Duisburg (Grenze Düsseldorf-Kaiserswerth)
 - Tel. 0203 93577235 · info@drschiwago.de

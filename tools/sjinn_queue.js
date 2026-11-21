@@ -50,3 +50,26 @@ SB.run = async () => {
 };
 SB.harvest = () => { const out = {}; for (const j of SB.jobs) { const im = [...document.querySelectorAll('img')].find(i => i.alt && i.alt.trim().startsWith(j.id + ' ')); if (im && im.src.includes('/result/')) out[j.id] = im.src.split('?')[0]; } return out };
 'SB ready';
+
+// ---- V2 (20.11.2026): Schleife mit Lauf-Kennung. NIE zwei Schleifen gleichzeitig! ----
+// Alte Schleife hart beenden: const g0 = SB.gen; SB.gen = () => { throw 0 }; await sleep(7000); SB.gen = g0;
+// Dann: SB.queue = [jobs...]; SB.run2();  Status: SB.q
+SB.run2 = async () => {
+  const my = SB.runId = Date.now(); const ta = () => document.querySelector('textarea'); SB.q = { i: 0, msg: 'start' };
+  while (SB.q.i < SB.queue.length && SB.runId === my) {
+    let w = 0; while (SB.gen() >= SB.MAXC && w < 3600 && SB.runId === my) { await sleep(3000); w++; }
+    if (SB.runId !== my) return;
+    const j = SB.queue[SB.q.i];
+    if (!j.prepared) { await SB.clearRefs(); if (j.ref) { const r = await SB.setRef(j.ref); SB.log.push(j.id + ' ref ' + r); if (!/applied/.test(r)) { SB.q.msg = 'STOP ref ' + j.id; return; } } await SB.setAR(j.ar); await sleep(600); j.prepared = true; }
+    const bar = SB.bar();
+    if (!/Unlimited · On/.test(bar) || !/0 credits/.test(bar) || !bar.includes(j.ar)) { SB.q.msg = 'STOP ' + j.id + ': ' + bar; return; }
+    const g0 = SB.gen();
+    Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(ta(), j.prompt);
+    ta().dispatchEvent(new Event('input', { bubbles: true })); await sleep(900);
+    const gb = [...document.querySelectorAll('button')].find(b => b.innerText.trim() === 'Generate'); if (gb) gb.click(); await sleep(6000);
+    j.tries = (j.tries || 0) + 1;
+    if (SB.gen() > g0 || j.tries >= 2) { SB.q.i++; SB.q.msg = 'submitted ' + j.id; SB.log.push(j.id + ' submitted ' + new Date().toLocaleTimeString()); }
+    else { SB.log.push(j.id + ' no-start ' + j.tries); await sleep(60000); }
+  }
+  if (SB.runId === my) SB.q.msg = 'all submitted';
+};
