@@ -398,3 +398,51 @@ blockquote.insta__item a { color: var(--gold-1); font: 400 20px/1.3 var(--serif)
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Handy: Mindestschrift 14 px, Tipp-Flächen 44 px (Masterfile V2.25) */
+@media (max-width: 900px) {
+  .eyebrow { font-size: 14px; letter-spacing: .18em; }
+  .stat span, .events__facts span, .cater__nums span { font-size: 14px; letter-spacing: .12em; }
+  .split__label small, .bar figcaption, .resv label, .resv__alt, .bday .fine, .card .fine { font-size: 14px; }
+  .foot h4 { font-size: 14px; letter-spacing: .16em; }
+  .foot__legal a { font-size: 14px; display: inline-flex; align-items: center; min-height: 44px; }
+  .foot p a, .foot__cols > div > a { display: inline-flex; align-items: center; min-height: 44px; }
+  .split__hint { font-size: 14px; letter-spacing: .12em; }
+  .tiers { grid-template-columns: 1fr; gap: 8px; }
+  .tiers li { display: grid; grid-template-columns: auto 1fr; align-items: baseline; gap: 2px 12px; text-align: left; padding: 12px 14px; }
+  .tiers b { grid-row: 1 / 3; font-size: 28px; }
+  .tiers span { font-size: 14px; margin: 0; letter-spacing: .08em; }
+  .tiers em { font-size: 15px; }
+  .feast__nav button { min-height: 44px; }
+  .nav__burger { width: 44px; height: 44px; }
+  .nav__mark { min-height: 44px; display: flex; align-items: center; }
+  .reel__card figcaption { font-size: 17px; }
+  .quote__src { display: inline-flex; min-height: 44px; align-items: center; }
+}
+@media (max-width: 900px) {
+  .resv__alt a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+@media (max-width: 900px) {
+  .nav__cta { font-size: 14px; min-height: 44px; }
+  .feast__nav button { font-size: 14px; letter-spacing: .04em; }
+}
+/* Handy quer: wenig Höhe */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero__text { top: 64px; }
+  .hero__logo { width: 96px; margin-bottom: 6px; }
+  .hero__title { font-size: clamp(30px, 5vw, 46px); }
+  .hero__sub { margin: 8px 0 12px; font-size: 14px; }
+  .hero__sub br { display: none; }
+  .feast__text .h2 { font-size: clamp(34px, 5vw, 50px); margin: 6px 0 8px; }
+  .feast__texts { top: 54%; }
+  .feast__text p:last-child { font-size: 14px; max-width: 380px; }
+  .feast__count { font-size: 170px; }
+  .feast__nav { bottom: 10px; }
+  .reel__card, .reel__more { height: 56vh; }
+  .reel__head { margin-bottom: 10px; }
+  .reel__head .h2 { font-size: 30px; }
+  .split__label { bottom: 6vh; }
+  .split__label .h2 { font-size: 30px; }
+  .garden__text, .karaoke__text { top: 70px; }
+  .events__stage { min-height: 80vh; }
+}

@@ -149,3 +149,15 @@
   .gal__item figcaption { opacity: 1; transform: none; font-size: 15px; padding: 30px 10px 8px; }
   .foot { padding-bottom: 120px; }
 }
+
+/* Handy: Mindestschrift 14 px, Tipp-Flächen 44 px */
+@media (max-width: 900px) {
+  .chero__nums span { font-size: 14px; letter-spacing: .08em; max-width: 120px; }
+  .course__count { font-size: 14px; }
+  .dish__txt em { font-size: 14px; }
+  .tray__info span { font-size: 14px; letter-spacing: .06em; }
+  .ask__note, .field { font-size: 14px; }
+  .ask__grp h4 { font-size: 14px; letter-spacing: .14em; }
+  .ask__grp li em { font-size: 14px; }
+  .course__full { font-size: 14px; }
+}
