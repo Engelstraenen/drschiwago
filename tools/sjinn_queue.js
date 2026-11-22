@@ -73,3 +73,5 @@ SB.run2 = async () => {
   }
   if (SB.runId === my) SB.q.msg = 'all submitted';
 };
+// Lektion 22.11.2026: Beim Austausch der Warteschlange kann die alte Schleife noch SB.q.i++ auf das NEUE q-Objekt machen
+// (erster neuer Job wird übersprungen). Nach SB.runId = 0 mind. 7 s warten, dann SB.q neu setzen, oder SB.q.i prüfen/zurücksetzen.

@@ -61,7 +61,8 @@
       </div>
       <div class="feast__shade" aria-hidden="true"></div>
       <div class="feast__intro" aria-hidden="true">
-        <div class="feast__names"><ul><li>Schaschlik vom Holzkohlengrill</li><li>Olivier</li><li>Boeuf Stroganoff</li><li>Mimosa</li><li>Medovik</li><li>Pastrami</li><li>Auberginenröllchen</li><li>Zanderfilet</li><li>Rosmarinkartoffeln</li><li>Panna Cotta</li><li>Zucchiniröllchen</li><li>Schaschlik vom Holzkohlengrill</li><li>Olivier</li><li>Boeuf Stroganoff</li><li>Mimosa</li><li>Medovik</li><li>Pastrami</li><li>Auberginenröllchen</li><li>Zanderfilet</li><li>Rosmarinkartoffeln</li><li>Panna Cotta</li><li>Zucchiniröllchen</li></ul><ul><li>Lule Kebab vom Lamm</li><li>Plov</li><li>Canapés mit rotem Kaviar</li><li>Vinaigrette</li><li>Hähnchenschaschlik</li><li>Vitello Tonnato</li><li>Hähnchensülze</li><li>Crêpe-Röllchen mit Lachs</li><li>Kartoffelgratin mit Trüffel</li><li>Mousse au Chocolat</li><li>Lachsfilet</li><li>Lule Kebab vom Lamm</li><li>Plov</li><li>Canapés mit rotem Kaviar</li><li>Vinaigrette</li><li>Hähnchenschaschlik</li><li>Vitello Tonnato</li><li>Hähnchensülze</li><li>Crêpe-Röllchen mit Lachs</li><li>Kartoffelgratin mit Trüffel</li><li>Mousse au Chocolat</li><li>Lachsfilet</li></ul><ul><li>Hering im Pelzmantel</li><li>Golubzi</li><li>Granatapfelring</li><li>Napoleon-Torte</li><li>Gegrillte Forelle</li><li>Edle Fischvariation</li><li>Aromatischer Buchweizen</li><li>Bratkartoffeltaler mit Matjes</li><li>Mediterranes Grillgemüse</li><li>Fleischplatte</li><li>Hering im Pelzmantel</li><li>Golubzi</li><li>Granatapfelring</li><li>Napoleon-Torte</li><li>Gegrillte Forelle</li><li>Edle Fischvariation</li><li>Aromatischer Buchweizen</li><li>Bratkartoffeltaler mit Matjes</li><li>Mediterranes Grillgemüse</li><li>Fleischplatte</li></ul></div>
+        <img class="feast__tafel" data-img="tafel" alt="">
+        <div class="feast__veil"></div>
         <div class="feast__head">
           <p class="eyebrow">Das Buffet</p>
           <p class="feast__big">Über 50 Gerichte.<br>Jeden Samstag.</p>
@@ -86,21 +87,27 @@
     <h2 class="title">Das Buffet</h2>
     <p class="sub">Über 50 Gerichte, jede Woche wechselnd. Nachgelegt wird bis 22 Uhr.</p>
     <div class="menu__grid">
-      <figure class="frame menu__pic menu__pic--l" data-need="gericht-schaschlik">
-        <img class="is-on" data-img="gericht-schaschlik" alt="Schaschlik" data-cat="0">
-        <img data-img="gericht-canapes" alt="Canapés" data-cat="1">
-        <img data-img="gericht-hering" alt="Hering im Pelzmantel" data-cat="2">
-        <img data-img="gericht-plov" alt="Plov" data-cat="3">
-        <img data-img="gericht-napoleon" alt="Napoleon-Torte" data-cat="4">
+      <figure class="frame menu__pic menu__pic--l" data-need="karte-grill">
+        <img class="is-on" data-img="karte-grill" alt="Lule Kebab vom Lamm" data-cat="0">
+        <img data-img="karte-vorspeisen" alt="Edle Fischvariation" data-cat="1">
+        <img data-img="karte-salate" alt="Granatapfelring" data-cat="2">
+        <img data-img="karte-haupt" alt="Golubzi" data-cat="3">
+        <img data-img="karte-dessert" alt="Medovik" data-cat="4">
       </figure>
       <ol class="menu__list">
-        <li data-cat="0"><h3>Vom Holzkohlengrill</h3><p>Schweineschaschlik · Hähnchenschaschlik · Lule Kebab vom Lamm</p></li>
-        <li data-cat="1"><h3>Kalte Vorspeisen</h3><p>Canapés mit rotem Kaviar · Fleisch- und Fischplatten · Vitello Tonnato</p></li>
-        <li data-cat="2"><h3>Salate</h3><p>Hering im Pelzmantel · Olivier · Granatapfelring · Mimosa</p></li>
-        <li data-cat="3"><h3>Hauptspeisen</h3><p>Plov · Boeuf Stroganoff · Golubzi</p></li>
-        <li data-cat="4"><h3>Desserts</h3><p>Napoleon-Torte · Medovik</p></li>
+        <li data-cat="0"><h3>Vom Holzkohlengrill</h3><p>Lule Kebab vom Lamm · Hähnchenschaschlik · Gegrillte Forelle</p></li>
+        <li data-cat="1"><h3>Kalte Vorspeisen</h3><p>Edle Fischvariation · Crêpe-Röllchen mit Lachs · Auberginenröllchen</p></li>
+        <li data-cat="2"><h3>Salate</h3><p>Granatapfelring · Olivier · Mimosa · Vinaigrette</p></li>
+        <li data-cat="3"><h3>Hauptspeisen</h3><p>Golubzi · Boeuf Stroganoff · Zanderfilet</p></li>
+        <li data-cat="4"><h3>Desserts</h3><p>Medovik · Panna Cotta · Mousse au Chocolat</p></li>
       </ol>
-      <figure class="frame menu__pic menu__pic--r" data-need="gericht-hering"><img class="is-on" data-img="gericht-hering" alt="Hering im Pelzmantel"></figure>
+      <figure class="frame menu__pic menu__pic--r" data-need="karte-salate">
+        <img data-img="karte-grill" alt="Lule Kebab vom Lamm" data-cat="0">
+        <img data-img="karte-vorspeisen" alt="Edle Fischvariation" data-cat="1">
+        <img class="is-on" data-img="karte-salate" alt="Granatapfelring" data-cat="2">
+        <img data-img="karte-haupt" alt="Golubzi" data-cat="3">
+        <img data-img="karte-dessert" alt="Medovik" data-cat="4">
+      </figure>
     </div>
   </section>
 
@@ -108,9 +115,9 @@
   <section class="plates" id="kueche">
     <h2 class="title">Aus unserer Küche</h2>
     <div class="plates__row">
-      <figure class="plate" data-need="teller-schaschlik"><img data-img="teller-schaschlik" alt="Schaschlik auf dem Teller"><figcaption>Schaschlik</figcaption></figure>
-      <figure class="plate" data-need="teller-hering"><img data-img="teller-hering" alt="Hering im Pelzmantel auf dem Teller"><figcaption>Hering im Pelzmantel</figcaption></figure>
-      <figure class="plate" data-need="teller-napoleon"><img data-img="teller-napoleon" alt="Napoleon-Torte auf dem Teller"><figcaption>Napoleon-Torte</figcaption></figure>
+      <figure class="plate" data-need="teller-stroganoff"><img data-img="teller-stroganoff" alt="Boeuf Stroganoff mit Buchweizen"><figcaption>Boeuf Stroganoff</figcaption></figure>
+      <figure class="plate" data-need="teller-olivier"><img data-img="teller-olivier" alt="Olivier-Salat"><figcaption>Olivier</figcaption></figure>
+      <figure class="plate" data-need="teller-forelle"><img data-img="teller-forelle" alt="Gegrillte Forelle mit Kräutern"><figcaption>Gegrillte Forelle</figcaption></figure>
     </div>
   </section>
 
@@ -208,11 +215,11 @@
       <h2 class="title">Festliches Buffet</h2>
       <p class="sub">61 Gerichte in fünf Gängen. Sie wählen Ihre Favoriten, wir kochen für Ihre Feier.</p>
       <div class="acc">
-        <details><summary><span>1.</span> Vorspeisen</summary><p>Canapés mit rotem Kaviar, Crêpe-Röllchen mit Lachs, Vitello Tonnato, Fischvariation. <em>4 aus 17</em></p></details>
-        <details><summary><span>2.</span> Salate</summary><p>Hering im Pelzmantel, Olivier, Granatapfelring, Mimosa. <em>4 aus 14</em></p></details>
-        <details><summary><span>3.</span> Hauptspeisen</summary><p>Schaschlik und Lule Kebab vom Holzkohlengrill, Plov, Boeuf Stroganoff, Golubzi. <em>4 aus 12</em></p></details>
+        <details><summary><span>1.</span> Vorspeisen</summary><p>Edle Fischvariation, Crêpe-Röllchen mit Lachs, Vitello Tonnato, Bratkartoffeltaler mit Matjes. <em>4 aus 17</em></p></details>
+        <details><summary><span>2.</span> Salate</summary><p>Olivier, Granatapfelring, Mimosa, Vinaigrette. <em>4 aus 14</em></p></details>
+        <details><summary><span>3.</span> Hauptspeisen</summary><p>Lule Kebab vom Holzkohlengrill, Zanderfilet, Boeuf Stroganoff, Golubzi. <em>4 aus 12</em></p></details>
         <details><summary><span>4.</span> Beilagen</summary><p>Buchweizen, Rosmarinkartoffeln, Kartoffelgratin mit Trüffel, Grillgemüse. <em>4 aus 11</em></p></details>
-        <details><summary><span>5.</span> Desserts</summary><p>Napoleon-Torte, Medovik, Panna Cotta, Mousse au Chocolat. <em>3 aus 7</em></p></details>
+        <details><summary><span>5.</span> Desserts</summary><p>Medovik, Panna Cotta, Mousse au Chocolat, Tiramisu. <em>3 aus 7</em></p></details>
       </div>
       <a class="line-btn" href="catering.html">Buffet zusammenstellen</a>
     </div>

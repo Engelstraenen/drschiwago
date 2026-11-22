@@ -56,6 +56,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - 22.11.2026 (Eugen): Bewertungen nur Google (4,6 · 489), Tripadvisor raus (3,0 aus 1 Bewertung zieht runter). Gilt hier vor der globalen Regel „Google + Tripadvisor“.
 - 22.11.2026: Gerichtsbilder neu (echt + frisch, Kundenfotos als Referenz/Edit), Piroschki von der Startseite entfernt (gibt es nicht), Zähler 0→50 ersetzt durch vorbeiziehende Gerichtsnamen. Szenen: Schaschlik, Canapés, Hering, Plov, Napoleon.
 - 22.11.2026 (Eugen): Piroschki bleiben im Catering-Baukasten (nur auf der Startseite/Samstagsbuffet raus).
+- 22.11.2026 (Eugen): Kein Gericht doppelt auf der Seite (Bild und Name). Verteilung siehe verlauf/2026-11-22.md. Bilder im Rahmen immer im Seitenverhältnis des Rahmens erzeugen (Gericht ganz sichtbar).
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO

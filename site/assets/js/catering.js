@@ -4,7 +4,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const IMG = window.IMG || {};
   const C = [
-    { id: 'v', t: 'Vorspeisen', max: 4, img: ['gericht-canapes', 'foto-canapes'], d: [
+    { id: 'v', t: 'Vorspeisen', max: 4, img: ['gang-vorspeisen'], d: [
       ['Festliche Fleischplattenvariation', 'mit ausgewählten Fleischspezialitäten'],
       ['Edle Fischvariation', 'mit Räucherlachs, Matjes & ausgewählten Fischspezialitäten'],
       ['Vitello Tonnato', ''],
@@ -23,7 +23,7 @@
       ['Osteuropäische Antipasti-Auswahl', 'mit mariniertem Gemüse'],
       ['Gebratener und panierter Fisch', ''],
     ] },
-    { id: 's', t: 'Salate', max: 4, img: ['gericht-hering', 'foto-salat'], d: [
+    { id: 's', t: 'Salate', max: 4, img: ['gang-salate'], d: [
       ['Olivier', 'traditioneller russischer Festtagssalat'],
       ['Hering im Pelzmantel', 'klassischer Schichtsalat mit Matjes, Kartoffeln & Roter Bete'],
       ['Granatapfelring', 'mit Hähnchen, Roter Bete, Kartoffeln, Möhren, Käse, Walnüssen & Granatapfel'],
@@ -39,7 +39,7 @@
       ['Mimosa-Salat', 'festlicher Schichtsalat mit Ei, Käse & feiner cremiger Note'],
       ['Glasnudelsalat', 'mit Hähnchen und Gemüse'],
     ] },
-    { id: 'h', t: 'Hauptspeisen', max: 4, img: ['gericht-schaschlik', 'foto-buffet-5'], d: [
+    { id: 'h', t: 'Hauptspeisen', max: 4, img: ['gang-haupt'], d: [
       ['Schweineschaschlik', 'vom echten Holzkohlengrill nach kaukasischer Art'],
       ['Hähnchenschaschlik', 'vom echten Holzkohlengrill nach kaukasischer Art'],
       ['Lule Kebab vom Lamm', 'vom echten Holzkohlengrill nach kaukasischer Art'],
@@ -53,7 +53,7 @@
       ['Zanderfilet', 'mit feiner Senf-Dill-Kräuterkruste'],
       ['Lachsfilet', 'in cremiger Zitronen-Dill-Sauce'],
     ] },
-    { id: 'b', t: 'Beilagen', max: 4, img: ['gericht-plov', 'foto-buffet-4'], d: [
+    { id: 'b', t: 'Beilagen', max: 4, img: ['gang-beilagen'], d: [
       ['Kartoffelgratin', 'mit feiner Trüffelnote'],
       ['Cremiges Kartoffelpüree', 'mit Butter & Muskat'],
       ['Rosmarinkartoffeln', 'mit Knoblauch & Meersalz'],
@@ -66,7 +66,7 @@
       ['Süßkartoffel-Pommes', ''],
       ['Knackige Pommes Frites', ''],
     ] },
-    { id: 'd', t: 'Desserts', max: 3, img: ['gericht-napoleon'], d: [
+    { id: 'd', t: 'Desserts', max: 3, img: ['gang-dessert'], d: [
       ['Napoleon-Torte', 'mit feinen Blätterteigschichten & cremiger Füllung'],
       ['Medovik', 'traditioneller Honigkuchen mit luftiger Creme'],
       ['Tiramisu', 'mit feiner Mascarponecreme'],

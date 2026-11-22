@@ -62,7 +62,7 @@
     const S = scenes.filter((_, i) => keep[i]), T = texts.filter((_, i) => keep[i]), B = btns.filter((_, i) => keep[i]);
     if (S.length) {
       const INTRO = .7, U = INTRO + S.length;
-      F = { S, T, B, U, INTRO, k: -2, cols: $$('.feast__names ul', feast) };
+      F = { S, T, B, U, INTRO, k: -2, tafel: $('.feast__tafel', feast) };
       B.forEach((b, i) => b.addEventListener('click', () => scrollToFrac(feast, (INTRO + i + .15) / U)));
     } else feast.classList.add('is-missing');
   }
@@ -110,8 +110,8 @@
       feast.style.setProperty('--iv', (1 - smooth(clamp((ix - .72) / .28))).toFixed(3));
       feast.style.setProperty('--hs', (1 + ix * .06).toFixed(4));
       feast.style.setProperty('--na', (.22 * (1 - smooth(clamp((ix - .5) / .5)))).toFixed(3));
-      const run = innerHeight * 1.1;
-      F.cols.forEach((c, i) => c.style.setProperty('--c' + (i + 1), (-(.15 + x * [.9, 1.35, .7][i]) * run).toFixed(1) + 'px'));
+      // Tafel mit allen Gerichten gleitet langsam unter der Überschrift durch
+      if (F.tafel) { F.tafel.style.setProperty('--tx', (-ix * 4).toFixed(2) + '%'); F.tafel.style.setProperty('--ty', (-ix * 5).toFixed(2) + '%'); F.tafel.style.setProperty('--ts', (1.02 + ix * .08).toFixed(4)); }
       if (F.S[0]) { F.S[0].style.setProperty('--fb', ((1 - sharp) * 12).toFixed(2) + 'px'); F.S[0].style.setProperty('--fl', (.42 + .58 * sharp).toFixed(3)); }
       feast.style.setProperty('--nv', smooth(clamp((x - .6) / .3)).toFixed(3));
       let k = x >= .62 ? 0 : -1;
@@ -153,8 +153,8 @@
   /* 3 · Karte: Kategorie wählt das Bild links */
   const cats = $$('.menu__list li');
   if (cats.length) {
-    const pics = $$('.menu__pic--l img');
-    const pick = i => { cats.forEach(c => c.classList.toggle('is-on', +c.dataset.cat === i)); pics.forEach(p => p.classList.toggle('is-on', +p.dataset.cat === i)); };
+    const pics = $$('.menu__pic--l img'), right = $$('.menu__pic--r img');
+    const pick = i => { cats.forEach(c => c.classList.toggle('is-on', +c.dataset.cat === i)); pics.forEach(p => p.classList.toggle('is-on', +p.dataset.cat === i)); right.forEach(p => p.classList.toggle('is-on', +p.dataset.cat === (i + 2) % 5)); };
     cats.forEach(c => { const i = +c.dataset.cat; c.addEventListener('mouseenter', () => pick(i)); c.addEventListener('click', () => pick(i)); });
     pick(0);
     if (touch && !reduce) { let n = 0; setInterval(() => { if (visible($('#karte'))) { n = (n + 1) % cats.length; pick(n); } }, 3800); }
