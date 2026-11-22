@@ -70,6 +70,12 @@ for sid, name in FOTOS.items():
     src = os.path.join(BASE, "original-fotos", sid + ".jpg")
     if os.path.exists(src):
         build(src, name, 1800, 900)
+# Rundgang: echte Fotos der alten Seite, Schleier entfernt (tools/dehaze.py), nie hochskaliert
+RG = os.path.join(BASE, "rundgang")
+if os.path.isdir(RG):
+    for f in sorted(os.listdir(RG)):
+        if f.endswith(".jpg"):
+            build(os.path.join(RG, f), "rg-" + f[:-4], 1800, 900)
 
 # alte, nicht mehr genutzte WebP entfernen (nur erzeugte Dateien)
 for f in glob.glob(os.path.join(OUT, "*-[ls].webp")):
@@ -84,7 +90,7 @@ print("img.js:", len(data), "Bilder")
 # Cache-Busting: CSS/JS-Links in den HTML-Seiten bekommen bei jedem Lauf eine neue Version,
 # damit Browser nie alte Dateien mit neuem HTML mischen (Eugen 22.11.: „Seite scheint kaputt“)
 import re as _re
-for _page in ("index.html", "catering.html"):
+for _page in ("index.html", "catering.html", "rundgang.html"):
     _p = os.path.join(HERE, "site", _page)
     _s = open(_p).read()
     _s = _re.sub(r'(assets/(?:css|js)/[a-z]+\.(?:css|js))(\?v=\d+)?"', lambda m: f'{m.group(1)}?v={stamp}"', _s)

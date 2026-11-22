@@ -1,6 +1,8 @@
 /* DR. SCHIWAGO · V3 „Schwarzer Samt“ */
 (() => {
   const IMG = window.IMG || {};
+  const BASE = document.documentElement.dataset.base || '';
+  const RU = document.documentElement.lang === 'ru';
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -18,8 +20,8 @@
     if (portrait && IMG[key + '-m']) key += '-m'; // eigenes Hochformat-Motiv fürs Handy
     const m = IMG[key];
     if (!m) { img.classList.add('is-missing'); return; }
-    img.src = m.s;
-    img.srcset = `${m.s} ${m.sw}w, ${m.l} ${m.lw}w`;
+    img.src = BASE + m.s;
+    img.srcset = `${BASE + m.s} ${m.sw}w, ${BASE + m.l} ${m.lw}w`;
     img.sizes = img.closest('.bar, .frame, .plate, .gal__item, .course__img') ? '(max-width: 720px) 90vw, 40vw' : '100vw';
     img.decoding = 'async';
     if (!img.closest('.hero, .chero')) img.loading = 'lazy';
@@ -182,7 +184,12 @@
   /* 6 · Feiern: Anlass wählen */
   const evs = $$('.ev');
   if (evs.length) {
-    const D = [
+    const D = RU ? [
+      ['Свадьбы', 'От фуршета с игристым в лаунже до танцпола в большом зале, до 200 гостей.', 'Hochzeit'],
+      ['Дни рождения', 'Юбилеи и дни рождения в большой компании или с семьёй. Зал, фуршет и музыку подберём под ваш праздник.', 'Geburtstag'],
+      ['Корпоративы', 'Новогодние корпоративы, юбилеи компании и летние праздники с полным сервисом, удобно добираться из Дуйсбурга и Дюссельдорфа.', 'Firmenveranstaltung'],
+      ['Семейные праздники', 'Помолвки, крестины и выпускные в узком кругу, с личным сопровождением.', 'Familienfest'],
+    ] : [
       ['Hochzeiten', 'Vom Sektempfang in der Lounge bis zur Tanzfläche im großen Saal, mit bis zu 200 Gästen.', 'Hochzeit'],
       ['Geburtstage', 'Runde Geburtstage und Jubiläen, im großen Kreis oder mit der Familie. Raum, Buffet und Musik stimmen wir auf Ihre Feier ab.', 'Geburtstag'],
       ['Firmenfeiern', 'Weihnachtsfeiern, Firmenjubiläen und Sommerfeste mit vollem Service, gut erreichbar aus Duisburg und Düsseldorf.', 'Firmenveranstaltung'],
@@ -246,16 +253,16 @@
 
   /* Einblenden */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { threshold: .2 });
-  $$('.reveal').forEach(el => io.observe(el));
+  $$('.reveal, .tour__item').forEach(el => io.observe(el));
 
   /* Lightbox (Catering-Galerie) */
   const lb = $('#lightbox');
   if (lb) {
     const lbImg = $('img', lb), lbCap = $('.lightbox__cap', lb);
     const close = () => { lb.classList.remove('is-on'); setTimeout(() => { lb.hidden = true; }, 300); };
-    $$('.gal__item').forEach(c => c.addEventListener('click', () => {
+    $$('.gal__item, .tour__item').forEach(c => c.addEventListener('click', () => {
       const m = IMG[$('img', c).dataset.img]; if (!m) return;
-      lbImg.src = m.l; lbImg.alt = $('img', c).alt; lbCap.textContent = ($('figcaption', c) || {}).textContent || '';
+      lbImg.src = BASE + m.l; lbImg.alt = $('img', c).alt; lbCap.textContent = ($('figcaption', c) || {}).textContent || '';
       lb.hidden = false; requestAnimationFrame(() => lb.classList.add('is-on'));
     }));
     lb.addEventListener('click', e => { if (e.target !== lbImg) close(); });
@@ -287,20 +294,37 @@
     }, 5600);
   }
 
+  /* Rundgang: Raum-Leiste zeigt den aktuellen Raum */
+  const tourLinks = $$('.tour-nav a');
+  if (tourLinks.length) {
+    const rooms = tourLinks.map(a => $(a.getAttribute('href'))).filter(Boolean);
+    const rio = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      tourLinks.forEach(a => {
+        const on = a.getAttribute('href') === '#' + e.target.id;
+        a.classList.toggle('is-on', on);
+        if (on && innerWidth < 720) a.parentElement.scrollTo({ left: a.offsetLeft - 40, behavior: 'smooth' });
+      });
+    }), { rootMargin: '-45% 0px -50% 0px' });
+    rooms.forEach(r => rio.observe(r));
+  }
+
   /* Reservierung: nur Samstage */
   const selD = $('#resv-datum'), selP = $('#resv-personen');
   if (selD && selP) {
-    const fmt = new Intl.DateTimeFormat('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
+    const fmt = new Intl.DateTimeFormat(RU ? 'ru-RU' : 'de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
+    const de = new Intl.DateTimeFormat('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
     const d = new Date(); d.setHours(12, 0, 0, 0);
     d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7));
-    for (let i = 0; i < 10; i++) { const o = document.createElement('option'); o.value = fmt.format(d); o.textContent = fmt.format(d) + (i === 0 ? ' · diesen Samstag' : ''); selD.append(o); d.setDate(d.getDate() + 7); }
-    for (let i = 1; i <= 20; i++) { const o = document.createElement('option'); o.value = i; o.textContent = i + (i === 1 ? ' Person' : ' Personen'); if (i === 2) o.selected = true; selP.append(o); }
-    { const o = document.createElement('option'); o.value = 'mehr als 20'; o.textContent = 'mehr als 20 Personen'; selP.append(o); }
+    for (let i = 0; i < 10; i++) { const o = document.createElement('option'); o.value = de.format(d); o.textContent = fmt.format(d) + (i === 0 ? (RU ? ' · эта суббота' : ' · diesen Samstag') : ''); selD.append(o); d.setDate(d.getDate() + 7); }
+    const ruP = n => (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) ? ' человека' : ' человек';
+    for (let i = 1; i <= 20; i++) { const o = document.createElement('option'); o.value = i; o.textContent = i + (RU ? ruP(i) : (i === 1 ? ' Person' : ' Personen')); if (i === 2) o.selected = true; selP.append(o); }
+    { const o = document.createElement('option'); o.value = 'mehr als 20'; o.textContent = RU ? 'больше 20 человек' : 'mehr als 20 Personen'; selP.append(o); }
     $('#resv').addEventListener('submit', e => {
       e.preventDefault();
       const datum = selD.value, pers = selP.value;
-      const subj = `Tischreservierung ${datum}, ${pers} ${pers === '1' ? 'Person' : 'Personen'}`;
-      const body = `Hallo Dr. Schiwago Team,\n\nich möchte gern einen Tisch reservieren:\n\nDatum: ${datum}\nPersonen: ${pers}\nName: \nTelefon: \n\nVielen Dank!`;
+      const subj = RU ? `Бронирование столика ${datum}, гостей: ${pers}` : `Tischreservierung ${datum}, ${pers} ${pers === '1' ? 'Person' : 'Personen'}`;
+      const body = RU ? `Здравствуйте, команда Dr. Schiwago!\n\nХочу забронировать столик:\n\nДата: ${datum}\nКоличество гостей: ${pers}\nИмя: \nТелефон: \n\nСпасибо!` : `Hallo Dr. Schiwago Team,\n\nich möchte gern einen Tisch reservieren:\n\nDatum: ${datum}\nPersonen: ${pers}\nName: \nTelefon: \n\nVielen Dank!`;
       location.href = `mailto:info@drschiwago.de?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
     });
   }

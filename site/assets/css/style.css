@@ -45,6 +45,8 @@ main > section { overflow-x: clip; }
 .nav__links { display: flex; gap: 28px; }
 .nav__links a { font: 500 12px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; text-decoration: none; color: rgba(236, 228, 212, .72); transition: color .4s; }
 .nav__links a:hover, .nav__links a[aria-current] { color: var(--champ-2); }
+.nav__lang { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 40px; padding: 0 10px; border: 1px solid var(--line-soft); font: 500 12px/1 var(--sans); letter-spacing: .18em; text-decoration: none; color: var(--champ-2); transition: border-color .4s, color .4s; }
+.nav__lang:hover { border-color: var(--champ); color: var(--ivory); }
 .nav__cta { min-height: 40px; font-size: 17px; padding: 0 18px; }
 .nav__burger { display: none; width: 44px; height: 44px; position: relative; }
 .nav__burger span { position: absolute; left: 11px; right: 11px; height: 1px; background: var(--champ-2); transition: transform .5s var(--ease), top .5s var(--ease); }
@@ -341,13 +343,21 @@ blockquote.insta__item a { color: var(--champ-2); font: italic 400 22px/1.3 var(
 .flow__list li.reveal:nth-child(4), .events__facts div:nth-child(4) { transition-delay: .36s; }
 
 /* Tablet */
-@media (max-width: 1080px) {
+/* Kopfzeile: enger bis 1600 px, Burger-Menü bis 1360 px (sonst rutscht „Tisch reservieren“ rechts raus, v. a. auf Russisch) */
+@media (max-width: 1600px) {
+  .nav { gap: 22px; }
+  .nav__links { gap: 18px; }
+  .nav__links a { letter-spacing: .12em; }
+}
+@media (max-width: 1360px) {
   .nav__links { display: none; }
   .nav__burger { display: block; }
   .nav.is-open { background: rgba(7, 6, 5, .97); }
   .nav.is-open .nav__mark { opacity: 1; }
   .nav.is-open .nav__links { display: flex; position: fixed; inset: 68px 0 auto 0; flex-direction: column; background: rgba(7, 6, 5, .97); padding: 8px var(--gut) 26px; border-bottom: 1px solid var(--line-soft); }
   .nav.is-open .nav__links a { display: flex; align-items: center; min-height: 52px; font: 500 24px/1 var(--serif); letter-spacing: .02em; text-transform: none; border-bottom: 1px solid var(--line-soft); }
+}
+@media (max-width: 1080px) {
   .menu__grid { grid-template-columns: 1fr 1fr; }
   .menu__list { grid-column: 1 / -1; order: -1; }
   .flow__list { grid-template-columns: repeat(2, 1fr); }
@@ -413,6 +423,7 @@ blockquote.insta__item a { color: var(--champ-2); font: italic 400 22px/1.3 var(
   .tiers span { font-size: 14px; margin: 0; letter-spacing: .08em; }
   .foot__legal a, .foot p a, .foot__cols > div > a, .resv__alt a { display: inline-flex; align-items: center; min-height: 44px; }
   .nav__cta { font-size: 17px; min-height: 44px; }
+  .nav__lang { min-height: 44px; font-size: 14px; }
 }
 /* Handy quer */
 @media (max-height: 500px) and (orientation: landscape) {
@@ -435,3 +446,11 @@ blockquote.insta__item a { color: var(--champ-2); font: italic 400 22px/1.3 var(
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Tisch reservieren: blutrot, fällt auf jeder Seite sofort auf */
+:root { --blood: #9a0c12; --blood-2: #b5141c; }
+.line-btn.line-btn--blood { background: var(--blood); border-color: var(--blood); color: #f6efe2; font-weight: 600; box-shadow: 0 0 0 1px rgba(255, 90, 80, .12) inset, 0 10px 30px -8px rgba(154, 12, 18, .55); transition: background .35s, border-color .35s, box-shadow .35s, transform .35s; }
+.line-btn.line-btn--blood:hover, .line-btn.line-btn--blood:focus-visible { background: var(--blood-2); border-color: var(--blood-2); color: #fff; box-shadow: 0 0 0 1px rgba(255, 120, 110, .2) inset, 0 14px 36px -8px rgba(181, 20, 28, .7); }
+.line-btn.line-btn--blood:focus-visible { outline: 1px solid var(--champ-2); outline-offset: 3px; }
+@media (max-width: 900px) { .sticky-cta.line-btn--blood { background: var(--blood); backdrop-filter: none; } }
+

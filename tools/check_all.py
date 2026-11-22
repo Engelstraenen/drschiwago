@@ -15,7 +15,13 @@ VIEWS = [(390, 844), (360, 740), (430, 932), (844, 390), (1440, 900)]
 PAGES = {
     "index.html": "hero:0,abend:0,buffet:.06,buffet:.3,buffet:.97,karte:.2,kueche:0,abend:.8,bars:.3,feiern:0,catering:0,instagram:0,bewertungen:0,bewertungen:.6,reservieren:0,kontakt:0",
     "catering.html": "top:0,baukasten:.05,anfrage:0,galerie:0,bewertungen:0,kontakt:0",
+    "rundgang.html": "top:0,saal:0,mirrors:0,bars-rg:0,terrasse-rg:0,garten:0,kontakt:0",
+    "ru/index.html": "hero:0,buffet:.97,karte:.2,abend:.8,feiern:0,catering:0,bewertungen:0,reservieren:0,kontakt:0",
+    "ru/catering.html": "top:0,baukasten:.05,anfrage:0,kontakt:0",
+    "ru/rundgang.html": "top:0,saal:0,garten:0,kontakt:0",
 }
+if len(sys.argv) > 3:
+    PAGES = {k: v for k, v in PAGES.items() if k in sys.argv[3].split(",")}
 AUDIT = r"""() => {
   const vis = el => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el);
     return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && cs.display !== 'none' && +cs.opacity > 0.05 && !el.closest('.is-missing,[hidden]'); };
@@ -51,7 +57,7 @@ with sync_playwright() as p:
                 pg.evaluate("y => { document.documentElement.style.scrollBehavior='auto'; scrollTo(0, y); }", y)
                 pg.wait_for_timeout(1100)
                 oxmax = max(oxmax, pg.evaluate("document.documentElement.scrollWidth - innerWidth"))
-                pg.screenshot(path=os.path.join(out, f"{page.split('.')[0]}-{w}x{h}-{sid}{frac}.jpg"), quality=60, type="jpeg")
+                pg.screenshot(path=os.path.join(out, f"{page.replace('/', '-').split('.')[0]}-{w}x{h}-{sid}{frac}.jpg"), quality=60, type="jpeg")
             a = pg.evaluate(AUDIT)
             print(f"{page} {w}x{h}: querscroll {max(a['ox'], oxmax)} px | fehler {len(errs)} {errs[:2]}")
             if a["small"]:

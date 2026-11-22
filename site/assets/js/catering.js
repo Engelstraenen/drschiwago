@@ -77,6 +77,21 @@
     ] },
   ];
   const KEY = 'drs-buffet-v1';
+
+  /* Russische Fassung (gleiche Reihenfolge wie oben) */
+  const RU = document.documentElement.lang === 'ru';
+  const BASE = document.documentElement.dataset.base || '';
+  const C_RU = [
+    ['Закуски', [['Праздничное мясное ассорти', 'с отборными мясными деликатесами'], ['Изысканное рыбное ассорти', 'с копчёным лососем, сельдью и рыбными деликатесами'], ['Вителло тоннато', ''], ['Пастрами', 'с перцем'], ['Домашние блинчики', 'с мясной начинкой'], ['Канапе', 'с красной икрой и зеленью'], ['Блинные рулетики', 'с копчёным лососем и сливочным сыром с зеленью'], ['Картофельные дольки', 'с филе сельди и тонкими кольцами лука'], ['Рулетики из баклажанов', 'с пряным томатно-травяным кремом'], ['Рулетики из цукини', 'со сливочным сыром, гаудой и свежей зеленью'], ['Пирожки из печи', 'с мясной начинкой'], ['Пирожки из печи', 'с картофелем и грибами'], ['Пирожки из печи', 'с капустой'], ['Пирожки из печи', 'с яйцом и зелёным луком'], ['Нежный куриный холодец', 'с хреном и горчицей'], ['Восточноевропейское антипасти', 'с маринованными овощами'], ['Жареная рыба в панировке', '']]],
+    ['Салаты', [['Оливье', 'традиционный праздничный салат'], ['Селёдка под шубой', 'классический слоёный салат с сельдью, картофелем и свёклой'], ['Гранатовый браслет', 'с курицей, свёклой, картофелем, морковью, сыром, грецкими орехами и гранатом'], ['Винегрет', 'со свёклой, картофелем, морковью и солёными огурцами'], ['Цезарь', 'с сочной куриной грудкой, пармезаном и гренками'], ['Руккола', 'с жареными креветками, черри и медово-горчичной заправкой'], ['Греческий салат', 'с фетой и оливками'], ['Салат из томатов и огурцов', 'с зеленью и лёгкой заправкой'], ['Средиземноморский салат с пастой', 'с рукколой, вялеными томатами, пармезаном и песто'], ['Крабовый салат', 'с яйцом, огурцом и сливочной заправкой с зеленью'], ['Салат с курицей и виноградом', 'с нежной куриной грудкой, гаудой, овощами и сливочной заправкой'], ['Средиземноморский картофельный салат', 'с солёными огурцами и хрустящим луком в йогуртово-горчичной заправке'], ['Мимоза', 'праздничный слоёный салат с яйцом, сыром и нежной сливочной ноткой'], ['Салат с фунчозой', 'с курицей и овощами']]],
+    ['Горячие блюда', [['Шашлык из свинины', 'с настоящего угольного гриля по-кавказски'], ['Шашлык из курицы', 'с настоящего угольного гриля по-кавказски'], ['Люля-кебаб из баранины', 'с настоящего угольного гриля по-кавказски'], ['Форель на гриле', 'с ароматными травами'], ['Традиционный плов', 'с нежным мясом, морковью и ароматным рисом'], ['Индейка по-строгановски', 'в сливочно-грибном соусе'], ['Бефстроганов', 'с нежными полосками говядины в сливочном соусе'], ['Голубцы', 'фаршированные капустные рулеты'], ['Куриная грудка', 'в сливочно-грибном соусе'], ['Куриная грудка', 'в фруктово-остром апельсиново-чили соусе'], ['Филе судака', 'под горчично-укропной корочкой'], ['Филе лосося', 'в сливочном лимонно-укропном соусе']]],
+    ['Гарниры', [['Картофельный гратен', 'с ноткой трюфеля'], ['Нежное картофельное пюре', 'со сливочным маслом и мускатом'], ['Картофель с розмарином', 'с чесноком и морской солью'], ['Ароматный рис басмати', 'с овощами'], ['Овощи гриль', 'с розмарином и тимьяном'], ['Рататуй', 'из цукини, баклажана, перца и томатов'], ['Паста', 'со свежими овощами и зеленью'], ['Ароматная гречка', 'со сливочным маслом и свежей зеленью'], ['Шпецле', ''], ['Картофель фри из батата', ''], ['Хрустящий картофель фри', '']]],
+    ['Десерты', [['Торт «Наполеон»', 'с тонкими слоями теста и нежным кремом'], ['Медовик', 'традиционный медовый торт с воздушным кремом'], ['Тирамису', 'с нежным кремом маскарпоне'], ['Панна-котта', 'с ягодным соусом'], ['Шоколадный мусс', 'со свежими ягодами'], ['Шоколадные брауни', ''], ['Сезонное фруктовое ассорти', '']]],
+  ];
+  if (RU) C.forEach((c, i) => { c.t = C_RU[i][0]; c.d = C_RU[i][1]; });
+  const T = RU
+    ? { of: n => `из ${n} выбрано`, full: n => `Максимум ${n} блюд. Чтобы заменить, снимите отметку с одного.`, empty: 'Пока ничего не выбрано. Отметьте любимые блюда выше.', open: 'пока не определено', none: '(пока ничего не выбрано)' }
+    : { of: n => `von ${n} gewählt`, full: n => `Maximal ${n} Gerichte. Zum Tauschen eines abwählen.`, empty: 'Noch nichts gewählt. Tippen Sie oben Ihre Favoriten an.', open: 'noch offen', none: '(noch keine gewählt)' };
   let sel = {};
   try { sel = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { sel = {}; }
   C.forEach(c => { sel[c.id] = (sel[c.id] || []).filter(i => i < c.d.length).slice(0, c.max); });
@@ -90,13 +105,13 @@
     sec.className = 'course' + (m ? '' : ' course--noimg'); sec.id = 'gang-' + c.id;
     sec.innerHTML = `
       <div class="course__side">
-        ${m ? `<div class="course__img"><img src="${m.s}" srcset="${m.s} ${m.sw}w, ${m.l} ${m.lw}w" sizes="(max-width: 720px) 100vw, 45vw" alt="${c.t}" loading="lazy" decoding="async">
+        ${m ? `<div class="course__img"><img src="${BASE + m.s}" srcset="${BASE + m.s} ${m.sw}w, ${BASE + m.l} ${m.lw}w" sizes="(max-width: 720px) 100vw, 45vw" alt="${c.t}" loading="lazy" decoding="async">
           <span class="course__no gold">0${ci + 1}</span></div>` : `<span class="course__no course__no--solo gold">0${ci + 1}</span>`}
       </div>
       <div class="course__main">
         <header class="course__head">
           <h3 class="gold">${c.t}</h3>
-          <p class="course__count"><b data-n>0</b> von ${c.max} gewählt <span class="course__dots">${'<i></i>'.repeat(c.max)}</span></p>
+          <p class="course__count"><b data-n>0</b> ${T.of(c.max)} <span class="course__dots">${'<i></i>'.repeat(c.max)}</span></p>
         </header>
         <ul class="dishes">${c.d.map((d, i) => `
           <li><button class="dish" type="button" data-c="${c.id}" data-i="${i}" aria-pressed="false">
@@ -104,7 +119,7 @@
             <span class="dish__txt"><b>${d[0]}</b>${d[1] ? `<em>${d[1]}</em>` : ''}</span>
           </button></li>`).join('')}
         </ul>
-        <p class="course__full">Maximal ${c.max} Gerichte. Zum Tauschen eines abwählen.</p>
+        <p class="course__full">${T.full(c.max)}</p>
       </div>`;
     wrap.append(sec);
   });
@@ -129,7 +144,7 @@
     document.body.classList.toggle('has-picks', n > 0);
     list.innerHTML = n ? C.filter(c => sel[c.id].length).map(c => `
       <div class="ask__grp"><h4>${c.t} <span>${sel[c.id].length}/${c.max}</span></h4><ul>${sel[c.id].map(i => `<li>${c.d[i][0]}${c.d[i][1] ? ` <em>${c.d[i][1]}</em>` : ''}</li>`).join('')}</ul></div>`).join('')
-      : '<p class="ask__empty">Noch nichts gewählt. Tippen Sie oben Ihre Favoriten an.</p>';
+      : `<p class="ask__empty">${T.empty}</p>`;
   };
   wrap.addEventListener('click', e => {
     const b = e.target.closest('.dish'); if (!b) return;
@@ -145,10 +160,12 @@
     e.preventDefault();
     const f = new FormData(e.target);
     const anlass = f.get('anlass'), datum = f.get('datum'), gaeste = f.get('gaeste');
-    const dStr = datum ? new Date(datum + 'T12:00').toLocaleDateString('de-DE') : 'noch offen';
+    const dStr = datum ? new Date(datum + 'T12:00').toLocaleDateString(RU ? 'ru-RU' : 'de-DE') : T.open;
     const lines = C.map(c => sel[c.id].length ? `${c.t}:\n` + sel[c.id].map(i => `- ${c.d[i][0]}${c.d[i][1] ? ' ' + c.d[i][1] : ''}`).join('\n') : '').filter(Boolean).join('\n\n');
-    const subj = `Catering-Anfrage: ${anlass}, ${dStr}${gaeste ? ', ' + gaeste + ' Gäste' : ''}`;
-    const body = `Hallo Dr. Schiwago Team,\n\nich interessiere mich für das Festliche Buffet.\n\nAnlass: ${anlass}\nDatum: ${dStr}\nGäste: ${gaeste || 'noch offen'}\n\nMeine Favoriten:\n${lines || '(noch keine gewählt)'}\n\nName: \nTelefon: \n\nVielen Dank!`;
+    const subj = RU ? `Запрос на кейтеринг: ${anlass}, ${dStr}${gaeste ? ', гостей: ' + gaeste : ''}` : `Catering-Anfrage: ${anlass}, ${dStr}${gaeste ? ', ' + gaeste + ' Gäste' : ''}`;
+    const body = RU
+      ? `Здравствуйте, команда Dr. Schiwago!\n\nМеня интересует праздничный фуршет.\n\nПовод: ${anlass}\nДата: ${dStr}\nГостей: ${gaeste || T.open}\n\nМой выбор:\n${lines || T.none}\n\nИмя: \nТелефон: \n\nСпасибо!`
+      : `Hallo Dr. Schiwago Team,\n\nich interessiere mich für das Festliche Buffet.\n\nAnlass: ${anlass}\nDatum: ${dStr}\nGäste: ${gaeste || T.open}\n\nMeine Favoriten:\n${lines || T.none}\n\nName: \nTelefon: \n\nVielen Dank!`;
     location.href = `mailto:info@drschiwago.de?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
   });
 

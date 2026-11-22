@@ -34,11 +34,11 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - Prüfen: `python3 tools/check.py http://localhost:4381/ /tmp/drs-check 390x844 "hero:0,abend:.7"`
 - Pflichtprüfung alle Größen: `python3 tools/check_all.py http://localhost:4381/ /tmp/drs-all`
 - Doppelte Bilder prüfen (vor jeder Veröffentlichung): `python3 tools/check_dupes.py`
+- Russische Seiten neu erzeugen (nach jeder Änderung an DE-Seiten): `python3 tools/assets.py && python3 tools/build_ru.py` (Texte: `i18n/ru.json`, Fehlendes: `python3 tools/i18n_extract.py`)
 - Veröffentlichen: `git subtree split --prefix site -b gh-pages && git push -f origin gh-pages`
 
 ## 8. Offene Fragen
 - Höher aufgelöste Originalfotos vom Bruder? (alte Seite nur ca. 760–1350 px)
-- Russische Sprachversion gewünscht?
 - Instagram-Auto-Feed: Behold-Link vom Konto-Inhaber steht aus (Eugen 21.11.: „später“), Anleitung docs/instagram.md.
 - Vor Livegang drschiwago.de: Cookie-Einwilligung für Instagram-Einbettung.
 - Echte Bewertungstexte nur offiziell (Google Places API mit Schlüssel oder Widget mit Konto des Inhabers). Tripadvisor-Profil beanspruchen?
@@ -58,6 +58,9 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - 22.11.2026: Gerichtsbilder neu (echt + frisch, Kundenfotos als Referenz/Edit), Piroschki von der Startseite entfernt (gibt es nicht), Zähler 0→50 ersetzt durch vorbeiziehende Gerichtsnamen. Szenen: Schaschlik, Canapés, Hering, Plov, Napoleon.
 - 22.11.2026 (Eugen): Piroschki bleiben im Catering-Baukasten (nur auf der Startseite/Samstagsbuffet raus).
 - 22.11.2026 (Eugen): Kein Gericht doppelt auf der Seite (Bild und Name). Verteilung siehe verlauf/2026-11-22.md. Bilder im Rahmen immer im Seitenverhältnis des Rahmens erzeugen (Gericht ganz sichtbar).
+- 23.11.2026 (Eugen): Rundgang durchs Haus als eigene Unterseite im Header (`rundgang.html`), echte Fotos der alten Seite ohne grauen Nebel-Filter (`tools/dehaze.py`).
+- 23.11.2026 (Eugen): Seite zweisprachig Deutsch/Russisch mit Umschalter im Header (`site/ru/`, erzeugt per `tools/build_ru.py`).
+- 23.11.2026 (Eugen): „Tisch reservieren“ überall blutrot gefüllt (`.line-btn--blood`, #9a0c12).
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO

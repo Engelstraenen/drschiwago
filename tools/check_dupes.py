@@ -14,7 +14,8 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 site = os.path.join(HERE, 'site')
 use = collections.Counter()
 where = collections.defaultdict(list)
-for f in ['index.html', 'catering.html']:
+for f in ['index.html', 'catering.html', 'rundgang.html']:
+    if not os.path.exists(os.path.join(site, f)): continue
     for k in re.findall(r'data-img="([^"]+)"', open(os.path.join(site, f)).read()):
         use[k] += 1; where[k].append(f)
 js = open(os.path.join(site, 'assets', 'js', 'catering.js')).read()
