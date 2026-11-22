@@ -107,14 +107,14 @@
       // Einstieg: Gerichtsnamen ziehen in drei Spalten vorbei, das erste Gericht wird scharf
       const sharp = smooth(clamp((ix - .3) / .7));
       feast.style.setProperty('--io', (.55 * (1 - sharp)).toFixed(3));
-      feast.style.setProperty('--iv', (1 - smooth(clamp((ix - .72) / .28))).toFixed(3));
+      feast.style.setProperty('--iv', (1 - smooth(clamp((ix - .5) / .32))).toFixed(3));
       feast.style.setProperty('--hs', (1 + ix * .06).toFixed(4));
       feast.style.setProperty('--na', (.22 * (1 - smooth(clamp((ix - .5) / .5)))).toFixed(3));
       // Tafel mit allen Gerichten gleitet langsam unter der Überschrift durch
       if (F.tafel) { F.tafel.style.setProperty('--tx', (-ix * 4).toFixed(2) + '%'); F.tafel.style.setProperty('--ty', (-ix * 5).toFixed(2) + '%'); F.tafel.style.setProperty('--ts', (1.02 + ix * .08).toFixed(4)); }
       if (F.S[0]) { F.S[0].style.setProperty('--fb', ((1 - sharp) * 12).toFixed(2) + 'px'); F.S[0].style.setProperty('--fl', (.42 + .58 * sharp).toFixed(3)); }
       feast.style.setProperty('--nv', smooth(clamp((x - .6) / .3)).toFixed(3));
-      let k = x >= .62 ? 0 : -1;
+      let k = x >= .66 ? 0 : -1;
       F.S.forEach((s, i) => {
         const st = F.INTRO + i;
         if (i > 0) {
