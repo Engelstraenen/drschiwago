@@ -30,6 +30,8 @@ MOTIVE = {
     "DSM-51a": "karte-grill", "DSM-51b": "karte-vorspeisen", "DSM-51c": "karte-salate", "DSM-51d": "karte-haupt", "DSM-51e": "karte-dessert",
     "DSM-52a": "teller-stroganoff", "DSM-52b": "teller-olivier", "DSM-52c": "teller-forelle",
     "DSM-54": "tafel", "DSM-54m": "tafel-m",
+    "DSM-55a": "karte-grill-2", "DSM-55b": "karte-vorspeisen-2", "DSM-55c": "karte-salate-2", "DSM-55d": "karte-haupt-2", "DSM-55e": "karte-dessert-2",
+    "DSM-56a": "event-geburtstag", "DSM-56b": "event-firma", "DSM-56c": "event-familie", "DSM-57": "catering-teaser",
     "DSM-53a": "gang-vorspeisen", "DSM-53b": "gang-salate", "DSM-53c": "gang-haupt", "DSM-53d": "gang-beilagen", "DSM-53e": "gang-dessert",
     "DSM-22": "hochzeit", "DSM-23": "veranda",
 }

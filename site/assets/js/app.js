@@ -154,7 +154,7 @@
   const cats = $$('.menu__list li');
   if (cats.length) {
     const pics = $$('.menu__pic--l img'), right = $$('.menu__pic--r img');
-    const pick = i => { cats.forEach(c => c.classList.toggle('is-on', +c.dataset.cat === i)); pics.forEach(p => p.classList.toggle('is-on', +p.dataset.cat === i)); right.forEach(p => p.classList.toggle('is-on', +p.dataset.cat === (i + 2) % 5)); };
+    const pick = i => { cats.forEach(c => c.classList.toggle('is-on', +c.dataset.cat === i)); pics.forEach(p => p.classList.toggle('is-on', +p.dataset.cat === i)); right.forEach(p => p.classList.toggle('is-on', +p.dataset.cat === i)); };
     cats.forEach(c => { const i = +c.dataset.cat; c.addEventListener('mouseenter', () => pick(i)); c.addEventListener('click', () => pick(i)); });
     pick(0);
     if (touch && !reduce) { let n = 0; setInterval(() => { if (visible($('#karte'))) { n = (n + 1) % cats.length; pick(n); } }, 3800); }

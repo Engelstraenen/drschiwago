@@ -33,6 +33,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - Motive → WebP: `python3 tools/assets.py`
 - Prüfen: `python3 tools/check.py http://localhost:4381/ /tmp/drs-check 390x844 "hero:0,abend:.7"`
 - Pflichtprüfung alle Größen: `python3 tools/check_all.py http://localhost:4381/ /tmp/drs-all`
+- Doppelte Bilder prüfen (vor jeder Veröffentlichung): `python3 tools/check_dupes.py`
 - Veröffentlichen: `git subtree split --prefix site -b gh-pages && git push -f origin gh-pages`
 
 ## 8. Offene Fragen
