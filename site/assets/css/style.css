@@ -21,6 +21,7 @@ img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 [hidden], .is-missing { display: none !important; }
+main > section { overflow-x: clip; } /* nichts ragt seitlich heraus; clip lässt sticky intakt */
 ::selection { background: rgba(200, 169, 107, .35); }
 
 /* Typo + Bausteine */

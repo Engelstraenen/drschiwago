@@ -13,7 +13,7 @@ out = sys.argv[2] if len(sys.argv) > 2 else "/tmp/drs-all"
 os.makedirs(out, exist_ok=True)
 VIEWS = [(390, 844), (360, 740), (430, 932), (844, 390), (1440, 900)]
 PAGES = {
-    "index.html": "hero:0,buffet:.06,buffet:.3,buffet:.97,karte:.2,kueche:0,abend:.8,bars:.3,feiern:0,catering:0,instagram:0,bewertungen:0,bewertungen:.6,reservieren:0,kontakt:0",
+    "index.html": "hero:0,abend:0,buffet:.06,buffet:.3,buffet:.97,karte:.2,kueche:0,abend:.8,bars:.3,feiern:0,catering:0,instagram:0,bewertungen:0,bewertungen:.6,reservieren:0,kontakt:0",
     "catering.html": "top:0,baukasten:.05,anfrage:0,galerie:0,bewertungen:0,kontakt:0",
 }
 AUDIT = r"""() => {
@@ -40,6 +40,7 @@ with sync_playwright() as p:
             pg.on("pageerror", lambda e: errs.append("pageerror: " + str(e)[:120]))
             pg.goto(base + page, wait_until="networkidle")
             pg.wait_for_timeout(2500)
+            oxmax = 0
             for s in spots.split(","):
                 sid, frac = s.split(":")
                 y = pg.evaluate("""([id, f]) => { const el = id === 'top' ? document.body : document.getElementById(id); if (!el) return -1;
@@ -49,9 +50,10 @@ with sync_playwright() as p:
                     continue
                 pg.evaluate("y => { document.documentElement.style.scrollBehavior='auto'; scrollTo(0, y); }", y)
                 pg.wait_for_timeout(1100)
+                oxmax = max(oxmax, pg.evaluate("document.documentElement.scrollWidth - innerWidth"))
                 pg.screenshot(path=os.path.join(out, f"{page.split('.')[0]}-{w}x{h}-{sid}{frac}.jpg"), quality=60, type="jpeg")
             a = pg.evaluate(AUDIT)
-            print(f"{page} {w}x{h}: querscroll {a['ox']} px | fehler {len(errs)} {errs[:2]}")
+            print(f"{page} {w}x{h}: querscroll {max(a['ox'], oxmax)} px | fehler {len(errs)} {errs[:2]}")
             if a["small"]:
                 print("   klein:", a["small"])
             if a["taps"]:
