@@ -53,6 +53,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - 21.11.2026: V2 gesichert (Tag v2-2026-11-21 + ZIP in versionen/). Eugen will V3 „edler, hochwertiger“: Landing Page ohne Essensfoto/nicht überladen mit Essen („wirkt billig“); Essen nur als einzelne edle Teller. Storyboards DSSB-4/5/6 gestartet.
 - 21.11.2026: Eugen wählt V3 „Schwarzer Samt“ (Storyboard konzepte/5-schwarzer-samt.jpg). Gebaut und live (Tag v3-2026-11-21). V2 bleibt als Tag v2-2026-11-21 abrufbar.
 - 22.11.2026: Bewertungsbereich nach Masterfile-Regel: echte Zitate raus, Google 4,6 (489) + Tripadvisor 3,0 (1, Nr. 242 von 687) bewegt, Stand 22.11.2026, Beispielkarten markiert. Trustpilot ohne Profil → weggelassen. Werte bei Updates neu nachschlagen.
+- 22.11.2026 (Eugen): Bewertungen nur Google (4,6 · 489), Tripadvisor raus (3,0 aus 1 Bewertung zieht runter). Gilt hier vor der globalen Regel „Google + Tripadvisor“.
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO
