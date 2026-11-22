@@ -80,3 +80,13 @@ for f in glob.glob(os.path.join(OUT, "*-[ls].webp")):
 with open(JS, "w") as f:
     f.write("window.IMG = " + json.dumps(data, indent=1) + ";\n")
 print("img.js:", len(data), "Bilder")
+
+# Cache-Busting: CSS/JS-Links in den HTML-Seiten bekommen bei jedem Lauf eine neue Version,
+# damit Browser nie alte Dateien mit neuem HTML mischen (Eugen 22.11.: „Seite scheint kaputt“)
+import re as _re
+for _page in ("index.html", "catering.html"):
+    _p = os.path.join(HERE, "site", _page)
+    _s = open(_p).read()
+    _s = _re.sub(r'(assets/(?:css|js)/[a-z]+\.(?:css|js))(\?v=\d+)?"', lambda m: f'{m.group(1)}?v={stamp}"', _s)
+    open(_p, "w").write(_s)
+print("Versionsnummer in HTML:", stamp)
