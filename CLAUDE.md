@@ -55,6 +55,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - 22.11.2026: Bewertungsbereich nach Masterfile-Regel: echte Zitate raus, Google 4,6 (489) + Tripadvisor 3,0 (1, Nr. 242 von 687) bewegt, Stand 22.11.2026, Beispielkarten markiert. Trustpilot ohne Profil → weggelassen. Werte bei Updates neu nachschlagen.
 - 22.11.2026 (Eugen): Bewertungen nur Google (4,6 · 489), Tripadvisor raus (3,0 aus 1 Bewertung zieht runter). Gilt hier vor der globalen Regel „Google + Tripadvisor“.
 - 22.11.2026: Gerichtsbilder neu (echt + frisch, Kundenfotos als Referenz/Edit), Piroschki von der Startseite entfernt (gibt es nicht), Zähler 0→50 ersetzt durch vorbeiziehende Gerichtsnamen. Szenen: Schaschlik, Canapés, Hering, Plov, Napoleon.
+- 22.11.2026 (Eugen): Piroschki bleiben im Catering-Baukasten (nur auf der Startseite/Samstagsbuffet raus).
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO
