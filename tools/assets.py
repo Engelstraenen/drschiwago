@@ -23,11 +23,11 @@ MOTIVE = {
     "DSM-06": "mikro", "DSM-07": "textur",
     "DSM-08d": "dress-herr", "DSM-08e": "dress-dame", "DSM-08f": "dress-schuhe",
     "DSM-10": "essen", "DSM-10m": "essen-m",
-    "DSM-11a": "gericht-schaschlik", "DSM-11b": "gericht-piroschki", "DSM-11c": "gericht-canapes",
-    "DSM-11d": "gericht-hering", "DSM-11e": "gericht-plov", "DSM-11f": "gericht-napoleon",
-    "DSM-12": "catering",
+    "DSM-41": "gericht-schaschlik", "DSM-32": "gericht-canapes", "DSM-33": "gericht-hering",
+    "DSM-44": "gericht-plov", "DSM-45": "gericht-napoleon",
+    "DSM-37": "catering",
     "DSM-20": "saal-kronleuchter", "DSM-20m": "saal-kronleuchter-m",
-    "DSM-21a": "teller-schaschlik", "DSM-21b": "teller-hering", "DSM-21c": "teller-napoleon",
+    "DSM-46a": "teller-schaschlik", "DSM-46b": "teller-hering", "DSM-46c": "teller-napoleon",
     "DSM-22": "hochzeit", "DSM-23": "veranda",
 }
 FOTOS = {f"buffet-{i}": f"foto-buffet-{i}" for i in range(1, 8)}
@@ -53,8 +53,11 @@ def build(src, name, big, small):
     data[name] = entry
 
 
+# Fallback, solange ein neues Motiv noch rendert (altes Motiv bleibt sichtbar, keine Lücke)
+FALLBACK = {"DSM-41": "DSM-31", "DSM-44": "DSM-34", "DSM-45": "DSM-35", "DSM-46a": "DSM-36a", "DSM-46b": "DSM-36b", "DSM-46c": "DSM-36c", "DSM-37": "DSM-12"}
+find = lambda i: next((os.path.join(BASE, "motive", i + e) for e in (".jpg", ".png") if os.path.exists(os.path.join(BASE, "motive", i + e))), None)
 for sid, name in MOTIVE.items():
-    src = next((os.path.join(BASE, "motive", sid + e) for e in (".jpg", ".png") if os.path.exists(os.path.join(BASE, "motive", sid + e))), None)
+    src = find(sid) or (find(FALLBACK[sid]) if sid in FALLBACK else None)
     if src:
         w, h = Image.open(src).size
         build(src, name, (2400 if w == h else 3840) if w >= h else 1800, (1200 if w == h else 1800) if w >= h else 900)

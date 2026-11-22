@@ -62,7 +62,7 @@
     const S = scenes.filter((_, i) => keep[i]), T = texts.filter((_, i) => keep[i]), B = btns.filter((_, i) => keep[i]);
     if (S.length) {
       const INTRO = .7, U = INTRO + S.length;
-      F = { S, T, B, U, INTRO, count: $('[data-count]', feast), k: -2 };
+      F = { S, T, B, U, INTRO, k: -2, cols: $$('.feast__names ul', feast) };
       B.forEach((b, i) => b.addEventListener('click', () => scrollToFrac(feast, (INTRO + i + .15) / U)));
     } else feast.classList.add('is-missing');
   }
@@ -104,9 +104,15 @@
     if (F && visible(feast)) {
       const x = prog(feast) * F.U;
       const ix = clamp(x / F.INTRO);
-      feast.style.setProperty('--io', (.82 * (1 - smooth(clamp((ix - .5) / .5)))).toFixed(3));
-      feast.style.setProperty('--iv', (1 - smooth(clamp((ix - .62) / .38))).toFixed(3));
-      if (F.count) F.count.textContent = Math.round(50 * ease(clamp(ix / .6)));
+      // Einstieg: Gerichtsnamen ziehen in drei Spalten vorbei, das erste Gericht wird scharf
+      const sharp = smooth(clamp((ix - .3) / .7));
+      feast.style.setProperty('--io', (.55 * (1 - sharp)).toFixed(3));
+      feast.style.setProperty('--iv', (1 - smooth(clamp((ix - .72) / .28))).toFixed(3));
+      feast.style.setProperty('--hs', (1 + ix * .06).toFixed(4));
+      feast.style.setProperty('--na', (.22 * (1 - smooth(clamp((ix - .5) / .5)))).toFixed(3));
+      const run = innerHeight * 1.1;
+      F.cols.forEach((c, i) => c.style.setProperty('--c' + (i + 1), (-(.15 + x * [.9, 1.35, .7][i]) * run).toFixed(1) + 'px'));
+      if (F.S[0]) { F.S[0].style.setProperty('--fb', ((1 - sharp) * 12).toFixed(2) + 'px'); F.S[0].style.setProperty('--fl', (.42 + .58 * sharp).toFixed(3)); }
       feast.style.setProperty('--nv', smooth(clamp((x - .6) / .3)).toFixed(3));
       let k = x >= .62 ? 0 : -1;
       F.S.forEach((s, i) => {
