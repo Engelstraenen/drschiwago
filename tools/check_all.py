@@ -13,8 +13,8 @@ out = sys.argv[2] if len(sys.argv) > 2 else "/tmp/drs-all"
 os.makedirs(out, exist_ok=True)
 VIEWS = [(390, 844), (360, 740), (430, 932), (844, 390), (1440, 900)]
 PAGES = {
-    "index.html": "hero:0,buffet:.06,buffet:.3,buffet:.97,karte:.2,kueche:0,abend:.8,bars:.3,feiern:0,catering:0,instagram:0,reservieren:0,kontakt:0",
-    "catering.html": "top:0,baukasten:.05,anfrage:0,galerie:0,kontakt:0",
+    "index.html": "hero:0,buffet:.06,buffet:.3,buffet:.97,karte:.2,kueche:0,abend:.8,bars:.3,feiern:0,catering:0,instagram:0,bewertungen:0,bewertungen:.6,reservieren:0,kontakt:0",
+    "catering.html": "top:0,baukasten:.05,anfrage:0,galerie:0,bewertungen:0,kontakt:0",
 }
 AUDIT = r"""() => {
   const vis = el => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el);

@@ -256,22 +256,29 @@
     addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) close(); });
   }
 
-  /* Stimmen */
-  const qBox = $('.quote');
-  if (qBox) {
-    const quotes = [
-      ['»Setzt neue Maßstäbe.«', 'Lala S.'],
-      ['»Beste Ost-Europa Atmosphäre.«', 'xetra11'],
-      ['»Essen schmeckt 10 von 10.«', 'Elina G.'],
-      ['»Hausgemacht, frisch und 1A Qualität.«', 'Steffen S.'],
-    ];
-    const qP = $('[data-quote]'), qBy = $('[data-quote-by]');
-    let qi = 0;
-    if (!reduce) setInterval(() => {
-      if (!visible(qBox)) return;
-      qBox.classList.add('is-swap');
-      setTimeout(() => { qi = (qi + 1) % quotes.length; qP.textContent = quotes[qi][0]; qBy.textContent = quotes[qi][1]; qBox.classList.remove('is-swap'); }, 900);
-    }, 6000);
+  /* Bewertungen: Note zählt hoch, Sterne füllen sich, Beispielkarten wechseln */
+  $$('.rev').forEach(card => {
+    const rate = +card.dataset.rate, note = $('[data-to-dec]', card), on = $('.rev__stars-on', card);
+    const fmt1 = v => v.toFixed(1).replace('.', ',');
+    note.textContent = reduce ? fmt1(rate) : '0,0';
+    const ob = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return; ob.disconnect();
+      on.style.width = (rate / 5 * 100) + '%';
+      if (reduce) return;
+      const t1 = performance.now();
+      const step = n => { const t = clamp((n - t1) / 1800); note.textContent = fmt1(rate * ease(t)); if (t < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    }, { threshold: .4 });
+    ob.observe(card);
+  });
+  const samples = $$('.sample');
+  if (samples.length > 1 && !reduce) {
+    let si = 0;
+    setInterval(() => {
+      if (!visible(samples[0].parentElement)) return;
+      samples[si].classList.remove('is-on'); si = (si + 1) % samples.length;
+      setTimeout(() => samples[si].classList.add('is-on'), 700);
+    }, 5600);
   }
 
   /* Reservierung: nur Samstage */
