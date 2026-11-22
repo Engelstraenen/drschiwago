@@ -75,3 +75,6 @@ SB.run2 = async () => {
 };
 // Lektion 22.11.2026: Beim Austausch der Warteschlange kann die alte Schleife noch SB.q.i++ auf das NEUE q-Objekt machen
 // (erster neuer Job wird übersprungen). Nach SB.runId = 0 mind. 7 s warten, dann SB.q neu setzen, oder SB.q.i prüfen/zurücksetzen.
+// Lektion 22.11.2026: Bei vielen Uploads steht eine alte Referenz nicht mehr auf der ersten Dialog-Seite → setRef meldet NOIMG.
+// Lösung: vor dem Auswählen „Load more“ klicken, bis das Bild im Dialog steht:
+// SB.setRefOrig = SB.setRef; SB.setRef = async src => { ...Load more bis img.src === src... ; return SB.setRefOrig(src); };
