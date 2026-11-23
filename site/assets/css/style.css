@@ -39,6 +39,12 @@ main > section { overflow-x: clip; }
 
 /* Nav */
 .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; display: flex; align-items: center; gap: 30px; padding: 20px var(--gut); transition: background .8s var(--ease), padding .8s var(--ease), border-color .8s; border-bottom: 1px solid transparent; }
+/* Lesbarkeit über dem hellen Leuchter: dunkler Verlauf hinter der Kopfzeile, solange sie durchsichtig ist */
+.nav::before { content: ''; position: absolute; inset: 0 0 -70px 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, rgba(4, 3, 2, .9) 0%, rgba(4, 3, 2, .78) 45%, rgba(4, 3, 2, .4) 75%, rgba(4, 3, 2, 0) 100%); transition: opacity .8s var(--ease); }
+.nav.is-solid::before, .nav.is-open::before { opacity: 0; }
+.nav:not(.is-solid) .nav__links a { color: rgba(240, 233, 220, .92); text-shadow: 0 1px 2px rgba(0, 0, 0, .9), 0 0 14px rgba(0, 0, 0, .85); }
+.nav:not(.is-solid) .nav__links a:hover, .nav:not(.is-solid) .nav__links a[aria-current] { color: var(--champ-2); }
+.nav:not(.is-solid) .nav__lang { background: rgba(4, 3, 2, .45); }
 .nav.is-solid { background: rgba(7, 6, 5, .86); backdrop-filter: blur(14px); padding-top: 12px; padding-bottom: 12px; border-bottom-color: var(--line-soft); }
 .nav__mark { margin-right: auto; font: 500 19px/1 var(--serif); letter-spacing: .22em; text-decoration: none; color: var(--champ-2); min-height: 44px; display: flex; align-items: center; opacity: 0; transition: opacity .8s var(--ease); }
 .nav.is-solid .nav__mark, .nav--page .nav__mark { opacity: 1; }
