@@ -78,3 +78,4 @@ SB.run2 = async () => {
 // Lektion 22.11.2026: Bei vielen Uploads steht eine alte Referenz nicht mehr auf der ersten Dialog-Seite → setRef meldet NOIMG.
 // Lösung: vor dem Auswählen „Load more“ klicken, bis das Bild im Dialog steht:
 // SB.setRefOrig = SB.setRef; SB.setRef = async src => { ...Load more bis img.src === src... ; return SB.setRefOrig(src); };
+// Lektion 23.11.2026: SB.run3 setzt SB.q NICHT zurück. Vor jeder neuen Warteschlange: SB.runId = 0; 7 s warten; SB.q = {i: 0, msg: 'start'}; SB.queue = [...]; SB.jobs = alle Jobs (für harvest); dann SB.run3().
