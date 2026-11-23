@@ -65,7 +65,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - 23.11.2026 (Eugen): „Tisch reservieren“ überall blutrot gefüllt (`.line-btn--blood`, #9a0c12).
 - 23.11.2026 (Eugen): Garten aus dem Rundgang entfernt (die Terrasse ist der Garten).
 - 23.11.2026 (Eugen): „Feier anfragen“ führt auf `anfrage.html` = Kopie von angerhof-duisburg.de/angebot (5 Schritte: Anlass, Gäste, Termin mit gesperrten Samstagen, Wünsche, Kontakt), für alle Anlässe (`?anlass=`), im Angerhof-Look mit Angerhof-Logo oben links. Versand per E-Mail-Programm an kontakt@angerhof-restaurant.de.
-- 23.11.2026 (Eugen): Lageplan im Rundgang (wichtig für Firmenfeiern), schematisch, Flächen/Gäste laut angerhof-duisburg.de: Großer Saal 260 m² bis 200, Terrasse ca. 150 m² bis 100, Foyer & Lounge ca. 100 m² mit Bar, Kleiner Saal ca. 70 m² bis 50 (= MIRRORS, Annahme). Bereiche kombinierbar (Flächensumme).
+- 23.11.2026 (Eugen): Lageplan im Rundgang (wichtig für Firmenfeiern), Eingang rechts am Foyer (Eugen-Korrektur), schematisch, Flächen/Gäste laut angerhof-duisburg.de: Großer Saal 260 m² bis 200, Terrasse ca. 150 m² bis 100, Foyer & Lounge ca. 100 m² mit Bar, Kleiner Saal ca. 70 m² bis 50 (= MIRRORS, Annahme). Bereiche kombinierbar (Flächensumme).
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO
