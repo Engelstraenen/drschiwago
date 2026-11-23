@@ -15,10 +15,12 @@ VIEWS = [(390, 844), (360, 740), (430, 932), (844, 390), (1440, 900)]
 PAGES = {
     "index.html": "hero:0,abend:0,buffet:.06,buffet:.3,buffet:.97,karte:.2,kueche:0,abend:.8,bars:.3,feiern:0,catering:0,instagram:0,bewertungen:0,bewertungen:.6,reservieren:0,kontakt:0",
     "catering.html": "top:0,baukasten:.05,anfrage:0,galerie:0,bewertungen:0,kontakt:0",
-    "rundgang.html": "top:0,saal:0,mirrors:0,bars-rg:0,terrasse-rg:0,garten:0,kontakt:0",
+    "rundgang.html": "top:0,lageplan:0,lageplan:.5,saal:0,mirrors:0,bars-rg:0,terrasse-rg:0,kontakt:0",
     "ru/index.html": "hero:0,buffet:.97,karte:.2,abend:.8,feiern:0,catering:0,bewertungen:0,reservieren:0,kontakt:0",
     "ru/catering.html": "top:0,baukasten:.05,anfrage:0,kontakt:0",
-    "ru/rundgang.html": "top:0,saal:0,garten:0,kontakt:0",
+    "ru/rundgang.html": "top:0,lageplan:0,saal:0,kontakt:0",
+    "anfrage.html": "top:0,angebot:0,kontakt:0",
+    "ru/anfrage.html": "top:0",
     "rundgang-fahrt.html": "top:0,fahrt:.2,fahrt:.45,fahrt:.7,fahrt:.99,kontakt:0",
     "rundgang-tueren.html": "top:0,tour:.1,tour:.3,tour:.62,tour:.97,kontakt:0",
 }
@@ -46,7 +48,7 @@ with sync_playwright() as p:
             pg = ctx.new_page()
             pg.on("console", lambda m: errs.append(m.text[:120]) if m.type == "error" and "ErrorUtils" not in m.text else None)
             pg.on("pageerror", lambda e: errs.append("pageerror: " + str(e)[:120]))
-            pg.goto(base + page, wait_until="networkidle")
+            pg.goto(base + page, wait_until="load", timeout=120000)
             pg.wait_for_timeout(2500)
             oxmax = 0
             for s in spots.split(","):

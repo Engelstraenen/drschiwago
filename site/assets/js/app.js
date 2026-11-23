@@ -205,7 +205,7 @@
       const pic = pics[i] && !pics[i].classList.contains('is-missing') ? pics[i] : ok[i % Math.max(1, ok.length)];
       pics.forEach(p => p.classList.toggle('is-on', p === pic));
       title.textContent = D[i][0]; text.textContent = D[i][1];
-      link.href = 'https://www.angerhof-duisburg.de/angebot?anlass=' + encodeURIComponent(D[i][2]);
+      link.href = 'anfrage.html?anlass=' + encodeURIComponent(D[i][2]);
     };
     evs.forEach((b, i) => b.addEventListener('click', () => { touched = true; show(i); }));
     show(0);
@@ -328,4 +328,29 @@
       location.href = `mailto:info@drschiwago.de?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
     });
   }
+})();
+
+/* Lageplan: Bereich antippen → Infokarte; Bereiche kombinieren → Fläche */
+(() => {
+  const plan = document.querySelector('.plan');
+  if (!plan) return;
+  const areas = [...plan.querySelectorAll('.plan__area')], cards = [...plan.querySelectorAll('.plan__card')];
+  const show = id => {
+    areas.forEach(a => a.classList.toggle('is-on', a.dataset.area === id));
+    cards.forEach(c => c.classList.toggle('is-on', c.dataset.card === id));
+  };
+  areas.forEach(a => {
+    a.addEventListener('click', () => show(a.dataset.area));
+    a.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(a.dataset.area); } });
+  });
+  cards.forEach(c => { const go = c.querySelector('.plan__go'); if (go && !document.querySelector(go.getAttribute('href'))) go.remove(); });
+  const sum = plan.querySelector('[data-sum]');
+  plan.querySelectorAll('.plan__chip').forEach(ch => ch.addEventListener('click', () => {
+    const on = ch.getAttribute('aria-pressed') !== 'true';
+    ch.setAttribute('aria-pressed', on);
+    const a = areas.find(x => x.dataset.area === ch.dataset.pick); if (a) a.classList.toggle('is-pick', on);
+    if (on) show(ch.dataset.pick);
+    sum.textContent = [...plan.querySelectorAll('.plan__chip[aria-pressed="true"]')].reduce((s, x) => s + +x.dataset.m2, 0);
+  }));
+  show('saal');
 })();

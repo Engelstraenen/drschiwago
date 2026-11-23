@@ -30,7 +30,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 ## 7. Befehle
 - Fertige sjinn-Bilder laden: `tools/fetch.sh DSM-xx=<url> ...` (danach `python3 tools/assets.py`)
 - Vorschau: `python3 tools/serve.py 4381` → http://localhost:4381
-- Motive → WebP: `python3 tools/assets.py`
+- Motive → WebP: `python3 tools/assets.py` (rechnet nur geänderte Bilder, Cache `tools/.assets_cache.json`; alles neu: Cache löschen)
 - Prüfen: `python3 tools/check.py http://localhost:4381/ /tmp/drs-check 390x844 "hero:0,abend:.7"`
 - Pflichtprüfung alle Größen: `python3 tools/check_all.py http://localhost:4381/ /tmp/drs-all`
 - Doppelte Bilder prüfen (vor jeder Veröffentlichung): `python3 tools/check_dupes.py`
@@ -41,6 +41,8 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - Höher aufgelöste Originalfotos vom Bruder? (alte Seite nur ca. 760–1350 px)
 - Instagram-Auto-Feed: Behold-Link vom Konto-Inhaber steht aus (Eugen 21.11.: „später“), Anleitung docs/instagram.md.
 - Vor Livegang drschiwago.de: Cookie-Einwilligung für Instagram-Einbettung.
+- Echter Grundriss vom Bruder/Angerhof? Dann Lageplan maßstabsgetreu. Ist der Kleine Saal das MIRRORS?
+- Rundgang-Varianten `rundgang-fahrt.html` / `rundgang-tueren.html` behalten oder löschen (Eugen: „Ist gut bei Rundgang“)?
 - Echte Bewertungstexte nur offiziell (Google Places API mit Schlüssel oder Widget mit Konto des Inhabers). Tripadvisor-Profil beanspruchen?
 
 ## 9. Entschieden
@@ -61,6 +63,9 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - 23.11.2026 (Eugen): Rundgang durchs Haus als eigene Unterseite im Header (`rundgang.html`), echte Fotos der alten Seite ohne grauen Nebel-Filter (`tools/dehaze.py`).
 - 23.11.2026 (Eugen): Seite zweisprachig Deutsch/Russisch mit Umschalter im Header (`site/ru/`, erzeugt per `tools/build_ru.py`).
 - 23.11.2026 (Eugen): „Tisch reservieren“ überall blutrot gefüllt (`.line-btn--blood`, #9a0c12).
+- 23.11.2026 (Eugen): Garten aus dem Rundgang entfernt (die Terrasse ist der Garten).
+- 23.11.2026 (Eugen): „Feier anfragen“ führt auf `anfrage.html` = Kopie von angerhof-duisburg.de/angebot (5 Schritte: Anlass, Gäste, Termin mit gesperrten Samstagen, Wünsche, Kontakt), für alle Anlässe (`?anlass=`), im Angerhof-Look mit Angerhof-Logo oben links. Versand per E-Mail-Programm an kontakt@angerhof-restaurant.de.
+- 23.11.2026 (Eugen): Lageplan im Rundgang (wichtig für Firmenfeiern), schematisch, Flächen/Gäste laut angerhof-duisburg.de: Großer Saal 260 m² bis 200, Terrasse ca. 150 m² bis 100, Foyer & Lounge ca. 100 m² mit Bar, Kleiner Saal ca. 70 m² bis 50 (= MIRRORS, Annahme). Bereiche kombinierbar (Flächensumme).
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO

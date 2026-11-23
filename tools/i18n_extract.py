@@ -8,7 +8,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGES = ['index.html', 'catering.html', 'rundgang.html']
+PAGES = ['index.html', 'catering.html', 'rundgang.html', 'anfrage.html']
 SKIP_TAGS = {'script', 'style'}
 ATTRS = ('alt', 'aria-label', 'title', 'placeholder')
 

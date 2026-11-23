@@ -6,3 +6,4 @@ konzepte/*.png
 *.mov
 *.mp4.part
 versionen/
+tools/.assets_cache.json

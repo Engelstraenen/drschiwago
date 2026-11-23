@@ -45,18 +45,39 @@ stamp = str(int(time.time()))
 data = {}
 
 
+CACHE_F = os.path.join(HERE, "tools", ".assets_cache.json")
+try:
+    CACHE = json.load(open(CACHE_F))
+except Exception:
+    CACHE = {}
+
+
 def build(src, name, big, small):
-    im = Image.open(src).convert("RGB")
-    w, h = im.size
+    """WebP l/s erzeugen. Unverändert (gleiche Quelle, gleiche Zeit, gleiche Größen) → nichts neu rechnen und
+    die Quelle nicht einmal öffnen (Dropbox lädt sonst jede ausgelagerte 4K-Datei neu herunter)."""
+    key = [src, os.path.getmtime(src), big, small]
+    paths = {t: os.path.join(OUT, f"{name}-{t}.webp") for t in ("l", "s")}
+    have = all(os.path.exists(x) and os.path.getsize(x) > 0 for x in paths.values())
+    old = CACHE.get(name)
+    fresh = have and old is not None and old[:4] == key and len(old) == 6
+    if fresh:
+        w, h = old[4], old[5]
+        im = None
+    else:
+        im = Image.open(src).convert("RGB")
+        w, h = im.size
+        if have and os.environ.get("ASSETS_SEED"):
+            im = None  # nur Größe merken, Dateien sind schon da
     entry = {"w": w, "h": h}
     for tag, tw in (("l", big), ("s", small)):
         tw = min(tw, w)  # nie hochskalieren
         th = round(h * tw / w)
-        path = os.path.join(OUT, f"{name}-{tag}.webp")
-        im.resize((tw, th), Image.LANCZOS).save(path, "WEBP", quality=80 if tag == "l" else 76, method=6)
+        if im is not None:
+            im.resize((tw, th), Image.LANCZOS).save(paths[tag], "WEBP", quality=80 if tag == "l" else 76, method=6)
         entry[tag] = f"assets/img/{name}-{tag}.webp?v={stamp}"
         entry[tag + "w"] = tw
-    print(f"{name}: {entry['lw']}/{entry['sw']} px")
+    CACHE[name] = key + [w, h]
+    print(f"{name}: {entry['lw']}/{entry['sw']} px" + ("" if fresh else " (neu)"))
     data[name] = entry
 
 
@@ -66,7 +87,8 @@ find = lambda i: next((os.path.join(BASE, "motive", i + e) for e in (".jpg", ".p
 for sid, name in MOTIVE.items():
     src = find(sid) or (find(FALLBACK[sid]) if sid in FALLBACK else None)
     if src:
-        w, h = Image.open(src).size
+        c = CACHE.get(name)
+        w, h = (c[4], c[5]) if c and len(c) == 6 and c[0] == src and c[1] == os.path.getmtime(src) else Image.open(src).size
         build(src, name, (2400 if w == h else 3840) if w >= h else 1800, (1200 if w == h else 1800) if w >= h else 900)
 for sid, name in FOTOS.items():
     src = os.path.join(BASE, "original-fotos", sid + ".jpg")
@@ -85,6 +107,7 @@ for f in glob.glob(os.path.join(OUT, "*-[ls].webp")):
         os.remove(f)
         print("entfernt:", os.path.basename(f))
 
+json.dump(CACHE, open(CACHE_F, "w"))
 with open(JS, "w") as f:
     f.write("window.IMG = " + json.dumps(data, indent=1) + ";\n")
 print("img.js:", len(data), "Bilder")
@@ -92,7 +115,7 @@ print("img.js:", len(data), "Bilder")
 # Cache-Busting: CSS/JS-Links in den HTML-Seiten bekommen bei jedem Lauf eine neue Version,
 # damit Browser nie alte Dateien mit neuem HTML mischen (Eugen 22.11.: „Seite scheint kaputt“)
 import re as _re
-for _page in ("index.html", "catering.html", "rundgang.html", "rundgang-fahrt.html", "rundgang-tueren.html"):
+for _page in ("index.html", "catering.html", "rundgang.html", "rundgang-fahrt.html", "rundgang-tueren.html", "anfrage.html"):
     _p = os.path.join(HERE, "site", _page)
     _s = open(_p).read()
     _s = _re.sub(r'(assets/(?:css|js)/[a-z]+\.(?:css|js))(\?v=\d+)?"', lambda m: f'{m.group(1)}?v={stamp}"', _s)

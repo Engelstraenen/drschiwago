@@ -12,7 +12,7 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGES = ['index.html', 'catering.html', 'rundgang.html']
+PAGES = ['index.html', 'catering.html', 'rundgang.html', 'anfrage.html']
 ATTRS = ('alt', 'aria-label', 'title', 'placeholder')
 TR = json.load(open(os.path.join(HERE, 'i18n', 'ru.json')))
 missing = []
@@ -59,8 +59,8 @@ def tr_tag(tag):
 def build(page):
     src = open(os.path.join(HERE, 'site', page)).read()
     # Sprachumschalter: auf der russischen Seite zurück zur deutschen
-    src = re.sub(r'<a class="nav__lang"[^>]*>RU</a>',
-                 f'<a class="nav__lang" href="../{page}" hreflang="de" lang="de" aria-label="Deutsche Version">DE</a>', src)
+    src = re.sub(r'<a class="(nav__lang|ah-lang)"[^>]*>RU</a>',
+                 lambda m: f'<a class="{m.group(1)}" href="../{page}" hreflang="de" lang="de" aria-label="Deutsche Version">DE</a>', src)
     out, i = [], 0
     for m in re.finditer(r'<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->|<[^>]+>', src, re.S):
         out.append(tr_text(src[i:m.start()]))
@@ -73,7 +73,7 @@ def build(page):
             tok = re.sub(r'lang="de"', 'lang="ru" data-base="../"', tok)
         elif not tok.startswith('<!--'):
             # aria-label des Umschalters ist schon deutsch, nicht übersetzen
-            if 'class="nav__lang"' in tok:
+            if 'class="nav__lang"' in tok or 'class="ah-lang"' in tok:
                 pass
             else:
                 tok = tr_tag(tok)
