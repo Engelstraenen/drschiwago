@@ -42,6 +42,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - Instagram-Auto-Feed: Behold-Link vom Konto-Inhaber steht aus (Eugen 21.11.: „später“), Anleitung docs/instagram.md.
 - Vor Livegang drschiwago.de: Cookie-Einwilligung für Instagram-Einbettung.
 - Ist der Kleine Saal das MIRRORS? (Lageplan sonst von Eugen abgenommen)
+- Cocktailbar im Foyer am Eingang = Karaoke Bar? Echte Getränkekarten/Preise vom Bruder?
 - Rundgang-Varianten `rundgang-fahrt.html` / `rundgang-tueren.html` behalten oder löschen (Eugen: „Ist gut bei Rundgang“)?
 - Echte Bewertungstexte nur offiziell (Google Places API mit Schlüssel oder Widget mit Konto des Inhabers). Tripadvisor-Profil beanspruchen?
 
@@ -66,6 +67,8 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - 23.11.2026 (Eugen): Garten aus dem Rundgang entfernt (die Terrasse ist der Garten).
 - 23.11.2026 (Eugen): „Feier anfragen“ führt auf `anfrage.html` = Kopie von angerhof-duisburg.de/angebot (5 Schritte: Anlass, Gäste, Termin mit gesperrten Samstagen, Wünsche, Kontakt), für alle Anlässe (`?anlass=`), im Angerhof-Look mit Angerhof-Logo oben links. Versand per E-Mail-Programm an kontakt@angerhof-restaurant.de.
 - 23.11.2026 (Eugen): Lageplan im Rundgang (wichtig für Firmenfeiern), Eingang rechts am Foyer, Türen nur laut Eugen (Saal 2× zur Terrasse, Kleiner Saal zur Terrasse, Kleiner Saal–Foyer, Saal–Foyer), Parkplätze unten bestätigt, schematisch, Flächen/Gäste laut angerhof-duisburg.de: Großer Saal 260 m² bis 200, Terrasse ca. 150 m² bis 100, Foyer & Lounge ca. 100 m² mit Bar, Kleiner Saal ca. 70 m² bis 50 (= MIRRORS, Annahme). Bereiche kombinierbar (Flächensumme).
+- 23.11.2026 (Eugen): Küche = russisch, ukrainisch, georgisch, armenisch, usbekisch (überall auf der Seite, DE + RU).
+- 23.11.2026 (Eugen): Drei Bars mit Karte zum Anklicken: Terrassenbar und Saalbar = Longdrinks + Softdrinks, Karaoke Bar = Cocktails + Softdrinks (Auswahl selbst zusammengestellt, ohne Preise, Hinweis „aktuelle Karte an der Bar“). Wein/Shots raus. Eugen erwähnte eine Cocktailbar im Foyer direkt am Eingang (= Karaoke Bar? offen).
 
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO

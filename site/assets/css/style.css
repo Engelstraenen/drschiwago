@@ -460,3 +460,32 @@ blockquote.insta__item a { color: var(--champ-2); font: italic 400 22px/1.3 var(
 .line-btn.line-btn--blood:focus-visible { outline: 1px solid var(--champ-2); outline-offset: 3px; }
 @media (max-width: 900px) { .sticky-cta.line-btn--blood { background: var(--blood); backdrop-filter: none; } }
 
+/* Bars: Getränkekarte je Bar */
+.bar__hint { display: flex; align-items: center; justify-content: center; min-height: 44px; margin-top: 2px; font: 500 14px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--champ-2); opacity: .55; transition: opacity .5s; }
+.bar__hint::after { content: "↓"; margin-left: 8px; letter-spacing: 0; }
+.bar.is-active .bar__hint, .bar:hover .bar__hint { opacity: 1; }
+.bar:focus-visible { outline: 1px solid var(--champ-2); outline-offset: 6px; }
+.barmenu { max-width: 900px; margin: 54px auto 0; }
+.barmenu__card { display: none; padding: clamp(28px, 4vw, 48px) clamp(20px, 5vw, 64px); border: 1px solid var(--line); background: linear-gradient(180deg, rgba(200, 169, 107, .05), rgba(200, 169, 107, 0) 60%); }
+.barmenu__card.is-on { display: block; animation: barIn .6s var(--ease); }
+@keyframes barIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.barmenu__head { text-align: center; margin-bottom: 30px; }
+.barmenu__head .eyebrow { margin-bottom: 10px; }
+.barmenu__head h3 { margin: 0; font: 400 clamp(38px, 4.4vw, 58px)/1 var(--serif); color: var(--ivory); }
+.barmenu__where { margin: 10px 0 0; font: italic 400 19px/1.3 var(--serif); color: var(--muted); }
+.barmenu__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; text-align: left; }
+.barmenu__cols > div { padding: 0 clamp(16px, 3vw, 40px); }
+.barmenu__cols > div + div { border-left: 1px solid var(--line-soft); }
+.barmenu__t { margin: 0 0 14px; font: 500 14px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--champ-2); }
+.barmenu ul { list-style: none; margin: 0; padding: 0; }
+.barmenu li { position: relative; padding: 9px 0 9px 20px; font: 400 21px/1.25 var(--serif); color: var(--ivory); border-bottom: 1px solid rgba(200, 169, 107, .1); }
+.barmenu li::before { content: ""; position: absolute; left: 2px; top: 50%; width: 6px; height: 6px; margin-top: -3px; transform: rotate(45deg); border: 1px solid var(--champ); }
+.barmenu__note { margin: 18px 0 0; text-align: center; font: italic 400 17px/1.4 var(--serif); color: var(--muted); }
+@media (max-width: 720px) {
+  .barmenu { margin-top: 30px; }
+  .barmenu__cols { grid-template-columns: 1fr; }
+  .barmenu__cols > div { padding: 0; }
+  .barmenu__cols > div + div { border-left: 0; margin-top: 26px; }
+  .barmenu li { font-size: 19px; }
+  .bar__hint { font-size: 14px; }
+}

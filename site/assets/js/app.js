@@ -165,10 +165,18 @@
   /* Bars */
   const bars = $$('.bar:not(.is-missing)');
   const row = $('.bars__row');
-  const activate = b => bars.forEach(x => x.classList.toggle('is-active', x === b));
+  const menus = $$('.barmenu__card');
+  const activate = b => {
+    bars.forEach(x => { x.classList.toggle('is-active', x === b); x.setAttribute('aria-pressed', x === b); });
+    menus.forEach(m => m.classList.toggle('is-on', m.dataset.bar === b.dataset.need));
+  };
+  bars.forEach(b => b.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(b); } }));
   if (!touch) bars.forEach(b => b.addEventListener('mouseenter', () => activate(b)));
-  bars.forEach(b => b.addEventListener('click', () => activate(b)));
-  if (row) row.addEventListener('mouseleave', () => { if (!touch) activate(bars.find(b => b.dataset.need === 'bar-saal') || bars[0]); });
+  bars.forEach(b => b.addEventListener('click', () => {
+    activate(b);
+    if (phone && row) row.scrollTo({ left: b.offsetLeft - (row.clientWidth - b.clientWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+  }));
+  /* Maus verlässt die Reihe: gewählte Bar bleibt, damit man ihre Karte lesen kann */
   if (row && phone) {
     const mid = bars.find(b => b.dataset.need === 'bar-saal');
     if (mid) requestAnimationFrame(() => { row.scrollLeft = mid.offsetLeft - (row.clientWidth - mid.clientWidth) / 2; });
