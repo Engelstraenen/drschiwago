@@ -34,6 +34,8 @@ MOTIVE = {
     "DSM-56a": "event-geburtstag", "DSM-56b": "event-firma", "DSM-56c": "event-familie", "DSM-58": "catering-bg", "DSM-58m": "catering-bg-m",
     "DSM-53a": "gang-vorspeisen", "DSM-53b": "gang-salate", "DSM-53c": "gang-haupt", "DSM-53d": "gang-beilagen", "DSM-53e": "gang-dessert",
     "DSM-22": "hochzeit", "DSM-23": "veranda",
+    "DSM-60": "tuer", "DSM-60m": "tuer-m",
+    "DSM-61a": "rg4k-foyer", "DSM-61b": "rg4k-saal", "DSM-61c": "rg4k-nacht", "DSM-61d": "rg4k-mirrors", "DSM-61e": "rg4k-bar", "DSM-61g": "rg4k-terrasse",
 }
 FOTOS = {f"buffet-{i}": f"foto-buffet-{i}" for i in range(1, 8)}
 FOTOS.update({"karussell_buffet-01": "foto-salat", "karussell_buffet-03": "foto-canapes", "karussell_cocktail-1": "foto-cocktail-1", "karussell_cocktail-3": "foto-cocktail-3"})
@@ -90,7 +92,7 @@ print("img.js:", len(data), "Bilder")
 # Cache-Busting: CSS/JS-Links in den HTML-Seiten bekommen bei jedem Lauf eine neue Version,
 # damit Browser nie alte Dateien mit neuem HTML mischen (Eugen 22.11.: „Seite scheint kaputt“)
 import re as _re
-for _page in ("index.html", "catering.html", "rundgang.html"):
+for _page in ("index.html", "catering.html", "rundgang.html", "rundgang-fahrt.html", "rundgang-tueren.html"):
     _p = os.path.join(HERE, "site", _page)
     _s = open(_p).read()
     _s = _re.sub(r'(assets/(?:css|js)/[a-z]+\.(?:css|js))(\?v=\d+)?"', lambda m: f'{m.group(1)}?v={stamp}"', _s)

@@ -19,6 +19,8 @@ PAGES = {
     "ru/index.html": "hero:0,buffet:.97,karte:.2,abend:.8,feiern:0,catering:0,bewertungen:0,reservieren:0,kontakt:0",
     "ru/catering.html": "top:0,baukasten:.05,anfrage:0,kontakt:0",
     "ru/rundgang.html": "top:0,saal:0,garten:0,kontakt:0",
+    "rundgang-fahrt.html": "top:0,fahrt:.2,fahrt:.45,fahrt:.7,fahrt:.99,kontakt:0",
+    "rundgang-tueren.html": "top:0,tour:.1,tour:.3,tour:.62,tour:.97,kontakt:0",
 }
 if len(sys.argv) > 3:
     PAGES = {k: v for k, v in PAGES.items() if k in sys.argv[3].split(",")}
