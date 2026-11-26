@@ -73,3 +73,6 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 ## 10. Ablage
 - Code: Dropbox /CLAUDE/Projekte/DRSCHIWAGO
 - Medien: Dropbox /CLAUDE/Content/DRSCHIWAGO
+
+- 24.11.2026: Seite von Eugen abgenommen („confirmed“), nichts mehr ändern. Nicht Teil des Demo-Umbaus auf neue Leitideen.
+- 26.11.2026 (Eugen): Oben links Angerhof-Logo (weiß/gold, von drschiwago.de /logos/angerhof-weiss.png) statt Schriftzug DR. SCHIWAGO, auf allen Seiten DE + RU, immer sichtbar.
