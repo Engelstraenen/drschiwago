@@ -31,6 +31,7 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 - Fertige sjinn-Bilder laden: `tools/fetch.sh DSM-xx=<url> ...` (danach `python3 tools/assets.py`)
 - Vorschau: `python3 tools/serve.py 4381` → http://localhost:4381
 - Motive → WebP: `python3 tools/assets.py` (rechnet nur geänderte Bilder, Cache `tools/.assets_cache.json`; alles neu: Cache löschen)
+- Ladezeit lokal messen (Handy, langsames 4G): `python3 tools/lcp_check.py <url> 3`; offiziell über pagespeed.web.dev im Chrome (API-Kontingent ohne Schlüssel oft leer)
 - Prüfen: `python3 tools/check.py http://localhost:4381/ /tmp/drs-check 390x844 "hero:0,abend:.7"`
 - Pflichtprüfung alle Größen: `python3 tools/check_all.py http://localhost:4381/ /tmp/drs-all`
 - Doppelte Bilder prüfen (vor jeder Veröffentlichung): `python3 tools/check_dupes.py`
@@ -76,3 +77,4 @@ Awwwards-Niveau, Scroll-Erlebnis, fotorealistisch. Seit V3: edel und ruhig (Schw
 
 - 24.11.2026: Seite von Eugen abgenommen („confirmed“), nichts mehr ändern. Nicht Teil des Demo-Umbaus auf neue Leitideen.
 - 26.11.2026 (Eugen): Oben links Angerhof-Logo (weiß/gold, von drschiwago.de /logos/angerhof-weiss.png) statt Schriftzug DR. SCHIWAGO, auf allen Seiten DE + RU, immer sichtbar.
+- 26.11.2026 (Eugen): Logo fest 48 px (ändert beim Scrollen nicht die Größe); „Angebot anfragen“ bei Feiern bordeauxrot; Ladezeit optimiert (Startbild im HTML + Preload, Titel sofort, Schriften lokal): PageSpeed Handy 97 / LCP 2,3 s, Desktop 99.
