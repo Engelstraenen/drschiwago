@@ -71,16 +71,17 @@ main > section { overflow-x: clip; }
 .hero__text { position: absolute; left: 0; right: 0; top: 54%; transform: translateY(-50%); text-align: center; padding: 0 var(--gut); }
 .hero__mark { font: 500 clamp(38px, 5.2vw, 84px)/1.1 var(--serif); letter-spacing: .14em; color: var(--champ-2); text-shadow: 0 4px 30px rgba(0, 0, 0, .7); }
 .hero__line { font: 400 clamp(20px, 1.9vw, 28px)/1.3 var(--serif); color: var(--ivory); margin-bottom: 26px; text-shadow: 0 2px 18px rgba(0, 0, 0, .8); }
-.hero__text > * { opacity: 0; transform: translateY(14px); transition: opacity 1.8s var(--slow), transform 1.8s var(--slow); }
-.hero.is-lit .hero__text > * { opacity: 1; transform: none; }
-.hero.is-lit .hero__text > :nth-child(1) { transition-delay: 1.4s; } .hero.is-lit .hero__text > :nth-child(2) { transition-delay: 1.8s; }
-.hero.is-lit .hero__text > :nth-child(3) { transition-delay: 2.1s; } .hero.is-lit .hero__text > :nth-child(4) { transition-delay: 2.4s; }
-.hero__text .rule { transform: scaleX(0); } .hero.is-lit .hero__text .rule { transform: scaleX(1); }
+/* Schrift erscheint sofort beim Laden (schnelles LCP), nicht erst nach dem Bild */
+.hero__text > * { opacity: 0; animation: heroIn 1.3s var(--slow) forwards; }
+.hero__text > :nth-child(1) { animation-delay: .1s; } .hero__text > :nth-child(3) { animation-delay: .35s; } .hero__text > :nth-child(4) { animation-delay: .55s; }
+.hero__text > .rule { opacity: 1; transform: scaleX(0); animation: ruleIn 1.3s var(--slow) .25s forwards; }
+@keyframes heroIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes ruleIn { to { transform: scaleX(1); } }
 .hero__btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .line-btn--solid { border-color: var(--champ); background: rgba(200, 169, 107, .14); color: var(--ivory); }
 .line-btn--solid:hover { background: rgba(200, 169, 107, .26); }
-.hero__foot { position: absolute; left: 0; right: 0; bottom: 26px; text-align: center; font: 500 12px/1.4 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: rgba(236, 228, 212, .62); opacity: 0; transition: opacity 2s var(--slow) 2.8s; padding: 0 var(--gut); }
-.hero.is-lit .hero__foot { opacity: 1; }
+.hero__foot { position: absolute; left: 0; right: 0; bottom: 26px; text-align: center; font: 500 12px/1.4 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: rgba(236, 228, 212, .62); opacity: 0; animation: heroFoot 1.6s var(--slow) .8s forwards; padding: 0 var(--gut); }
+@keyframes heroFoot { to { opacity: 1; } }
 
 /* 2 · Buffet-Szenen */
 .feast { position: relative; height: 640vh; background: #000; }
@@ -451,6 +452,7 @@ blockquote.insta__item a { color: var(--champ-2); font: italic 400 22px/1.3 var(
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .hero__text > *, .hero__foot { opacity: 1 !important; transform: none !important; }
 }
 
 /* Tisch reservieren: blutrot, fällt auf jeder Seite sofort auf */
@@ -492,8 +494,8 @@ blockquote.insta__item a { color: var(--champ-2); font: italic 400 22px/1.3 var(
 
 /* Kopfzeile: Angerhof-Logo oben links (Eugen 26.11.2026), immer sichtbar */
 .nav__mark--logo { opacity: 1 !important; padding: 2px 0; }
-.nav__mark--logo img { display: block; height: 52px; width: auto; max-width: none; }
-.nav.is-solid .nav__mark--logo img { height: 46px; }
+.nav__mark--logo img { display: block; height: 48px; width: auto; max-width: none; }
+.nav.is-solid .nav__mark--logo img { height: 48px; } /* Logo bleibt beim Scrollen gleich groß (Eugen 26.11.) */
 @media (max-width: 720px) {
   .nav__mark--logo img, .nav.is-solid .nav__mark--logo img { height: 34px; }
 }

@@ -119,5 +119,6 @@ for _page in ("index.html", "catering.html", "rundgang.html", "rundgang-fahrt.ht
     _p = os.path.join(HERE, "site", _page)
     _s = open(_p).read()
     _s = _re.sub(r'(assets/(?:css|js)/[a-z]+\.(?:css|js))(\?v=\d+)?"', lambda m: f'{m.group(1)}?v={stamp}"', _s)
+    _s = _re.sub(r'(assets/img/[a-z0-9-]+\.webp)(\?v=\d+)?(?=[" ,])', lambda m: f'{m.group(1)}?v={stamp}', _s)
     open(_p, "w").write(_s)
 print("Versionsnummer in HTML:", stamp)

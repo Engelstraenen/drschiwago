@@ -16,6 +16,7 @@
   $$('[data-need]').forEach(el => { if (!IMG[el.dataset.need]) el.classList.add('is-missing'); });
   const portrait = matchMedia('(max-aspect-ratio: 4/5)').matches;
   $$('img[data-img]').forEach(img => {
+    if (img.hasAttribute('data-static')) return; // Startbild: steht schon im HTML (schneller sichtbar)
     let key = img.dataset.img;
     if (portrait && IMG[key + '-m']) key += '-m'; // eigenes Hochformat-Motiv fürs Handy
     const m = IMG[key];

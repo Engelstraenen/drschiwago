@@ -10,17 +10,18 @@
 <link rel="alternate" hreflang="de" href="https://engelstraenen.github.io/drschiwago/index.html">
 <link rel="alternate" hreflang="ru" href="https://engelstraenen.github.io/drschiwago/ru/index.html">
 <link rel="icon" href="https://drschiwago.de/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Golos+Text:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=1795728515">
-<script src="assets/js/img.js?v=1795728515"></script>
+<link rel="preload" as="image" href="assets/img/saal-kronleuchter-m-s.webp?v=1795730989" imagesrcset="assets/img/saal-kronleuchter-m-s.webp?v=1795730989 900w, assets/img/saal-kronleuchter-m-l.webp?v=1795730989 1800w" imagesizes="100vw" media="(max-aspect-ratio: 4/5)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/saal-kronleuchter-s.webp?v=1795730989" imagesrcset="assets/img/saal-kronleuchter-s.webp?v=1795730989 1800w, assets/img/saal-kronleuchter-l.webp?v=1795730989 3840w" imagesizes="100vw" media="(min-aspect-ratio: 4.001/5)" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-normal-latin.woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css?v=1795730989">
+<link rel="stylesheet" href="assets/css/style.css?v=1795730989">
+<script src="assets/js/img.js?v=1795730989"></script>
 <script>window.DRS_IG_FEED = ""; /* Behold-JSON-Link eintragen = neue Instagram-Videos erscheinen automatisch (docs/instagram.md) */</script>
 </head>
 <body>
 
 <header class="nav" id="nav">
-  <a class="nav__mark nav__mark--logo" href="#top" aria-label="Angerhof · Dr. Schiwago, nach oben"><img src="assets/img/angerhof-logo-weiss.webp" alt="Angerhof Restaurant und Eventlocation" width="900" height="340"></a>
+  <a class="nav__mark nav__mark--logo" href="#top" aria-label="Angerhof · Dr. Schiwago, nach oben"><img src="assets/img/angerhof-logo-weiss.webp?v=1795730989" alt="Angerhof Restaurant und Eventlocation" width="900" height="340"></a>
   <nav class="nav__links" aria-label="Hauptmenü">
     <a href="#buffet">Buffet</a>
     <a href="#abend">Der Abend</a>
@@ -41,7 +42,7 @@
 
   <!-- 1 · HERO -->
   <section class="hero" id="hero" data-need="saal-kronleuchter">
-    <img class="hero__img" data-img="saal-kronleuchter" alt="Der Saal von Dr. Schiwago mit Kristallkronleuchter im warmen Licht">
+    <picture class="hero__pic"><source media="(max-aspect-ratio: 4/5)" srcset="assets/img/saal-kronleuchter-m-s.webp?v=1795730989 900w, assets/img/saal-kronleuchter-m-l.webp?v=1795730989 1800w" sizes="100vw"><img class="hero__img" data-img="saal-kronleuchter" data-static src="assets/img/saal-kronleuchter-s.webp?v=1795730989" srcset="assets/img/saal-kronleuchter-s.webp?v=1795730989 1800w, assets/img/saal-kronleuchter-l.webp?v=1795730989 3840w" sizes="100vw" width="5504" height="3072" fetchpriority="high" decoding="async" alt="Der Saal von Dr. Schiwago mit Kristallkronleuchter im warmen Licht"></picture>
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="hero__shade" aria-hidden="true"></div>
     <div class="hero__text">
@@ -196,7 +197,7 @@
       <h2 class="title events__title" data-ev-title>Hochzeiten</h2>
       <div class="events__copy">
         <p data-ev-text>Vom Sektempfang in der Lounge bis zur Tanzfläche im großen Saal, mit bis zu 200 Gästen.</p>
-        <a class="line-btn" data-ev-link href="anfrage.html?anlass=Hochzeit">Angebot anfragen</a>
+        <a class="line-btn line-btn--blood" data-ev-link href="anfrage.html?anlass=Hochzeit">Angebot anfragen</a>
       </div>
       <div class="events__tabs" role="tablist" aria-label="Anlass wählen">
         <button class="ev is-on" role="tab" aria-selected="true">Hochzeiten</button>
@@ -348,6 +349,6 @@
   <p class="lightbox__cap"></p>
 </div>
 
-<script src="assets/js/app.js?v=1795728515"></script>
+<script src="assets/js/app.js?v=1795730989"></script>
 </body>
 </html>
